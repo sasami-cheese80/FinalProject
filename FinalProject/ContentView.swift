@@ -11,7 +11,7 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            Home()
+            Home(groupData: GroupData())
                 .tabItem {
                     Image(systemName: "house")
                     Text("HOME")

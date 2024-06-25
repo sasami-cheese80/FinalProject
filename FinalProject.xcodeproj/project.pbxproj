@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */; };
+		CEA158E22C2ABF9700F66FD0 /* GroupUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */; };
 		CEB2F0FC2C2984440090760D /* FinalProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */; };
 		CEB2F0FE2C2984440090760D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F0FD2C2984440090760D /* ContentView.swift */; };
 		CEB2F1002C2984450090760D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB2F0FF2C2984450090760D /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsers.swift; sourceTree = "<group>"; };
 		CEB2F0F82C2984440090760D /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectApp.swift; sourceTree = "<group>"; };
 		CEB2F0FD2C2984440090760D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +67,14 @@
 			path = HomeWindow;
 			sourceTree = "<group>";
 		};
+		CEA158E02C2ABF6F00F66FD0 /* GroupUsersWindow */ = {
+			isa = PBXGroup;
+			children = (
+				CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */,
+			);
+			path = GroupUsersWindow;
+			sourceTree = "<group>";
+		};
 		CEB2F0EF2C2984440090760D = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +96,7 @@
 			children = (
 				CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */,
 				CEB2F0FD2C2984440090760D /* ContentView.swift */,
+				CEA158E02C2ABF6F00F66FD0 /* GroupUsersWindow */,
 				CE626E962C2AA2B200A1403C /* HomeWindow */,
 				CE626E942C2AA28C00A1403C /* AccountWindow */,
 				CE626E932C2AA26900A1403C /* AinoriWindow */,
@@ -175,6 +186,7 @@
 			files = (
 				CEB2F1102C298AF20090760D /* Ainori.swift in Sources */,
 				CEB2F10E2C2989C30090760D /* Account.swift in Sources */,
+				CEA158E22C2ABF9700F66FD0 /* GroupUsers.swift in Sources */,
 				CEB2F0FE2C2984440090760D /* ContentView.swift in Sources */,
 				CEB2F10C2C2989330090760D /* Home.swift in Sources */,
 				CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */,

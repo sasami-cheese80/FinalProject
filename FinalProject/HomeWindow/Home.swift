@@ -20,11 +20,11 @@ struct Home: View {
                     } label: {
                         VStack(alignment: .leading, spacing: 8) {
                             
-                            Text(String(plans.id))
+                            Text(String(plans.address))
                                 .font(.headline)
                             Text(stringToStringDate(stringDate: plans.date, format: "MM/dd　HH:mm"))
                                 .font(.subheadline)
-                            Text(String(plans.user_id))
+                            Text(String(plans.state))
                                 .font(.subheadline)
                                 .foregroundColor(.gray)
                         }

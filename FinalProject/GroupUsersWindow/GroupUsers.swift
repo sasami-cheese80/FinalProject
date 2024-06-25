@@ -9,48 +9,6 @@
 
 import SwiftUI
 
-struct Users: Codable {
-    var id: Int
-    var name: String
-    var nickname: String
-    var gender: String
-    var department: String
-    var address: String
-}
-
-class FetchUsers: ObservableObject {
-    @Published var users = [Users]()
-
-    init() {
-        guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/users") else {
-            print("Invalid URL")
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-
-            guard let data = data else {
-                print("Invalid data")
-                return
-            }
-
-            do {
-                let decoder = JSONDecoder()
-                let users = try decoder.decode([Users].self, from: data)
-                DispatchQueue.main.async {
-                    self.users = users
-                }
-            } catch let error {
-                print("Error decoding JSON: \(error.localizedDescription)")
-            }
-        }.resume()
-    }
-}
-
 
 
 struct GroupUsers: View {
@@ -74,6 +32,7 @@ struct GroupUsers: View {
                     .navigationBarTitle(Text("相乗りメンバー"))
         
                 }
+        Text("")
     }
 }
 

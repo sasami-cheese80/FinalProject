@@ -1,23 +1,24 @@
-
 //
-//  FetchPlans.swift
+//  FetchUsers.swift
 //  FinalProject
 //
-//  Created by sakaguchi on 2024/06/25.
+//  Created by user on 2024/06/25.
 //
 
 import Foundation
 
-class FetchPlans: ObservableObject {
-    @Published var plans = [Plans]()
+class FetchUsers: ObservableObject {
+    @Published var users = [Users]()
 
     init() {
-//        guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/plans") else {
-                    guard let url = URL(string: "http://localhost:3000/plans_users?user_id=1") else {
+//        guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/users") else {
+//            print("Invalid URL")
+//            return
+        guard let url = URL(string: "http://localhost:3000/plans_users?plan_id=1") else {
             print("Invalid URL")
             return
         }
-
+        
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
@@ -31,9 +32,9 @@ class FetchPlans: ObservableObject {
 
             do {
                 let decoder = JSONDecoder()
-                let plans = try decoder.decode([Plans].self, from: data)
+                let users = try decoder.decode([Users].self, from: data)
                 DispatchQueue.main.async {
-                    self.plans = plans
+                    self.users = users
                 }
             } catch let error {
                 print("Error decoding JSON: \(error.localizedDescription)")

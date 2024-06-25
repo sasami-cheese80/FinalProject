@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct Account: View {
+    //    @Binding var tabSelection: Int
     var body: some View {
-        Text("account")
+        VStack {
+            Text("AccountView")
+        }
     }
 }
 

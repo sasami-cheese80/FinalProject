@@ -85,5 +85,5 @@ struct Ainori: View {
 
 
 #Preview {
-    ContentView()
+    Ainori()
 }

@@ -12,9 +12,9 @@ struct ContentView: View {
     
     var body: some View {
         TabView {
-            Home(groupData: GroupData())
             //            TabView(selection: $tabSelection) {
             //                Home(tabSelection: $tabSelection)
+            Home()
                 .tabItem {
                     Image(systemName: "house")
                     Text("HOME")

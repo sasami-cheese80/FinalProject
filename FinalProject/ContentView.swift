@@ -11,10 +11,10 @@ struct ContentView: View {
     @State var tabSelection: Int = 0
     
     var body: some View {
-        TabView{
+        TabView {
+            Home(groupData: GroupData())
             //            TabView(selection: $tabSelection) {
             //                Home(tabSelection: $tabSelection)
-            Home()
                 .tabItem {
                     Image(systemName: "house")
                     Text("HOME")

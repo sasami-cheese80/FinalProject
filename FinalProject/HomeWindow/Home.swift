@@ -22,7 +22,7 @@ struct Home: View {
                             
                             Text(String(plans.id))
                                 .font(.headline)
-                            Text(plans.date)
+                            Text(stringToStringDate(stringDate: plans.date, format: "MM/dd　HH:mm"))
                                 .font(.subheadline)
                             Text(String(plans.user_id))
                                 .font(.subheadline)
@@ -36,6 +36,22 @@ struct Home: View {
         }
     }
 }
+
+func stringToStringDate(stringDate: String, format:String) -> String {
+ 
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ" //変換元のStringのDateの型に合わせる必要あり
+        let newDate =  dateFormatter.date(from: stringDate)!
+        dateFormatter.dateFormat = format
+        dateFormatter.locale = Locale(identifier: "ja_JP")//日本のタイムゾーン設定をする
+        let getDate = dateFormatter.string(from: newDate)
+   
+        return getDate
+    }
+
+
+
 
 #Preview {
     Home()

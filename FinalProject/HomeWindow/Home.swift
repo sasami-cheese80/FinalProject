@@ -8,62 +8,50 @@
 
 import SwiftUI
 
-struct Plans: Codable {
-    var id: Int
-    var date: String
-    var user_id: Int
-}
-
-class FetchPlans: ObservableObject {
-    @Published var plans = [Plans]()
-
-    init() {
-        guard let url = URL(string: "http://localhost:3000/plans") else {
-            print("Invalid URL")
-            return
-        }
-        
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-
-            guard let data = data else {
-                print("Invalid data")
-                return
-            }
-
-            do {
-                let decoder = JSONDecoder()
-                let plans = try decoder.decode([Plans].self, from: data)
-                DispatchQueue.main.async {
-                    self.plans = plans
-                }
-            } catch let error {
-                print("Error decoding JSON: \(error.localizedDescription)")
-            }
-        }.resume()
-    }
-}
-
 struct Home: View {
     @ObservedObject var fetchPlans = FetchPlans()
-
+    
     var body: some View {
-        List(fetchPlans.plans, id: \.id) { plans in
-            VStack(alignment: .leading, spacing: 8) {
-                Text(String(plans.id))
-                    .font(.headline)
-                Text(plans.date)
-                    .font(.subheadline)
-                Text(String(plans.user_id))
-                    .font(.subheadline)
-                    .foregroundColor(.gray)
+        NavigationView {
+            ZStack{
+                List(fetchPlans.plans, id: \.id) { plans in
+                    NavigationLink {
+                        GroupUsers()
+                    } label: {
+                        VStack(alignment: .leading, spacing: 8) {
+                            
+                            Text(String(plans.id))
+                                .font(.headline)
+                            Text(stringToStringDate(stringDate: plans.date, format: "MM/dd　HH:mm"))
+                                .font(.subheadline)
+                            Text(String(plans.user_id))
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                    }
+                }
+                .navigationTitle("予定List")
             }
+            
         }
     }
 }
+
+func stringToStringDate(stringDate: String, format:String) -> String {
+ 
+        let dateFormatter = DateFormatter()
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ" //変換元のStringのDateの型に合わせる必要あり
+        let newDate =  dateFormatter.date(from: stringDate)!
+        dateFormatter.dateFormat = format
+        dateFormatter.locale = Locale(identifier: "ja_JP")//日本のタイムゾーン設定をする
+        let getDate = dateFormatter.string(from: newDate)
+   
+        return getDate
+    }
+
+
+
 
 #Preview {
     Home()

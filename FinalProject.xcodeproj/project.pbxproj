@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE3D8E022C2AB6C500650602 /* MemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E012C2AB6C500650602 /* MemberView.swift */; };
+		CE3D8E042C2AC32300650602 /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E032C2AC32300650602 /* Plans.swift */; };
+		CE3D8E062C2AC36900650602 /* FetchPlans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E052C2AC36900650602 /* FetchPlans.swift */; };
 		CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */; };
 		CEB2F0FC2C2984440090760D /* FinalProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */; };
 		CEB2F0FE2C2984440090760D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F0FD2C2984440090760D /* ContentView.swift */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE3D8E012C2AB6C500650602 /* MemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberView.swift; sourceTree = "<group>"; };
+		CE3D8E032C2AC32300650602 /* Plans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
+		CE3D8E052C2AC36900650602 /* FetchPlans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlans.swift; sourceTree = "<group>"; };
 		CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		CEB2F0F82C2984440090760D /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectApp.swift; sourceTree = "<group>"; };
@@ -61,6 +67,9 @@
 			isa = PBXGroup;
 			children = (
 				CEB2F10B2C2989330090760D /* Home.swift */,
+				CE3D8E032C2AC32300650602 /* Plans.swift */,
+				CE3D8E012C2AB6C500650602 /* MemberView.swift */,
+				CE3D8E052C2AC36900650602 /* FetchPlans.swift */,
 			);
 			path = HomeWindow;
 			sourceTree = "<group>";
@@ -175,7 +184,10 @@
 			files = (
 				CEB2F1102C298AF20090760D /* Ainori.swift in Sources */,
 				CEB2F10E2C2989C30090760D /* Account.swift in Sources */,
+				CE3D8E042C2AC32300650602 /* Plans.swift in Sources */,
 				CEB2F0FE2C2984440090760D /* ContentView.swift in Sources */,
+				CE3D8E022C2AB6C500650602 /* MemberView.swift in Sources */,
+				CE3D8E062C2AC36900650602 /* FetchPlans.swift in Sources */,
 				CEB2F10C2C2989330090760D /* Home.swift in Sources */,
 				CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */,
 				CEB2F0FC2C2984440090760D /* FinalProjectApp.swift in Sources */,

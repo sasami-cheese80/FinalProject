@@ -1,19 +1,13 @@
 //
-//  PlansModel.swift
+//  Users.swift
 //  FinalProject
 //
-//  Created by sakaguchi on 2024/06/25.
+//  Created by user on 2024/06/25.
 //
 
 import Foundation
-//
-//struct Plans: Codable {
-//    var id: Int
-//    var date: String
-//    var user_id: Int
-//}
 
-struct Plans: Codable {
+struct Users: Codable {
     var id: Int
     var plan_id: Int
     var user_id: Int

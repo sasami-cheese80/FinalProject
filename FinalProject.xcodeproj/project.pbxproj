@@ -11,6 +11,8 @@
 		CE3D8E0A2C2AC8D100650602 /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E092C2AC8D100650602 /* Plans.swift */; };
 		CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */; };
 		CEA158E22C2ABF9700F66FD0 /* GroupUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */; };
+		CEA158E42C2B0FE200F66FD0 /* FetchUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */; };
+		CEA158E62C2B100700F66FD0 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E52C2B100700F66FD0 /* Users.swift */; };
 		CEB2F0FC2C2984440090760D /* FinalProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */; };
 		CEB2F0FE2C2984440090760D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F0FD2C2984440090760D /* ContentView.swift */; };
 		CEB2F1002C2984450090760D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB2F0FF2C2984450090760D /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 		CE3D8E092C2AC8D100650602 /* Plans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
 		CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsers.swift; sourceTree = "<group>"; };
+		CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsers.swift; sourceTree = "<group>"; };
+		CEA158E52C2B100700F66FD0 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		CEB2F0F82C2984440090760D /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectApp.swift; sourceTree = "<group>"; };
 		CEB2F0FD2C2984440090760D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */,
+				CEA158E52C2B100700F66FD0 /* Users.swift */,
+				CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */,
 			);
 			path = GroupUsersWindow;
 			sourceTree = "<group>";
@@ -197,8 +203,10 @@
 				CE3D8E0A2C2AC8D100650602 /* Plans.swift in Sources */,
 				CEB2F0FE2C2984440090760D /* ContentView.swift in Sources */,
 				CEB2F10C2C2989330090760D /* Home.swift in Sources */,
+				CEA158E42C2B0FE200F66FD0 /* FetchUsers.swift in Sources */,
 				CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */,
 				CEB2F0FC2C2984440090760D /* FinalProjectApp.swift in Sources */,
+				CEA158E62C2B100700F66FD0 /* Users.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

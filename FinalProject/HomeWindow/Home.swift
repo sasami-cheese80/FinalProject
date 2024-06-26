@@ -15,9 +15,9 @@ struct Home: View {
         NavigationView {
             ZStack{
                 List(fetchPlans.plans, id: \.id) { plans in
-                    NavigationLink {
-                        GroupUsers()
-                    } label: {
+                    NavigationLink (
+                        destination: GroupUsers(planId: plans.plan_id)
+                    ) {
                         VStack(alignment: .leading, spacing: 8) {
                             
                             Text(String(plans.address))

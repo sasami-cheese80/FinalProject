@@ -13,7 +13,14 @@ import SwiftUI
 
 struct GroupUsers: View {
     
-    @ObservedObject var fetchUsers = FetchUsers()
+    var planId: Int
+    
+    @ObservedObject var fetchUsers: FetchUsers
+    
+    init(planId: Int) {
+        self.planId = planId
+        self.fetchUsers = FetchUsers(planId: planId)
+    }
     
     var body: some View {
         NavigationView {
@@ -30,12 +37,19 @@ struct GroupUsers: View {
                         }
                     }
                     .navigationBarTitle(Text("相乗りメンバー"))
+                    .navigationBarItems(trailing: Button(action: {
+//                        DeleteTask()
+                    })
+                                        {
+                        Text("グループから抜ける")
+                    }
+                    )
         
                 }
         Text("")
     }
 }
 
-#Preview {
-    GroupUsers()
-}
+//#Preview {
+//    GroupUsers(planId: 1)
+//}

@@ -107,22 +107,28 @@ private func postData(date: Date) -> String {
     let formatDate = dateToString(date: date)
     print("postする日時 → \(formatDate)")
     
-    let url = URL(string:"http://localhost:3000/plans_users")!
-    let request = URLRequest(url: url)
+    let url = URL(string:"http://localhost:3000/plans")!
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    
+    //bodyに設定
+    request.httpBody = "user_id=1&date=\(formatDate)".data(using: .utf8)
+    
     let task = URLSession.shared.dataTask(with: request) { (data, response, erro) in
         guard let data = data else { return }
         
         do {
             let object = try JSONSerialization.jsonObject(with: data, options: [])
-            print(object)
+            //response見れるここで
+//            print(object)
         } catch let error {
-            print(error)
+            print("Error parsing JSON response: \(error)")
         }
     }
+    
     task.resume()
     return "ポストしたよ"
 }
-
 
 
 #Preview {

@@ -11,7 +11,7 @@ class FetchUsers: ObservableObject {
     @Published var users = [Users]()
 
     init() {
-//        guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/users") else {
+//        guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/plans_users?plan_id=1") else {
 //            print("Invalid URL")
 //            return
         guard let url = URL(string: "http://localhost:3000/plans_users?plan_id=1") else {

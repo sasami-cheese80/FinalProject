@@ -10,7 +10,6 @@ import SwiftUI
 
 struct Home: View {
     @ObservedObject var fetchPlans = FetchPlans()
-    
     var body: some View {
         NavigationView {
             ZStack{

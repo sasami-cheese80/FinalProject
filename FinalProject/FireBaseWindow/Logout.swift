@@ -1,27 +1,18 @@
-//
-//  Account.swift
-//  FinalProject
-//
-//  Created by sakaguchi on 2024/06/24.
-//
-
 import SwiftUI
 
-struct Account: View {
+// ログイン後の画面
+struct Logout: View {
     var viewModel: FirebaseModel
 
-    //    @Binding var tabSelection: Int
     var body: some View {
         VStack {
-            Text("AccountView")
+            Text("Hello, you're logged in!")
+                .font(.title)
+                .padding()
             Button("Log Out") {
                 // ログアウトしてログイン画面へ遷移する
                 viewModel.signOut()
             }
         }
     }
-}
-
-#Preview {
-    Account(viewModel: FirebaseModel())
 }

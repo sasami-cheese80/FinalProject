@@ -114,7 +114,7 @@ private func postData(date: Date) -> String {
     //bodyに設定
     request.httpBody = "user_id=1&date=\(formatDate)".data(using: .utf8)
     
-    let task = URLSession.shared.dataTask(with: request) { (data, response, erro) in
+    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
         guard let data = data else { return }
         
         do {

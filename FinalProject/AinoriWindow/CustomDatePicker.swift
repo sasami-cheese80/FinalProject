@@ -27,6 +27,7 @@ struct CustomDatePicker: View {
                     displayedComponents: [.date, .hourAndMinute]
                 )
                 .datePickerStyle(.graphical)
+                .environment(\.locale, Locale(identifier: "ja"))
                 .onAppear {
                                UIDatePicker.appearance().minuteInterval = 15
                            }

@@ -19,6 +19,7 @@
 		CE7384B82C2C21BA00B08C01 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7384B72C2C21BA00B08C01 /* SignIn.swift */; };
 		CE7384BA2C2C221D00B08C01 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7384B92C2C221D00B08C01 /* SignUp.swift */; };
 		CE7384BC2C2C3D0900B08C01 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7384BB2C2C3D0900B08C01 /* Logout.swift */; };
+		CE7384BE2C2D2D3E00B08C01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE7384BD2C2D2D3E00B08C01 /* GoogleService-Info.plist */; };
 		CEA158E22C2ABF9700F66FD0 /* GroupUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */; };
 		CEA158E42C2B0FE200F66FD0 /* FetchUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */; };
 		CEA158E62C2B100700F66FD0 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E52C2B100700F66FD0 /* Users.swift */; };
@@ -47,6 +48,7 @@
 		CE7384B72C2C21BA00B08C01 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		CE7384B92C2C221D00B08C01 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
 		CE7384BB2C2C3D0900B08C01 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
+		CE7384BD2C2D2D3E00B08C01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsers.swift; sourceTree = "<group>"; };
 		CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsers.swift; sourceTree = "<group>"; };
 		CEA158E52C2B100700F66FD0 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
@@ -158,10 +160,6 @@
 			isa = PBXGroup;
 			children = (
 
-				CEDAC8782C2D26D700A55B8B /* GoogleService-Info.plist */,
-
-				CE3DAC9F2C2D269E0040A92D /* GoogleService-Info.plist */,
-
 				CE7384AF2C2BFA1E00B08C01 /* FireBaseWindow */,
 				CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */,
 				CEB2F0FD2C2984440090760D /* ContentView.swift */,
@@ -252,10 +250,6 @@
 			files = (
 				CEB2F1032C2984450090760D /* Preview Assets.xcassets in Resources */,
 				CEB2F1002C2984450090760D /* Assets.xcassets in Resources */,
-
-				CEDAC8792C2D26D700A55B8B /* GoogleService-Info.plist in Resources */,
-
-				CE3DACA02C2D269E0040A92D /* GoogleService-Info.plist in Resources */,
 
 			);
 			runOnlyForDeploymentPostprocessing = 0;

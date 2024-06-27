@@ -17,7 +17,12 @@ struct SignUp: View {
 
             Button("Sign Up") {
                 viewModel.signUp(email: email, password: password)
+            }.padding()
+            
+            if let errorMessage = viewModel.errorMessage{
+                Text(errorMessage).padding()
             }
+
 
             if viewModel.isAuthenticated {
                 // ログイン後のページに遷移
@@ -28,4 +33,8 @@ struct SignUp: View {
             }
         }
     }
+}
+
+#Preview {
+    SignIn(viewModel: FirebaseModel())
 }

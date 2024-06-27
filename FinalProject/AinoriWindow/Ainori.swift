@@ -92,8 +92,8 @@ private func dateToString(date: Date) -> String {
           let month = dateComponents.month,
           let day = dateComponents.day,
           let hour = dateComponents.hour,
-          let minute = dateComponents.minute,
-          let second = dateComponents.second else {
+          let minute = dateComponents.minute
+    else {
         return "無効な日付"
     }
     

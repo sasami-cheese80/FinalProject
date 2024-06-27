@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Account: View {
+struct Profile: View {
     var viewModel: FirebaseModel
 
     //    @Binding var tabSelection: Int

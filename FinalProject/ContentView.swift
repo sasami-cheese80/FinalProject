@@ -36,7 +36,7 @@ struct ContentView: View {
                 }
                 .tag(3)
         }
-        .accentColor(.yellow)
+        .accentColor(Color.customMainColor)
     }
 }
 

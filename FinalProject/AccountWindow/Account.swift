@@ -18,6 +18,8 @@ struct Account: View {
                 // ログアウトしてログイン画面へ遷移する
                 viewModel.signOut()
             }
+            Text(viewModel.uid ?? "User")
+                .padding()
         }
     }
 }
@@ -25,3 +27,5 @@ struct Account: View {
 #Preview {
     Account(viewModel: FirebaseModel())
 }
+
+

@@ -22,7 +22,6 @@ struct SignIn: View {
 
                 if viewModel.isAuthenticated {
                     // ログイン後のページに遷移
-//                    HelloPage(viewModel: viewModel)
                     ContentView(viewModel: FirebaseModel())
                 }
                 // 新規登録画面への遷移ボタン
@@ -34,3 +33,4 @@ struct SignIn: View {
             }
         }
     }
+

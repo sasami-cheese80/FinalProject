@@ -12,7 +12,7 @@ class FetchPlans: ObservableObject {
     @Published var plans = [Plans]()
 
     init() {
-//        guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/plans") else {
+//        guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/plans_users?user_id=1") else {
                     guard let url = URL(string: "http://localhost:3000/plans_users?user_id=1") else {
             print("Invalid URL")
             return

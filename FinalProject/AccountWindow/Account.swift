@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct Account: View {
+    var viewModel: FirebaseModel
+
     //    @Binding var tabSelection: Int
     var body: some View {
         VStack {
             Text("AccountView")
+            Button("Log Out") {
+                // ログアウトしてログイン画面へ遷移する
+                viewModel.signOut()
+            }
+            Text(viewModel.uid ?? "User")
+                .padding()
         }
     }
 }
 
 #Preview {
-    Account()
+    Account(viewModel: FirebaseModel())
 }
+
+

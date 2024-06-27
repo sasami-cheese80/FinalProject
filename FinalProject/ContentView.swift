@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var tabSelection: Int = 0
+    var viewModel: FirebaseModel
     
     var body: some View {
         TabView {
@@ -28,17 +29,17 @@ struct ContentView: View {
                 }
                 .tag(2)
             //                Account(tabSelection: $tabSelection)
-            Account()
+            Account(viewModel: FirebaseModel())
                 .tabItem {
                     Image(systemName: "person")
                     Text("ACCOUNT")
                 }
                 .tag(3)
         }
-        .accentColor(.yellow)
+        .accentColor(Color.customMainColor)
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(viewModel: FirebaseModel())
 }

@@ -23,7 +23,7 @@ struct GroupUsers: View {
     }
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 
                 List {
@@ -50,7 +50,8 @@ struct GroupUsers: View {
             }
         }
         Button(action: {
-            print("ここでpostします")
+            print("ここでdeleteします")
+            deletePlan(user_id: 1, plan_id: 1)
 //                        tabSelection = 3
         }, label: {
             Text("グループから抜ける")

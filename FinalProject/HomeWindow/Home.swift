@@ -11,9 +11,6 @@ import SwiftUI
 struct Home: View {
     @ObservedObject var fetchPlans = FetchPlans()
     
-    
-    @State var isDisabled = true
-    
     var body: some View {
         NavigationStack {
             ZStack{
@@ -66,6 +63,9 @@ struct Home: View {
                 .listStyle(.plain)
                 .background(Color.customlightGray)
                 
+            }
+            .onAppear() {
+                fetchPlans.getPlans()
             }
         }
     }

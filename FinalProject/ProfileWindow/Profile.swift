@@ -13,19 +13,30 @@ struct Profile: View {
     //    @Binding var tabSelection: Int
     var body: some View {
         VStack {
-            Text("AccountView")
-            Button("Log Out") {
-                // ログアウトしてログイン画面へ遷移する
-                viewModel.signOut()
-            }
-            Text(viewModel.uid ?? "User")
-                .padding()
+            
+            
+            
+            
+            Text("profile")
+            
+            
+            
+            
+            
+//logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
+//            Button("Log Out") {
+//                // ログアウトしてログイン画面へ遷移する
+//                viewModel.signOut()
+//            }
+//            Text(viewModel.uid ?? "User")
+//                .padding()
+//logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
         }
     }
 }
 
 #Preview {
-    Account(viewModel: FirebaseModel())
+    Profile(viewModel: FirebaseModel())
 }
 
 

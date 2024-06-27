@@ -29,7 +29,7 @@ struct ContentView: View {
                 }
                 .tag(2)
             //                Account(tabSelection: $tabSelection)
-            Account(viewModel: FirebaseModel())
+            Profile(viewModel: FirebaseModel())
                 .tabItem {
                     Image(systemName: "person")
                     Text("ACCOUNT")

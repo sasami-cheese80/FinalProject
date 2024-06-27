@@ -27,7 +27,7 @@
 		CEB2F1002C2984450090760D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB2F0FF2C2984450090760D /* Assets.xcassets */; };
 		CEB2F1032C2984450090760D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB2F1022C2984450090760D /* Preview Assets.xcassets */; };
 		CEB2F10C2C2989330090760D /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F10B2C2989330090760D /* Home.swift */; };
-		CEB2F10E2C2989C30090760D /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F10D2C2989C30090760D /* Account.swift */; };
+		CEB2F10E2C2989C30090760D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F10D2C2989C30090760D /* Profile.swift */; };
 		CEB2F1102C298AF20090760D /* Ainori.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F10F2C298AF20090760D /* Ainori.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +50,7 @@
 		CEB2F0FF2C2984450090760D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEB2F1022C2984450090760D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CEB2F10B2C2989330090760D /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
-		CEB2F10D2C2989C30090760D /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		CEB2F10D2C2989C30090760D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		CEB2F10F2C298AF20090760D /* Ainori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ainori.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,12 +77,12 @@
 			path = AinoriWindow;
 			sourceTree = "<group>";
 		};
-		CE626E942C2AA28C00A1403C /* AccountWindow */ = {
+		CE626E942C2AA28C00A1403C /* ProfileWindow */ = {
 			isa = PBXGroup;
 			children = (
-				CEB2F10D2C2989C30090760D /* Account.swift */,
+				CEB2F10D2C2989C30090760D /* Profile.swift */,
 			);
-			path = AccountWindow;
+			path = ProfileWindow;
 			sourceTree = "<group>";
 		};
 		CE626E962C2AA2B200A1403C /* HomeWindow */ = {
@@ -149,7 +149,7 @@
 				CEB2F0FD2C2984440090760D /* ContentView.swift */,
 				CEA158E02C2ABF6F00F66FD0 /* GroupUsersWindow */,
 				CE626E962C2AA2B200A1403C /* HomeWindow */,
-				CE626E942C2AA28C00A1403C /* AccountWindow */,
+				CE626E942C2AA28C00A1403C /* ProfileWindow */,
 				CE626E932C2AA26900A1403C /* AinoriWindow */,
 				CEB2F0FF2C2984450090760D /* Assets.xcassets */,
 				CEB2F1012C2984450090760D /* Preview Content */,
@@ -247,7 +247,7 @@
 			files = (
 				CEB2F1102C298AF20090760D /* Ainori.swift in Sources */,
 				CE7384B82C2C21BA00B08C01 /* SignIn.swift in Sources */,
-				CEB2F10E2C2989C30090760D /* Account.swift in Sources */,
+				CEB2F10E2C2989C30090760D /* Profile.swift in Sources */,
 				CEA158E22C2ABF9700F66FD0 /* GroupUsers.swift in Sources */,
 				CE3D8E082C2AC8BF00650602 /* FetchPlans.swift in Sources */,
 				CE3D8E132C2D009700650602 /* ColorExtension.swift in Sources */,

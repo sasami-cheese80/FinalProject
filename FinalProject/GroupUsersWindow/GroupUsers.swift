@@ -15,12 +15,12 @@ struct GroupUsers: View {
     
     var planId: Int
     
-    @ObservedObject var fetchUsers: FetchUsers
+    @ObservedObject var fetchUsers = FetchUsers()
     
-    init(planId: Int) {
-        self.planId = planId
-        self.fetchUsers = FetchUsers(planId: planId)
-    }
+//    init(planId: Int) {
+//        self.planId = planId
+//        self.fetchUsers = FetchUsers(planId: planId)
+//    }
     
     var body: some View {
         NavigationStack {
@@ -39,19 +39,15 @@ struct GroupUsers: View {
                     }
                 }
                 .navigationBarTitle(Text("相乗りメンバー"))
-                //                    .navigationBarItems(trailing: Button(action: {
-                ////                        DeleteTask()
-                //                    })
-                //                                        {
-                //                        Text("グループから抜ける")
-                //                    }
-                //                    )
                 
+            }
+            .onAppear() {
+                fetchUsers.getUsers(planId: planId)
             }
         }
         Button(action: {
             print("ここでdeleteします")
-            deletePlan(user_id: 1, plan_id: 1)
+            fetchUsers.deletePlan(user_id: 1, plan_id: planId)
 //                        tabSelection = 3
         }, label: {
             Text("グループから抜ける")

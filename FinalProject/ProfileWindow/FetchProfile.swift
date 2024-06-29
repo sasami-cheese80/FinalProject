@@ -10,9 +10,9 @@ import Foundation
 class FetchProfile: ObservableObject {
     @Published var profiles = [ProfileType]()
     //↓↓これつけるとプレビュー落ちるから一旦停止中
-//    func getProfile(id: String?) {
+    //func getProfile(id: String?) {
     func getProfile() {
-//        print("idだよ→　\(id!)")
+    //print("idだよ→　\(id!)")
         guard let url = URL(string: "http://localhost:3000/users/user_id/1") else {
             print("Invalid URL")
             return

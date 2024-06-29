@@ -9,7 +9,7 @@ class FirebaseModel: ObservableObject {
     @Published var isAuthenticated = false
     @Published var uid: String? = nil // UIDを保存するプロパティ
     @Published var errorMessage: String? = nil // エラーメッセージを保存するプロパティ
-    @Published var userid: UserId? = nil //GETした情報を保存するプロパ
+    @Published var userId: Int? = nil //GETした情報を保存するプロパ
     
     
     //メールドメインの指定
@@ -30,7 +30,7 @@ class FirebaseModel: ObservableObject {
                     } else {
                         self?.isAuthenticated = false
                         self?.uid = nil
-                        self?.userid = nil
+                        self?.userId = nil
                     }
                 }
             }
@@ -101,7 +101,7 @@ class FirebaseModel: ObservableObject {
         var request = URLRequest(url: url)
             request.httpMethod = "GET"
         
-        let task = URLSession.shared.dataTask(with: request){[weak self] data,response,error in
+        let task = URLSession.shared.dataTask(with: request){ [weak self] data,response,error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
                 return
@@ -115,7 +115,7 @@ class FirebaseModel: ObservableObject {
                 do {
                     let user = try JSONDecoder().decode(UserId.self, from: data)
                     DispatchQueue.main.async {
-                    self?.userid = user // レスポンスデータを保存
+                        self?.userId = user.id // レスポンスデータを保存
                     }
                 } catch {
                     print("Failed to decode JSON: \(error)")

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Profile: View {
-    var viewModel: FirebaseModel
+    @ObservedObject var viewModel: FirebaseModel
 
     //    @Binding var tabSelection: Int
     var body: some View {
@@ -31,9 +31,10 @@ struct Profile: View {
             Text(viewModel.uid ?? "User")
                 .padding()
             
-            if let user = viewModel.userid{
-                Text("ID:\(user.id)")
+            if let userId = viewModel.userId{
+                Text("\(userId)")
             }
+            
 //logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
         }
     }

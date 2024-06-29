@@ -7,17 +7,62 @@
 
 import SwiftUI
 
+struct createProfileType: Codable{
+    var name: String
+    var nickname: String
+    var gender: String
+    var department: String
+    var division: String
+    var address: String
+    var firebase_id: String
+}
+
+
+class CreateProfileClass: ObservableObject {
+    @Published var profiles = [createProfileType]()
+    //    func patchProfile(id: String?, patchData: ProfilePatchType) {
+    func postProfile(postData: createProfileType) {
+//        print("idだよ→　\(id!)")
+        let url = URL(string:"http://localhost:3000/users")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+        //bodyに設定
+        do {
+            request.httpBody = try JSONEncoder().encode(postData)
+        } catch {
+            print("bodyをエンコードできませんでした。")
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else { return }
+
+            do {
+                let object = try JSONSerialization.jsonObject(with: data, options: [])
+                //response見れるここで
+                //print(object)
+            } catch let error {
+                print("Error parsing JSON response: \(error)")
+            }
+        }
+        task.resume()
+    }
+}
+
+
 struct createProfile: View {
+    @ObservedObject var createProfileClass = CreateProfileClass()
     @State private var name:String = ""
     @State private var nickname:String = ""
-    @State private var gender:String = "男性"
-    @State private var Department:String = ""
+    @State private var gender:String = ""
+    @State private var department:String = ""
     @State private var division:String = ""
-    @State private var goHome:String = "岡崎方面"
+    @State private var address:String = ""
     
     var body: some View {
         NavigationStack {
-            
             
             Form {
                 
@@ -35,7 +80,7 @@ struct createProfile: View {
                 }
                 
                 Section{
-                    TextField("所属部署名（部）",text:$Department)
+                    TextField("所属部署名（部）",text:$department)
                     TextField("所属部署名（室/課）",text:$division)
                 } header: {
                     Text("所属部署")
@@ -52,7 +97,8 @@ struct createProfile: View {
                 }
                 
                 Section{
-                    Picker("帰宅方面", selection: $goHome) {
+                    Picker("帰宅方面", selection: $address) {
+                        Text("").tag("")
                         Text("岡崎方面").tag("岡崎方面")
                         Text("名古屋・日進方面").tag("名古屋・日進方面")
                         Text("知立・安城方面").tag("知立・安城方面")
@@ -77,7 +123,9 @@ struct createProfile: View {
             
             Button(action: {
                 print("ボタンが押されました")
-                // usersにポストして欲しいよー
+                let postData = createProfileType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address, firebase_id: "てきとう")
+                createProfileClass.postProfile(postData: postData)
+
             }, label: {
                 Text("決定")
                     .foregroundColor(.white)
@@ -85,7 +133,7 @@ struct createProfile: View {
                     .padding(.init(top: 13, leading: 70, bottom: 13, trailing: 70))
                     .background(.black)
                     .cornerRadius(5)
-                
+
             })
         }
         

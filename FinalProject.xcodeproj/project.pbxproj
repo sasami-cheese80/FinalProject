@@ -117,9 +117,9 @@
 			children = (
 				CE7384B52C2C0F4100B08C01 /* FirebaseModel.swift */,
 				CE7384B72C2C21BA00B08C01 /* SignIn.swift */,
+				CEE438442C2D2B0300269D56 /* createProfile.swift */,
 				CE7384B92C2C221D00B08C01 /* SignUp.swift */,
 				CE7384BB2C2C3D0900B08C01 /* Logout.swift */,
-				CEE438442C2D2B0300269D56 /* createProfile.swift */,
 			);
 			path = FireBaseWindow;
 			sourceTree = "<group>";

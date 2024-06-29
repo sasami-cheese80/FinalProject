@@ -24,12 +24,16 @@ struct Profile: View {
             
             
 //logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
-//            Button("Log Out") {
-//                // ログアウトしてログイン画面へ遷移する
-//                viewModel.signOut()
-//            }
-//            Text(viewModel.uid ?? "User")
-//                .padding()
+            Button("Log Out") {
+                // ログアウトしてログイン画面へ遷移する
+                viewModel.signOut()
+            }
+            Text(viewModel.uid ?? "User")
+                .padding()
+            
+            if let user = viewModel.userid{
+                Text("ID:\(user.id)")
+            }
 //logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
         }
     }

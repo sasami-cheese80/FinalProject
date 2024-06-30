@@ -40,7 +40,7 @@ class CreateProfileClass: ObservableObject {
             guard let data = data else { return }
 
             do {
-                let object = try JSONSerialization.jsonObject(with: data, options: [])
+                try JSONSerialization.jsonObject(with: data, options: [])
                 //response見れるここで
                 //print(object)
             } catch let error {
@@ -52,7 +52,8 @@ class CreateProfileClass: ObservableObject {
 }
 
 
-struct createProfile: View {
+struct CreateProfile: View {
+    @ObservedObject var viewModel: FirebaseModel
     @ObservedObject var createProfileClass = CreateProfileClass()
     @State private var name:String = ""
     @State private var nickname:String = ""
@@ -123,8 +124,14 @@ struct createProfile: View {
             
             Button(action: {
                 print("ボタンが押されました")
-                let postData = createProfileType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address, firebase_id: "てきとう")
-                createProfileClass.postProfile(postData: postData)
+                
+                if viewModel.uid != nil{
+                    let postData = createProfileType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address, firebase_id: viewModel.uid!)
+                    createProfileClass.postProfile(postData: postData)
+                } else {
+                    print("firebase_idが取得できませんでした。createProfileできません。")
+                }
+       
 
             }, label: {
                 Text("決定")
@@ -137,9 +144,9 @@ struct createProfile: View {
             })
         }
         
-        
     }
 }
+
 #Preview {
-    createProfile()
+    CreateProfile(viewModel: FirebaseModel())
 }

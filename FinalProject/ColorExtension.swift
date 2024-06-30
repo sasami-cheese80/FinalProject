@@ -14,7 +14,7 @@ extension Color {
     static let customLightMain = Color("lightMain")
     static let customInterimMain = Color("interimMain")
     static let customDarkMain = Color("darkMain")
-    static let customDarkGray = Color("darkGray")
-    static let customlightGray = Color("lightGray")
+    static let customDarkGray = Color("cusDarkGray")
+    static let customlightGray = Color("cusLightGray")
 }
 

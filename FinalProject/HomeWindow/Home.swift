@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct Home: View {
+    @ObservedObject var viewModel: FirebaseModel
     @ObservedObject var fetchPlans = FetchPlans()
     
     var body: some View {
         NavigationStack {
             ZStack{
                 List(fetchPlans.plans, id: \.id) { plan in
-                    
                     NavigationLink {
                         GroupUsers(planId: plan.plan_id)
                     } label: {
@@ -65,7 +65,12 @@ struct Home: View {
                 
             }
             .onAppear() {
-                fetchPlans.getPlans()
+                if let userId = viewModel.userId{
+//                    Text("id:\(userId)")
+                    fetchPlans.getPlans(userId: userId)
+                }else{
+                    print("userIdがありませんでした。")
+                }
             }
         }
     }
@@ -85,5 +90,6 @@ func stringToStringDate(stringDate: String, format:String) -> String {
 
 
 #Preview {
-    Home()
+    Home(viewModel: FirebaseModel())
 }
+

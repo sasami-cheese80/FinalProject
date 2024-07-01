@@ -41,8 +41,10 @@ struct GroupUsers: View {
                         .padding()
                     }
                 }
+                .listStyle(.plain)
+                .background(Color.customlightGray)
                 .navigationBarTitle(Text("相乗りメンバー"))
-                .background(Color.white.opacity(0.3))
+                
                 
             }
             .onAppear() {

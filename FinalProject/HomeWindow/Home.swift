@@ -12,6 +12,7 @@ struct Home: View {
     @ObservedObject var viewModel: FirebaseModel
     @ObservedObject var fetchPlans = FetchPlans()
     
+    @State private var isPresented: Bool = false
     var body: some View {
         NavigationStack {
             
@@ -50,6 +51,7 @@ struct Home: View {
                             }
                         }
                         .padding()
+
                     }
                     .navigationTitle("HOME")
                     .foregroundColor(Color.customTextColor)

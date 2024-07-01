@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct Ainori: View {
-    //    @Binding var tabSelection: Int
+//        @Binding var tabSelection: Int
     
     @ObservedObject var viewModel: FirebaseModel
     @State var date: Date? = nil
     @State var textValue:String = ""
     @State var showDatePicker: Bool = false
+    
     
     var body: some View {
         
@@ -63,7 +64,7 @@ struct Ainori: View {
 
                     
                     Button(action: {
-                        //                        tabSelection = 3
+//                        tabSelection = 1
                         //unrap処理
                         guard let unwrapDate = date else {
                             print("nilです")

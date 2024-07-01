@@ -42,11 +42,10 @@ struct FinalProjectApp: App {
   var body: some Scene {
     WindowGroup {
         // ログイン状態によって画面遷移するページを変更する
-        if viewModel.isAuthenticated {
+        if viewModel.isAuthenticated && viewModel.userId != nil {
             ContentView(viewModel: viewModel)
         }else if viewModel.isSignedUp{
             CreateProfile(viewModel: viewModel)
-
         } else {
             SignIn(viewModel: viewModel)
         }

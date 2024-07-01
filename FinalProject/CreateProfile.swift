@@ -124,7 +124,7 @@ struct CreateProfile: View {
             
             Button(action: {
                 print("ボタンが押されました")
-                
+                viewModel.isAuthenticated = true
                 if viewModel.uid != nil{
                     let postData = createProfileType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address, firebase_id: viewModel.uid!)
                     createProfileClass.postProfile(postData: postData)

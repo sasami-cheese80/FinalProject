@@ -19,7 +19,13 @@ struct Home: View {
             ZStack{
                 List(fetchPlans.plans, id: \.id) { plan in
                     NavigationLink {
-                        GroupUsers(planId: plan.plan_id)
+                        if let userId = viewModel.userId {
+                            GroupUsers(planId: plan.plan_id, userId: userId)
+                        } else {
+//                            print("userIdがありませんでした")
+                        }
+                        
+                        
                     } label: {
                         HStack() {
                             VStack(alignment: .leading, spacing: 0) {
@@ -97,7 +103,7 @@ func stringToStringDate(stringDate: String, format:String) -> String {
 }
 
 
-#Preview {
-    Home(viewModel: FirebaseModel())
-}
+//#Preview {
+//    Home(viewModel: FirebaseModel())
+//}
 

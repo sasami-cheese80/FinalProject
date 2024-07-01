@@ -43,15 +43,12 @@ struct FinalProjectApp: App {
     WindowGroup {
         // ログイン状態によって画面遷移するページを変更する
         if viewModel.isAuthenticated {
-            //            Logout(viewModel: viewModel)
-            ContentView(viewModel: FirebaseModel())
-//            CreateProfile(viewModel: FirebaseModel())
+            ContentView(viewModel: viewModel)
+        }else if viewModel.isSignedUp{
+            CreateProfile(viewModel: viewModel)
         } else {
             SignIn(viewModel: viewModel)
         }
-//      NavigationView {
-//        ContentView()
-//      }
     }
   }
 }

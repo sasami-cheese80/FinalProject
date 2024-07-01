@@ -20,6 +20,10 @@ struct GroupUsers: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    @State var showingSheet = true
+    
+//    @State var showingPopover = true
+    
 //    init(planId: Int) {
 //        self.planId = planId
 //        self.fetchUsers = FetchUsers(planId: planId)
@@ -47,24 +51,100 @@ struct GroupUsers: View {
             .onAppear() {
                 fetchUsers.getUsers(planId: planId)
             }
+            .onDisappear() {
+                dismiss()
+            }
         }
-        Button(action: {
-            print("ここでdeleteします")
-            fetchUsers.deletePlan(user_id: userId, plan_id: planId)
-            dismiss() //現在のビューを閉じる
-        }, label: {
-            Text("グループから抜ける")
-                .foregroundColor(.black)
-                .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                .padding(.init(top: 15, leading: 70, bottom: 15, trailing: 70))
-                .background(Color(red: 1.0, green: 0.96, blue: 0.93))
-                .cornerRadius(10)
-                .border(.black, width: 1)
-        })
+//        VStack {
+//            Text("hello")
+//            Button(action: {
+//                print("ここでdeleteします")
+//                fetchUsers.deletePlan(user_id: userId, plan_id: planId)
+//                dismiss() //現在のビューを閉じる
+//            }, label: {
+//                Text("グループから抜ける")
+//                    .foregroundColor(.black)
+//                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+//                    .padding(.init(top: 15, leading: 70, bottom: 15, trailing: 70))
+//                    .background(Color(red: 1.0, green: 0.96, blue: 0.93))
+//                    .cornerRadius(10)
+//                    .border(.black, width: 1)
+//                })
+//        }
+//        .popover(isPresented: $showingPopover) {
+//            VStack {
+//                Button(action: {
+//                    print("ここでdeleteします")
+//                    fetchUsers.deletePlan(user_id: userId, plan_id: planId)
+//                    dismiss() //現在のビューを閉じる
+//                }, label: {
+//                    Text("グループから抜ける")
+//                        .foregroundColor(.black)
+//                        .fontWeight(.bold)
+//                        .padding(.init(top: 15, leading: 70, bottom: 15, trailing: 70))
+//                        .background(Color(red: 1.0, green: 0.96, blue: 0.93))
+//                        .cornerRadius(10)
+//                        .border(.black, width: 1)
+//                })
+//            }
+//            .padding()
+//            .presentationDetents([.fraction(0.2)])
+////            .popoverPresentationControllerShouldDismissPopover(.enabled)
+//        }
+        
+        
+        .sheet(isPresented: $showingSheet) {
+            Button(action: {
+                print("ここでdeleteします")
+                fetchUsers.deletePlan(user_id: userId, plan_id: planId)
+                dismiss() //現在のビューを閉じる
+            }, label: {
+                Text("グループから抜ける")
+                    .foregroundColor(.black)
+                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .padding(.init(top: 15, leading: 70, bottom: 15, trailing: 70))
+                    .background(Color(red: 1.0, green: 0.96, blue: 0.93))
+                    .cornerRadius(10)
+                    .border(.black, width: 1)
+                })
+            .presentationBackgroundInteraction(.enabled)
+            .interactiveDismissDisabled()
+                .presentationDetents([
+                    .fraction(0.2)
+                ])
+                .presentationCornerRadius(35)
+                .presentationContentInteraction(.resizes)
+                
+                .presentationBackground(.thinMaterial)
+                
+                
+        }
+        
         Text("")
     }
 }
 
-//#Preview {
-//    GroupUsers(planId: 1, userId: 1)
-//}
+struct SheetView: View {
+    var body: some View {
+        Text("ここです")
+    }
+}
+
+#Preview {
+    GroupUsers(planId: 1, userId: 1)
+}
+
+
+//Button(action: {
+//    print("ここでdeleteします")
+//    fetchUsers.deletePlan(user_id: userId, plan_id: planId)
+//    dismiss() //現在のビューを閉じる
+//}, label: {
+//    Text("グループから抜ける")
+//        .foregroundColor(.black)
+//        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+//        .padding(.init(top: 15, leading: 70, bottom: 15, trailing: 70))
+//        .background(Color(red: 1.0, green: 0.96, blue: 0.93))
+//        .cornerRadius(10)
+//        .border(.black, width: 1)
+//    })

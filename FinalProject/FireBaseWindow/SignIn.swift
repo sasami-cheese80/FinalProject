@@ -119,7 +119,7 @@ struct SignIn: View {
                 .padding(.top, 50)
                 //button------------------------------------------------
                 
-                if viewModel.isAuthenticated {
+                if viewModel.isAuthenticated  && viewModel.userId != nil {
                     // ログイン後のページに遷移
                     ContentView(viewModel:viewModel)
                 }

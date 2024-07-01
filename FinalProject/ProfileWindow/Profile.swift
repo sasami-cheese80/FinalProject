@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Profile: View {
+    @Binding var tabSelection: Int
     @ObservedObject var viewModel: FirebaseModel
     @ObservedObject var fetchProfile = FetchProfile()
     
@@ -20,7 +21,7 @@ struct Profile: View {
     
     var body: some View {
         VStack{
-            NavigationView {
+            NavigationStack {
                 List(fetchProfile.profiles) { profile in
                     Section {
                         TextField("名前", text: $name)
@@ -90,7 +91,7 @@ struct Profile: View {
                 .font(.system(size: 18))
                 .listSectionSpacing(5)
                 .scrollContentBackground(.hidden)
-                .background(Color.cusLightGray)
+                .background(Color.customlightGray)
                 .toolbar {
                     ToolbarItem(placement: .principal) {
                         Text("プロフィール設定")
@@ -140,7 +141,7 @@ struct Profile: View {
                     print("userIdがありませんでした。patchProfileできません。")
                 }
                 print("patchしました。")
-                
+                tabSelection = 1
             }, label: {
                 Text("変更")
                     .frame(width: 300, height: 50)
@@ -158,6 +159,6 @@ struct Profile: View {
     
 }
 
-#Preview {
-    Profile(viewModel: FirebaseModel())
-}
+//#Preview {
+//    Profile(viewModel: FirebaseModel())
+//}

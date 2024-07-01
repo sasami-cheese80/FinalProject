@@ -65,89 +65,108 @@ struct CreateProfile: View {
     @State private var address:String = ""
     
     var body: some View {
-        NavigationStack {
-            
-            Form {
-                
-                Section {
-                    TextField("名前",text:$name)
+        VStack{
+            NavigationStack {
+                List {
                     
-                } header: {
-                    Text("name")
-                }
-                
-                Section {
-                    TextField("ニックネーム（任意）",text:$nickname)
-                } header: {
-                    Text("ニックネーム")
-                }
-                
-                Section{
-                    TextField("所属部署名（部）",text:$department)
-                    TextField("所属部署名（室/課）",text:$division)
-                } header: {
-                    Text("所属部署")
-                }
-                
-                Section{
-                    Picker("性別",selection:$gender) {
-                        Text("男性").tag("男性")
-                        Text("女性").tag("女性")
+                    Section {
+                        TextField("名前",text:$name)
+                            .accentColor(Color.customTextColor)
+                    } header: {
+                        Text("name")
                     }
-                    .pickerStyle(.segmented)
-                } header: {
-                    Text("性別")
-                }
-                
-                Section{
-                    Picker("帰宅方面", selection: $address) {
-                        Text("").tag("")
-                        Text("岡崎方面").tag("岡崎方面")
-                        Text("名古屋・日進方面").tag("名古屋・日進方面")
-                        Text("知立・安城方面").tag("知立・安城方面")
-                        Text("長久手方面").tag("長久手方面")
-                        Text("瀬戸方面").tag("瀬戸方面")
-                        Text("岐阜方面").tag("岐阜方面")
-                        Text("碧南・西尾方面").tag("碧南・西尾方面")
-                        Text("豊川・豊橋方面").tag("豊川・豊橋方面")
-                        Text("新城方面").tag("碧南・西尾方面")
+                    
+                    Section {
+                        TextField("ニックネーム（任意）",text:$nickname)
+                            .accentColor(Color.customTextColor)
+                    } header: {
+                        Text("ニックネーム")
                     }
-                } header: {
-                    Text("帰宅方面")
+                    
+                    Section{
+                        TextField("所属部署名（部）",text:$department)
+                            .accentColor(Color.customTextColor)
+                        TextField("所属部署名（室/課）",text:$division)
+                            .accentColor(Color.customTextColor)
+                    } header: {
+                        Text("所属部署")
+                    }
+                    
+                    Section{
+                        Picker("性別",selection:$gender) {
+                            Text("男性").tag("男性")
+                            Text("女性").tag("女性")
+                        }
+                        .pickerStyle(.segmented)
+                    } header: {
+                        Text("性別")
+                    }
+                    
+                    Section{
+                        Picker("帰宅方面", selection: $address) {
+                            Text("").tag("")
+                            Text("岡崎方面").tag("岡崎方面")
+                            Text("名古屋・日進方面").tag("名古屋・日進方面")
+                            Text("知立・安城方面").tag("知立・安城方面")
+                            Text("長久手方面").tag("長久手方面")
+                            Text("瀬戸方面").tag("瀬戸方面")
+                            Text("岐阜方面").tag("岐阜方面")
+                            Text("碧南・西尾方面").tag("碧南・西尾方面")
+                            Text("豊川・豊橋方面").tag("豊川・豊橋方面")
+                            Text("新城方面").tag("碧南・西尾方面")
+                        }
+                    } header: {
+                        Text("帰宅方面")
+                    }
+                    
                 }
-                
+                .padding()
+                .font(.system(size: 18))
+                .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                .listSectionSpacing(5)
+                .scrollContentBackground(.hidden)
+                .background(Color.customlightGray)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("プロフィール設定")
+                            .font(.system(size: 30))
+                            .foregroundColor(Color.customTextColor)
+                            .fontWeight(.heavy)
+                            .padding(.top,100)
+                    }
+                }
             }
-            .padding()
-            .font(.system(size: 18))
-            .navigationBarTitle("プロフィール設定")
-            .listSectionSpacing(5)
-            .scrollContentBackground(.hidden)
-            .background(Color.customlightGray)
-            
-            Button(action: {
-                print("ボタンが押されました")
-                viewModel.isAuthenticated = true
-                viewModel.isSignedUp = false
-                if viewModel.uid != nil{
-                    let postData = createProfileType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address, firebase_id: viewModel.uid!)
-                    createProfileClass.postProfile(postData: postData, viewModel: viewModel)
-                } else {
-                    print("firebase_idが取得できませんでした。createProfileできません。")
-                }
-       
+                
+                Button(action: {
+                    viewModel.isAuthenticated = true
+                    viewModel.isSignedUp = false
+                    if viewModel.uid != nil{
+                        let postData = createProfileType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address, firebase_id: viewModel.uid!)
+                        createProfileClass.postProfile(postData: postData, viewModel: viewModel)
+                    } else {
+                        print("firebase_idが取得できませんでした。createProfileできません。")
+                    }
+                }, label: {
+                    Text("決定")
+                        .frame(width: 300, height: 50)
+                        .background(Color.customMainColor)
+                        .foregroundColor(Color.customTextColor)
+                        .fontWeight(.semibold)
+                        .cornerRadius(24)
+                })
+                .padding(.bottom, 30)
+                .shadow(color: .gray.opacity(0.7), radius: 1, x: 2, y: 2)
 
-            }, label: {
-                Text("決定")
-                    .foregroundColor(.white)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .padding(.init(top: 13, leading: 70, bottom: 13, trailing: 70))
-                    .background(.black)
-                    .cornerRadius(5)
-
-            })
         }
-        
+        .background(Color.customlightGray)
     }
 }
 
-
+struct CreateProfile_Previews: PreviewProvider {
+    static var previews: some View {
+        let viewModel = FirebaseModel()
+        let createProfileClass = CreateProfileClass()
+        
+        CreateProfile(viewModel: viewModel, createProfileClass: createProfileClass)
+    }
+}

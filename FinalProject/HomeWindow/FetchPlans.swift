@@ -34,7 +34,7 @@ class FetchPlans: ObservableObject {
                 let plans = try decoder.decode([Plans].self, from: data)
                 DispatchQueue.main.async {
                     self.plans = plans
-                    print(self.plans)
+//                    print(self.plans)
                 }
             } catch let error {
                 print("Error decoding JSON: \(error.localizedDescription)")

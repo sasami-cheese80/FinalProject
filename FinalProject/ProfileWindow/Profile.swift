@@ -115,15 +115,18 @@ struct Profile: View {
             }, label: {
                 /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
             })
-            
+
             //logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
-                                    Button("Log Out") {
-                                        // ログアウトしてログイン画面へ遷移する
-                                        viewModel.signOut()
-                                    }
-                                    //firebase_id取得方法↓↓
-//                                    Text(viewModel.uid ?? "User")
-//                                        .padding()
+                        Button("Log Out") {
+                            // ログアウトしてログイン画面へ遷移する
+                            viewModel.signOut()
+                        }
+                        Text(viewModel.uid ?? "User")
+                            .padding()
+                        
+                        if let userId = viewModel.userId{
+                            Text("\(userId)")
+                        }
             //logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
         }
     }
@@ -132,4 +135,3 @@ struct Profile: View {
 #Preview {
     Profile(viewModel: FirebaseModel())
 }
-

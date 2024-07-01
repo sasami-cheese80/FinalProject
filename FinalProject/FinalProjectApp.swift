@@ -17,7 +17,6 @@
 //}
 
 
-
 import SwiftUI
 import Firebase
 import FirebaseAuth
@@ -46,6 +45,7 @@ struct FinalProjectApp: App {
         if viewModel.isAuthenticated {
             //            Logout(viewModel: viewModel)
             ContentView(viewModel: FirebaseModel())
+//            CreateProfile(viewModel: FirebaseModel())
         } else {
             SignIn(viewModel: viewModel)
         }

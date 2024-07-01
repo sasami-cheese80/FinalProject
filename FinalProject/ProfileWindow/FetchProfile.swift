@@ -9,11 +9,11 @@ import Foundation
 
 class FetchProfile: ObservableObject {
     @Published var profiles = [ProfileType]()
-    //↓↓これつけるとプレビュー落ちるから一旦停止中
-    //func getProfile(id: String?) {
-    func getProfile() {
-    //print("idだよ→　\(id!)")
-        guard let url = URL(string: "http://localhost:3000/users/user_id/1") else {
+
+    func getProfile(userId: Int) {
+
+//        guard let url = URL(string: "http://localhost:3000/users/user_id/1") else {
+        guard let url = URL(string: "http://localhost:3000/users/user_id/\(userId)") else {
             print("Invalid URL")
             return
         }
@@ -42,10 +42,11 @@ class FetchProfile: ObservableObject {
         }.resume()
     }
 
-    //    func patchProfile(id: String?, patchData: ProfilePatchType) {
-    func patchProfile(patchData: ProfilePatchType) {
-//        print("idだよ→　\(id!)")
-        let url = URL(string:"http://localhost:3000/users/1")!
+    //patchする
+    func patchProfile(patchData: ProfilePatchType, userId: Int) {
+
+//        let url = URL(string:"http://localhost:3000/users/1")!
+        let url = URL(string:"http://localhost:3000/users/\(userId)")!
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -63,7 +64,7 @@ class FetchProfile: ObservableObject {
             guard let data = data else { return }
 
             do {
-                let object = try JSONSerialization.jsonObject(with: data, options: [])
+                try JSONSerialization.jsonObject(with: data, options: [])
                 //response見れるここで
 //                print(object)
             } catch let error {

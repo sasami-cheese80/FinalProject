@@ -15,14 +15,14 @@ struct ContentView: View {
         TabView {
             //            TabView(selection: $tabSelection) {
             //                Home(tabSelection: $tabSelection)
-            Home()
+            Home(viewModel: FirebaseModel())
                 .tabItem {
                     Image(systemName: "house")
                     Text("HOME")
                 }
                 .tag(1)
             //                Ainori(tabSelection: $tabSelection)
-            Ainori()
+            Ainori(viewModel: FirebaseModel())
                 .tabItem {
                     Image(systemName: "car")
                     Text("アイノリ")

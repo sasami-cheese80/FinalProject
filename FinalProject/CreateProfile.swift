@@ -20,9 +20,7 @@ struct createProfileType: Codable{
 
 class CreateProfileClass: ObservableObject {
     @Published var profiles = [createProfileType]()
-    //    func patchProfile(id: String?, patchData: ProfilePatchType) {
-    func postProfile(postData: createProfileType) {
-//        print("idだよ→　\(id!)")
+    func postProfile(postData: createProfileType, viewModel: FirebaseModel) {
         let url = URL(string:"http://localhost:3000/users")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -40,9 +38,13 @@ class CreateProfileClass: ObservableObject {
             guard let data = data else { return }
 
             do {
-                try JSONSerialization.jsonObject(with: data, options: [])
-                //response見れるここで
-                //print(object)
+                let object = try JSONDecoder().decode([String: Int].self, from: data)
+                if let id = object["id"] {
+                    DispatchQueue.main.async{
+                        print(object,id)
+                        viewModel.userId = id
+                }
+                }
             } catch let error {
                 print("Error parsing JSON response: \(error)")
             }
@@ -125,9 +127,10 @@ struct CreateProfile: View {
             Button(action: {
                 print("ボタンが押されました")
                 viewModel.isAuthenticated = true
+                viewModel.isSignedUp = false
                 if viewModel.uid != nil{
                     let postData = createProfileType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address, firebase_id: viewModel.uid!)
-                    createProfileClass.postProfile(postData: postData)
+                    createProfileClass.postProfile(postData: postData, viewModel: viewModel)
                 } else {
                     print("firebase_idが取得できませんでした。createProfileできません。")
                 }
@@ -147,6 +150,4 @@ struct CreateProfile: View {
     }
 }
 
-#Preview {
-    CreateProfile(viewModel: FirebaseModel())
-}
+

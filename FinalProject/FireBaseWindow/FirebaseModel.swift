@@ -70,7 +70,6 @@ class FirebaseModel: ObservableObject {
                     self?.isSignedUp = true
                     self?.isAuthenticated = false
                     self?.uid = user.uid // UIDを保存
-                    self?.sendGetId(uid: user.uid)
                     self?.errorMessage = nil
                 }else {
                     self?.errorMessage = error?.localizedDescription

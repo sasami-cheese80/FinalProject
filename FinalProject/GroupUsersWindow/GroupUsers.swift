@@ -17,6 +17,8 @@ struct GroupUsers: View {
     
     @ObservedObject var fetchUsers = FetchUsers()
     
+    @Environment(\.dismiss) private var dismiss
+    
 //    init(planId: Int) {
 //        self.planId = planId
 //        self.fetchUsers = FetchUsers(planId: planId)
@@ -48,7 +50,7 @@ struct GroupUsers: View {
         Button(action: {
             print("ここでdeleteします")
             fetchUsers.deletePlan(user_id: 1, plan_id: planId)
-//                        tabSelection = 3
+            dismiss() //現在のビューを閉じる
         }, label: {
             Text("グループから抜ける")
                 .foregroundColor(.black)

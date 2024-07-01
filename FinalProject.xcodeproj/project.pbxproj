@@ -117,7 +117,6 @@
 			children = (
 				CE7384B52C2C0F4100B08C01 /* FirebaseModel.swift */,
 				CE7384B72C2C21BA00B08C01 /* SignIn.swift */,
-				CEE438442C2D2B0300269D56 /* CreateProfile.swift */,
 				CE7384B92C2C221D00B08C01 /* SignUp.swift */,
 				CE7384BB2C2C3D0900B08C01 /* Logout.swift */,
 			);
@@ -158,6 +157,7 @@
 			children = (
 				CE7384AF2C2BFA1E00B08C01 /* FireBaseWindow */,
 				CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */,
+				CEE438442C2D2B0300269D56 /* CreateProfile.swift */,
 				CEB2F0FD2C2984440090760D /* ContentView.swift */,
 				CEA158E02C2ABF6F00F66FD0 /* GroupUsersWindow */,
 				CE626E962C2AA2B200A1403C /* HomeWindow */,
@@ -247,6 +247,7 @@
 				CEB2F1032C2984450090760D /* Preview Assets.xcassets in Resources */,
 				CEB2F1002C2984450090760D /* Assets.xcassets in Resources */,
 				CEE438802C3236EA00269D56 /* GoogleService-Info.plist in Resources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@ struct UserId: Codable{
 
 class FirebaseModel: ObservableObject {
     @Published var isAuthenticated = false
+    @Published var isSignedUp = false
     @Published var uid: String? = nil // UIDを保存するプロパティ
     @Published var errorMessage: String? = nil // エラーメッセージを保存するプロパティ
     @Published var userId: Int? = nil //GETした情報を保存するプロパ
@@ -66,8 +67,10 @@ class FirebaseModel: ObservableObject {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
             DispatchQueue.main.async {
                 if let user = result?.user, error == nil {
-                    self?.isAuthenticated = true
+                    self?.isSignedUp = true
+                    self?.isAuthenticated = false
                     self?.uid = user.uid // UIDを保存
+                    self?.sendGetId(uid: user.uid)
                     self?.errorMessage = nil
                 }else {
                     self?.errorMessage = error?.localizedDescription
@@ -80,6 +83,7 @@ class FirebaseModel: ObservableObject {
             do {
                 try Auth.auth().signOut()
                 isAuthenticated = false
+                isSignedUp = false
                 uid = nil
             } catch let signOutError as NSError {
                 print("Error signing out: %@", signOutError)

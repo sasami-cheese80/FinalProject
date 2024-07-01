@@ -22,14 +22,14 @@ struct ContentView: View {
                 }
                 .tag(1)
             //                Ainori(tabSelection: $tabSelection)
-            Ainori(viewModel: FirebaseModel())
+            Ainori(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "car")
                     Text("アイノリ")
                 }
                 .tag(2)
             //                Account(tabSelection: $tabSelection)
-            Profile(viewModel: FirebaseModel())
+            Profile(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "person")
                     Text("ACCOUNT")
@@ -40,6 +40,3 @@ struct ContentView: View {
     }
 }
 
-#Preview {
-    ContentView(viewModel: FirebaseModel())
-}

@@ -1,5 +1,6 @@
 import SwiftUI
 import FirebaseAuth
+import Combine
 
 struct UserId: Codable{
     let id: Int

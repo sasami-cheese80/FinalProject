@@ -17,7 +17,13 @@ struct Home: View {
             ZStack{
                 List(fetchPlans.plans, id: \.id) { plan in
                     NavigationLink {
-                        GroupUsers(planId: plan.plan_id)
+                        if let userId = viewModel.userId {
+                            GroupUsers(planId: plan.plan_id, userId: userId)
+                        } else {
+//                            print("userIdがありませんでした")
+                        }
+                        
+                        
                     } label: {
                         HStack() {
                             VStack(alignment: .leading, spacing: 0) {
@@ -51,7 +57,7 @@ struct Home: View {
                         .padding()
                     }
                     .navigationTitle("HOME")
-                    .foregroundColor(plan.state == "終了" ? Color.customDarkGray : Color.customTextColor)
+                    .foregroundColor(Color.customTextColor)
                     .padding(.all, 5)
                     .background(Color.white.opacity(0.3))
                     .background(plan.state == "終了" ? Color.customDarkGray : Color.customlightGray)
@@ -59,6 +65,10 @@ struct Home: View {
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.customlightGray)
                     .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(plan.state == "確定" ? Color.customMainColor : Color.clear, lineWidth: 1.0)
+                    )
                 }
                 .listStyle(.plain)
                 .background(Color.customlightGray)
@@ -73,6 +83,7 @@ struct Home: View {
                 }
             }
         }
+        .accentColor(Color.customTextColor)
     }
 }
 
@@ -89,7 +100,7 @@ func stringToStringDate(stringDate: String, format:String) -> String {
 }
 
 
-#Preview {
-    Home(viewModel: FirebaseModel())
-}
+//#Preview {
+//    Home(viewModel: FirebaseModel())
+//}
 

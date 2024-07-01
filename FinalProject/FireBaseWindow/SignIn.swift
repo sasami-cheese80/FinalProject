@@ -121,7 +121,7 @@ struct SignIn: View {
                 
                 if viewModel.isAuthenticated {
                     // ログイン後のページに遷移
-                    ContentView(viewModel: FirebaseModel())
+                    ContentView(viewModel:viewModel)
                 }
                 // 新規登録画面への遷移ボタン
                 NavigationLink(destination: SignUp(viewModel: viewModel)) {

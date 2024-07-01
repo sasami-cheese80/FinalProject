@@ -13,7 +13,7 @@ class FetchPlans: ObservableObject {
     
     func getPlans(userId: Int) {
 //        guard let url = URL(string: "http://localhost:3000/plans_users?user_id=1") else {
-             guard let url = URL(string: "http://localhost:3000/plans_users?user_id=1") else {
+             guard let url = URL(string: "http://localhost:3000/plans_users?user_id=\(userId)") else {
             print("Invalid URL")
             return
         }

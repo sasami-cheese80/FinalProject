@@ -14,6 +14,7 @@ import SwiftUI
 struct GroupUsers: View {
     
     var planId: Int
+    var userId: Int
     
     @ObservedObject var fetchUsers = FetchUsers()
     
@@ -64,6 +65,6 @@ struct GroupUsers: View {
     }
 }
 
-#Preview {
-    GroupUsers(planId: 1)
-}
+//#Preview {
+//    GroupUsers(planId: 1, userId: 1)
+//}

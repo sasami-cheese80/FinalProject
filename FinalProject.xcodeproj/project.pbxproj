@@ -10,7 +10,6 @@
 		CE3D8E082C2AC8BF00650602 /* FetchPlans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E072C2AC8BF00650602 /* FetchPlans.swift */; };
 		CE3D8E0A2C2AC8D100650602 /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E092C2AC8D100650602 /* Plans.swift */; };
 		CE3D8E132C2D009700650602 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E122C2D009700650602 /* ColorExtension.swift */; };
-		CE623E622C2F7F9800C27294 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE623E612C2F7F9800C27294 /* GoogleService-Info.plist */; };
 		CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */; };
 		CE7384A72C2BF7FC00B08C01 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE7384A62C2BF7FC00B08C01 /* FirebaseAnalytics */; };
 		CE7384A92C2BF81F00B08C01 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = CE7384A82C2BF81F00B08C01 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -21,11 +20,6 @@
 		CE7384BC2C2C3D0900B08C01 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7384BB2C2C3D0900B08C01 /* Logout.swift */; };
 		CE959B622C2FA5D900033F8E /* ProfileTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE959B612C2FA5D900033F8E /* ProfileTypes.swift */; };
 		CE959B642C2FA5F700033F8E /* FetchProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE959B632C2FA5F700033F8E /* FetchProfile.swift */; };
-
-		CE959B6D2C318ABB00033F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE959B6C2C318ABB00033F8E /* GoogleService-Info.plist */; };
-
-		CE959B692C2FFF4900033F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE959B682C2FFF4900033F8E /* GoogleService-Info.plist */; };
-
 		CEA158E22C2ABF9700F66FD0 /* GroupUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */; };
 		CEA158E42C2B0FE200F66FD0 /* FetchUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */; };
 		CEA158E62C2B100700F66FD0 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E52C2B100700F66FD0 /* Users.swift */; };
@@ -38,13 +32,13 @@
 		CEB2F10E2C2989C30090760D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F10D2C2989C30090760D /* Profile.swift */; };
 		CEB2F1102C298AF20090760D /* Ainori.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F10F2C298AF20090760D /* Ainori.swift */; };
 		CEE438452C2D2B0300269D56 /* CreateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE438442C2D2B0300269D56 /* CreateProfile.swift */; };
+		CEE438802C3236EA00269D56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEE4387F2C3236EA00269D56 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CE3D8E072C2AC8BF00650602 /* FetchPlans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlans.swift; sourceTree = "<group>"; };
 		CE3D8E092C2AC8D100650602 /* Plans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
 		CE3D8E122C2D009700650602 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		CE623E612C2F7F9800C27294 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		CE7384B52C2C0F4100B08C01 /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
 		CE7384B72C2C21BA00B08C01 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
@@ -52,11 +46,6 @@
 		CE7384BB2C2C3D0900B08C01 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		CE959B612C2FA5D900033F8E /* ProfileTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTypes.swift; sourceTree = "<group>"; };
 		CE959B632C2FA5F700033F8E /* FetchProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProfile.swift; sourceTree = "<group>"; };
-
-		CE959B6C2C318ABB00033F8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-
-		CE959B682C2FFF4900033F8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-
 		CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsers.swift; sourceTree = "<group>"; };
 		CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsers.swift; sourceTree = "<group>"; };
 		CEA158E52C2B100700F66FD0 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
@@ -70,6 +59,7 @@
 		CEB2F10D2C2989C30090760D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		CEB2F10F2C298AF20090760D /* Ainori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ainori.swift; sourceTree = "<group>"; };
 		CEE438442C2D2B0300269D56 /* CreateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfile.swift; sourceTree = "<group>"; };
+		CEE4387F2C3236EA00269D56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +138,7 @@
 		CEB2F0EF2C2984440090760D = {
 			isa = PBXGroup;
 			children = (
+				CEE4387F2C3236EA00269D56 /* GoogleService-Info.plist */,
 				CEB2F0FA2C2984440090760D /* FinalProject */,
 				CEB2F0F92C2984440090760D /* Products */,
 				CE7384A52C2BF7FC00B08C01 /* Frameworks */,
@@ -165,17 +156,6 @@
 		CEB2F0FA2C2984440090760D /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
-
-				CE959B6C2C318ABB00033F8E /* GoogleService-Info.plist */,
-
-				CE959B682C2FFF4900033F8E /* GoogleService-Info.plist */,
-
-				CE623E612C2F7F9800C27294 /* GoogleService-Info.plist */,
-
-				CE7384BF2C2E423B00B08C01 /* GoogleService-Info.plist */,
-
-				CE959B5F2C2FA4F600033F8E /* GoogleService-Info.plist */,
-
 				CE7384AF2C2BFA1E00B08C01 /* FireBaseWindow */,
 				CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */,
 				CEB2F0FD2C2984440090760D /* ContentView.swift */,
@@ -266,16 +246,7 @@
 			files = (
 				CEB2F1032C2984450090760D /* Preview Assets.xcassets in Resources */,
 				CEB2F1002C2984450090760D /* Assets.xcassets in Resources */,
-
-				CE959B6D2C318ABB00033F8E /* GoogleService-Info.plist in Resources */,
-
-				CE959B692C2FFF4900033F8E /* GoogleService-Info.plist in Resources */,
-				CE623E622C2F7F9800C27294 /* GoogleService-Info.plist in Resources */,
-
-				CE7384C02C2E423B00B08C01 /* GoogleService-Info.plist in Resources */,
-
-				CE959B602C2FA4F600033F8E /* GoogleService-Info.plist in Resources */,
-
+				CEE438802C3236EA00269D56 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

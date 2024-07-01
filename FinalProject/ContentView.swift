@@ -15,7 +15,7 @@ struct ContentView: View {
         TabView {
             //            TabView(selection: $tabSelection) {
             //                Home(tabSelection: $tabSelection)
-            Home(viewModel: FirebaseModel())
+            Home(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "house")
                     Text("HOME")

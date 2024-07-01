@@ -120,7 +120,7 @@ struct SignUp: View {
             if viewModel.isAuthenticated {
                 // ログイン後のページに遷移
                 if viewModel.isAuthenticated {
-                    ContentView(viewModel: FirebaseModel())
+                    ContentView(viewModel: viewModel)
                 }
 
             }

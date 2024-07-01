@@ -13,7 +13,7 @@ class FetchPlans: ObservableObject {
     
     func getPlans(userId: Int) {
 //        guard let url = URL(string: "http://localhost:3000/plans_users?user_id=1") else {
-             guard let url = URL(string: "http://localhost:3000/plans_users?user_id=\(userId)") else {
+             guard let url = URL(string: "http://localhost:3000/plans_users?user_id=1") else {
             print("Invalid URL")
             return
         }
@@ -34,6 +34,7 @@ class FetchPlans: ObservableObject {
                 let plans = try decoder.decode([Plans].self, from: data)
                 DispatchQueue.main.async {
                     self.plans = plans
+                    print(self.plans)
                 }
             } catch let error {
                 print("Error decoding JSON: \(error.localizedDescription)")

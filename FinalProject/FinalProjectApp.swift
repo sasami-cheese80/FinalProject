@@ -42,9 +42,9 @@ struct FinalProjectApp: App {
   var body: some Scene {
     WindowGroup {
         // ログイン状態によって画面遷移するページを変更する
-        if viewModel.isAuthenticated {
+        if viewModel.isAuthenticated && viewModel.userId != nil{
             //            Logout(viewModel: viewModel)
-            ContentView(viewModel: FirebaseModel())
+            ContentView(viewModel: viewModel)
 //            CreateProfile(viewModel: FirebaseModel())
         } else {
             SignIn(viewModel: viewModel)

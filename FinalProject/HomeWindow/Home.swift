@@ -12,8 +12,10 @@ struct Home: View {
     @ObservedObject var viewModel: FirebaseModel
     @ObservedObject var fetchPlans = FetchPlans()
     
+    @State private var isPresented: Bool = false
     var body: some View {
         NavigationStack {
+            
             ZStack{
                 List(fetchPlans.plans, id: \.id) { plan in
                     NavigationLink {
@@ -55,12 +57,13 @@ struct Home: View {
                             }
                         }
                         .padding()
+
                     }
                     .navigationTitle("HOME")
                     .foregroundColor(Color.customTextColor)
                     .padding(.all, 5)
                     .background(Color.white.opacity(0.3))
-                    .background(plan.state == "終了" ? Color.customDarkGray : Color.customlightGray)
+                    .background(plan.state == "終了" ? Color.customlightGray : Color.white)
                     .cornerRadius(10)
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.customlightGray)

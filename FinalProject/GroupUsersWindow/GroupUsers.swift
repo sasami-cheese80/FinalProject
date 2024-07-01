@@ -50,7 +50,7 @@ struct GroupUsers: View {
         }
         Button(action: {
             print("ここでdeleteします")
-            fetchUsers.deletePlan(user_id: 1, plan_id: planId)
+            fetchUsers.deletePlan(user_id: userId, plan_id: planId)
             dismiss() //現在のビューを閉じる
         }, label: {
             Text("グループから抜ける")

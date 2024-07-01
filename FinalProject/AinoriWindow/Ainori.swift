@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Ainori: View {
     //    @Binding var tabSelection: Int
+
+    @ObservedObject var viewModel: FirebaseModel
     @State var date: Date? = nil
     @State var textValue:String = ""
     @State var showDatePicker: Bool = false
@@ -54,7 +56,12 @@ struct Ainori: View {
                     }
                     
                     //post処理
-                    print(postData(date: unwrapDate))
+                    if let userId = viewModel.userId{
+                        postData(date: unwrapDate, userId: userId)
+                    }else{
+                        print("userIdがありませんでした。")
+                    }
+                   
                     //textfeeld初期化
                     textValue = ""
                     
@@ -103,7 +110,7 @@ private func dateToString(date: Date) -> String {
 }
 
 //postする
-private func postData(date: Date) -> String {
+private func postData(date: Date, userId: Int) -> String {
     let formatDate = dateToString(date: date)
     print("postする日時 → \(formatDate)")
     
@@ -112,13 +119,13 @@ private func postData(date: Date) -> String {
     request.httpMethod = "POST"
     
     //bodyに設定
-    request.httpBody = "user_id=1&date=\(formatDate)".data(using: .utf8)
+    request.httpBody = "user_id=\(userId)&date=\(formatDate)".data(using: .utf8)
     
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
         guard let data = data else { return }
         
         do {
-            let object = try JSONSerialization.jsonObject(with: data, options: [])
+            try JSONSerialization.jsonObject(with: data, options: [])
             //response見れるここで
 //            print(object)
         } catch let error {
@@ -132,5 +139,5 @@ private func postData(date: Date) -> String {
 
 
 #Preview {
-    Ainori()
+    Ainori(viewModel: FirebaseModel())
 }

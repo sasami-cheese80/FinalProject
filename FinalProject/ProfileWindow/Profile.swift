@@ -17,7 +17,7 @@ struct Profile: View {
     @State private var department:String = ""
     @State private var division:String = ""
     @State private var address:String = ""
-
+    
     var body: some View {
         VStack{
             NavigationView {
@@ -28,7 +28,7 @@ struct Profile: View {
                                 name = profile.name
                             }
                     }
-
+                    
                     Section {
                         TextField("ニックネーム（任意）",text:$nickname)
                             .onAppear {
@@ -37,7 +37,7 @@ struct Profile: View {
                     } header: {
                         Text("ニックネーム")
                     }
-
+                    
                     Section{
                         TextField("所属部署名（部）",text:$department)
                             .onAppear {
@@ -50,7 +50,7 @@ struct Profile: View {
                     } header: {
                         Text("所属部署")
                     }
-
+                    
                     Section{
                         Picker("性別",selection:$gender) {
                             Text("男性").tag("男性")
@@ -63,7 +63,7 @@ struct Profile: View {
                     } header: {
                         Text("性別")
                     }
-
+                    
                     Section{
                         Picker("帰宅方面", selection: $address) {
                             Text("岡崎方面").tag("岡崎方面")
@@ -82,7 +82,7 @@ struct Profile: View {
                     } header: {
                         Text("帰宅方面")
                     }
-
+                    
                 }
                 .padding()
                 .font(.system(size: 18))
@@ -92,21 +92,39 @@ struct Profile: View {
                 .background(Color.customlightGray)
             }
             .onAppear() {
-                //↓↓これつけるとプレビュー落ちるから一旦停止中
-                //fetchProfile.getProfile(id: viewModel.uid)
-                fetchProfile.getProfile()
+
+                if let userId = viewModel.userId{
+                    fetchProfile.getProfile(userId: userId)
+                } else {
+                    print("userIdがありませんでした。getProfileできません。")
+                }
             }
-
+            
             Button(action: {
-
-
+                
+                
                 let patchData = ProfilePatchType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address)
-                fetchProfile.patchProfile(patchData: patchData)
-                print("patchしました。")
 
+                if let userId = viewModel.userId{
+                    fetchProfile.patchProfile(patchData: patchData, userId: userId)
+                } else {
+                    print("userIdがありませんでした。patchProfileできません。")
+                }
+                print("patchしました。")
+                
             }, label: {
                 /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
             })
+            
+            //logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
+                                    Button("Log Out") {
+                                        // ログアウトしてログイン画面へ遷移する
+                                        viewModel.signOut()
+                                    }
+                                    //firebase_id取得方法↓↓
+//                                    Text(viewModel.uid ?? "User")
+//                                        .padding()
+            //logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
         }
     }
 }
@@ -114,16 +132,4 @@ struct Profile: View {
 #Preview {
     Profile(viewModel: FirebaseModel())
 }
-//logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
-            Button("Log Out") {
-                // ログアウトしてログイン画面へ遷移する
-                viewModel.signOut()
-            }
-            Text(viewModel.uid ?? "User")
-                .padding()
-            
-            if let userId = viewModel.userId{
-                Text("\(userId)")
-            }
-            
-//logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
+

@@ -32,13 +32,29 @@ struct GroupUsers: View {
                 List {
                     ForEach(fetchUsers.users, id: \.id) { user in
                         VStack(alignment: .leading) {
-                            Text(user.name)
+                            Text(user.department)
                                 .font(.headline)
-                            Text("ニックネーム: \(user.nickname)")
-                            Text("性別: \(user.gender)")
-                            Text("部署: \(user.department)")
+                                .foregroundColor(Color.customTextColor)
+                            Text("    \(user.division)")
+                                .font(.footnote)
+                            Text("       \(user.name)")
+                                .font(.title)
+                            Text("     ニックネーム：\(user.nickname)")
+                                .font(.footnote)
                         }
-                        .padding()
+                        .frame(width: 340)
+                        .foregroundColor(Color.customTextColor)
+                        .padding(.all, 1)
+                        .background(Color.white.opacity(0.3))
+                        .background(Color.white)
+                        .cornerRadius(10)
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.customlightGray)
+                        .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke( Color.clear, lineWidth: 1.0)
+                        )
                     }
                 }
                 .listStyle(.plain)
@@ -50,28 +66,35 @@ struct GroupUsers: View {
             .onAppear() {
                 fetchUsers.getUsers(planId: planId)
             }
+            .onDisappear() {
+                dismiss()
+            }
         }
         VStack {
+            Text("<待ち合わせ場所>")
+                .font(.subheadline)
             Text("豊田市駅西口タクシー乗り場")
-                .frame(maxWidth: .infinity, alignment: .leading)
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.init(top: 15, leading: 20, bottom: 15, trailing: 20))
                 .background(.white)
                 .cornerRadius(8)
                 .foregroundColor(Color.customTextColor)
-                .padding(.init(top: 0, leading: 50, bottom: 60, trailing: 50))
+                .padding(.init(top: 0, leading: 50, bottom: 20, trailing: 50))
                 .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
             Button(action: {
                 print("ここでdeleteします")
                 fetchUsers.deletePlan(user_id: userId, plan_id: planId)
                 dismiss() //現在のビューを閉じる
             }, label: {
-                Text("グループから抜ける")
-                    .foregroundColor(.black)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .padding(.init(top: 15, leading: 70, bottom: 15, trailing: 70))
-                    .background(Color(red: 1.0, green: 0.96, blue: 0.93))
-                    .cornerRadius(10)
-                    .border(.black, width: 1)
+                Text("相乗りをキャンセル")
+                    .frame(maxWidth: 200, alignment: .center)
+                    .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
+                    .background(Color.customlightGray)
+                    .cornerRadius(15)
+                    .foregroundColor(Color(red: 0.104, green: 0.551, blue: 1.0))
+                    .padding(.init(top: 0, leading: 50, bottom: 15, trailing: 50))
+                    .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
             })
         }
     }

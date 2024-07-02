@@ -33,8 +33,10 @@ class FetchPlans: ObservableObject {
                 let decoder = JSONDecoder()
                 let plans = try decoder.decode([Plans].self, from: data)
                 DispatchQueue.main.async {
-                    self.plans = plans
-//                    print(self.plans)
+
+                    self.plans = plans.sorted(by:>)
+                    print(self.plans)
+
                 }
             } catch let error {
                 print("Error decoding JSON: \(error.localizedDescription)")

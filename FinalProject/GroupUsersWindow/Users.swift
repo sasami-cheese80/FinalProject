@@ -18,5 +18,6 @@ struct Users: Codable {
     var nickname: String
     var gender: String
     var department: String
+    var division: String
     var address: String
 }

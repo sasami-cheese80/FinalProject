@@ -103,7 +103,7 @@ func stringToStringDate(stringDate: String, format:String) -> String {
 }
 
 
-//#Preview {
-//    Home(viewModel: FirebaseModel())
-//}
+#Preview {
+    Home(viewModel: FirebaseModel())
+}
 

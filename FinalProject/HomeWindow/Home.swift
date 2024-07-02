@@ -13,7 +13,7 @@ struct Home: View {
     @ObservedObject var fetchPlans = FetchPlans()
     
     @State private var isPresented: Bool = false
-    @State private var textView: Bool = false
+    // @State private var textView: Bool = false
     var body: some View {
         ZStack{
             NavigationStack {
@@ -83,19 +83,19 @@ struct Home: View {
                     if let userId = viewModel.userId{
                         //                    Text("id:\(userId)")
                         fetchPlans.getPlans(userId: userId)
-                        textView = false
+                        // textView = false
                     }else{
-                        textView = false
+                        // textView = false
                         print("userIdがありませんでした。")
                     }
                 }
             }
             .accentColor(Color.customTextColor)
-            if (textView == false) {
-                Text("現在予定はありません。")
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                    .font(.title3)
-            }
+            // if (textView == false) {
+            //     Text("現在予定はありません。")
+            //         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+            //         .font(.title3)
+            // }
         }
     }
 }

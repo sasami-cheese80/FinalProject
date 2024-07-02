@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Profile: View {
+    @Binding var tabSelection: Int
     @ObservedObject var viewModel: FirebaseModel
     @ObservedObject var fetchProfile = FetchProfile()
     
@@ -20,22 +21,24 @@ struct Profile: View {
     
     var body: some View {
         VStack{
-            NavigationView {
+            NavigationStack {
                 List(fetchProfile.profiles) { profile in
                     Section {
                         TextField("名前", text: $name)
                             .onAppear {
                                 name = profile.name
                             }
+                    } header: {
+                        Text("名前")
                     }
                     
                     Section {
-                        TextField("ニックネーム（任意）",text:$nickname)
+                        TextField("ニックネーム",text:$nickname)
                             .onAppear {
                                 nickname = profile.nickname
                             }
                     } header: {
-                        Text("ニックネーム")
+                        Text("ニックネーム（任意）")
                     }
                     
                     Section{
@@ -82,17 +85,44 @@ struct Profile: View {
                     } header: {
                         Text("帰宅方面")
                     }
-                    
                 }
-                .padding()
+                .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                .padding(.init(top: 0, leading: 15, bottom: 0, trailing: 15))
                 .font(.system(size: 18))
-                .navigationBarTitle("プロフィール設定")
                 .listSectionSpacing(5)
                 .scrollContentBackground(.hidden)
                 .background(Color.customlightGray)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("プロフィール設定")
+                            .font(.system(size: 30))
+                            .foregroundColor(Color.customTextColor)
+                            .fontWeight(.heavy)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(.init(top: 50, leading: 10, bottom: 0, trailing: 0))
+                    }
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Menu {
+                            Button {
+                                viewModel.signOut()
+                            } label: {
+                                Text("LOGOUT")
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                            }
+                        } label: {
+                            Image(systemName: "circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 50, height: 50, alignment: .trailing)
+                                .shadow(color: .gray.opacity(0.7), radius: 1, x: 2, y: 2)
+                        }
+                        .padding(.init(top: 50, leading: 0, bottom: 0, trailing: 15))
+                    }
+                }
             }
+            
             .onAppear() {
-
+                
                 if let userId = viewModel.userId{
                     fetchProfile.getProfile(userId: userId)
                 } else {
@@ -100,38 +130,35 @@ struct Profile: View {
                 }
             }
             
+            
+            
             Button(action: {
-                
-                
                 let patchData = ProfilePatchType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address)
-
+                
                 if let userId = viewModel.userId{
                     fetchProfile.patchProfile(patchData: patchData, userId: userId)
                 } else {
                     print("userIdがありませんでした。patchProfileできません。")
                 }
                 print("patchしました。")
-                
+                tabSelection = 1
             }, label: {
-                /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                Text("変更")
+                    .frame(width: 300, height: 50)
+                    .background(Color.customMainColor)
+                    .foregroundColor(Color.customTextColor)
+                    .fontWeight(.semibold)
+                    .cornerRadius(24)
             })
-
-            //logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
-                        Button("Log Out") {
-                            // ログアウトしてログイン画面へ遷移する
-                            viewModel.signOut()
-                        }
-                        Text(viewModel.uid ?? "User")
-                            .padding()
-                        
-                        if let userId = viewModel.userId{
-                            Text("\(userId)")
-                        }
-            //logout処理ーーーーーーーーーーーーーーーーーーーーーーーーーー
+            .padding(.bottom, 30)
+            .shadow(color: .gray.opacity(0.7), radius: 1, x: 2, y: 2)
         }
+        .background(Color.customlightGray)
+        
     }
+    
 }
 
-#Preview {
-    Profile(viewModel: FirebaseModel())
-}
+//#Preview {
+//    Profile(viewModel: FirebaseModel())
+//}

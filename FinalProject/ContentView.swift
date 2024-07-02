@@ -12,24 +12,22 @@ struct ContentView: View {
     var viewModel: FirebaseModel
     
     var body: some View {
-        TabView {
-            //            TabView(selection: $tabSelection) {
-            //                Home(tabSelection: $tabSelection)
+        TabView(selection: $tabSelection) {
             Home(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "house")
                     Text("HOME")
                 }
                 .tag(1)
-            //                Ainori(tabSelection: $tabSelection)
-            Ainori(viewModel: FirebaseModel())
+            
+            Ainori(tabSelection: $tabSelection, viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "car")
                     Text("アイノリ")
                 }
                 .tag(2)
-            //                Account(tabSelection: $tabSelection)
-            Profile(viewModel: FirebaseModel())
+            
+            Profile(tabSelection: $tabSelection, viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "person")
                     Text("ACCOUNT")
@@ -48,10 +46,7 @@ struct ContentView: View {
                 }
                 .tag(5)
         }
-        .accentColor(Color.customMainColor)
+        .accentColor(Color.customTextColor)
     }
 }
 
-#Preview {
-    ContentView(viewModel: FirebaseModel())
-}

@@ -13,7 +13,7 @@ import Foundation
 //    var user_id: Int
 //}
 
-struct Plans: Codable {
+struct Plans: Codable, Comparable {
     var id: Int
     var plan_id: Int
     var user_id: Int
@@ -25,4 +25,8 @@ struct Plans: Codable {
     var gender: String
     var department: String
     var address: String
+    
+    static func < (lhs: Plans, rhs: Plans) -> Bool {
+        return lhs.date < rhs.date
+    }
 }

@@ -8,28 +8,31 @@
 import SwiftUI
 
 struct Ainori: View {
-    //    @Binding var tabSelection: Int
-
+    @Binding var tabSelection: Int
+    
     @ObservedObject var viewModel: FirebaseModel
     @State var date: Date? = nil
     @State var textValue:String = ""
     @State var showDatePicker: Bool = false
     
+    
     var body: some View {
         
         ZStack{
+            Color.customlightGray
             VStack{
                 
                 Text("利用日時を選択")
-                    .font(/*@START_MENU_TOKEN@*/.title2/*@END_MENU_TOKEN@*/)
-                    .fontWeight(.medium)
-                    .padding(.leading, 40.0)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .font(.title)
+                    .fontWeight(.bold)
                     .disabled(true)
+                    .foregroundColor(Color.customTextColor)
                 
                 HStack(alignment: .top){
                     TextField("日時を選択", text: $textValue)
                         .padding(.top,3)
+                        .background(.white)
+                        .foregroundColor(Color.customTextColor)
                     
                     Button(action: {
                         showDatePicker.toggle()
@@ -37,43 +40,54 @@ struct Ainori: View {
                         Image(systemName: "calendar")
                             .resizable()
                             .frame(width: 30, height: 30)
-                            .foregroundColor(.gray)
+                            .foregroundColor(Color.customTextColor)
+                            .background(.white)
                     })
                     
                 }
                 .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
-                .overlay(RoundedRectangle(cornerRadius: 8)
-                    .stroke(Color.gray, lineWidth: 1)
-                )
-                .padding(.init(top: 50, leading: 50, bottom: 100, trailing: 50))
+                .background(.white)
+                .cornerRadius(8)
+                .padding(.init(top: 50, leading: 50, bottom: 30, trailing: 50))
+                .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                
+                
+                
+                Text("豊田市駅西口タクシー乗り場")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.init(top: 15, leading: 20, bottom: 15, trailing: 20))
+                    .background(.white)
+                    .cornerRadius(8)
+                    .foregroundColor(Color.customTextColor)
+                    .padding(.init(top: 0, leading: 50, bottom: 60, trailing: 50))
+                    .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                
                 
                 Button(action: {
-                    //                        tabSelection = 3
+                    
                     //unrap処理
                     guard let unwrapDate = date else {
                         print("nilです")
                         return
                     }
-                    
                     //post処理
                     if let userId = viewModel.userId{
                         postData(date: unwrapDate, userId: userId)
                     }else{
                         print("userIdがありませんでした。")
                     }
-                   
                     //textfeeld初期化
                     textValue = ""
-                    
+                    tabSelection = 1
                 }, label: {
                     Text("探す")
-                        .foregroundColor(.white)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-                        .padding(.init(top: 15, leading: 70, bottom: 15, trailing: 70))
-                        .background(.black)
-                        .cornerRadius(5)
+                        .frame(width: 300, height: 50)
+                        .background(Color.customMainColor)
+                        .foregroundColor(Color.customTextColor)
+                        .fontWeight(.semibold)
+                        .cornerRadius(24)
                 })
-                
+                .shadow(color: .gray.opacity(0.7), radius: 1, x: 2, y: 2)
             }
             //datepicker表示制御
             if showDatePicker {
@@ -87,6 +101,7 @@ struct Ainori: View {
                 .transition(.opacity)
             }
         }
+        .background(Color.customlightGray)
     }
 }
 
@@ -105,14 +120,13 @@ private func dateToString(date: Date) -> String {
     }
     
     let select_date = "\(year)-\(String(format: "%02d", month))-\(String(format: "%02d", day)) \(String(format: "%02d", hour)):\(String(format: "%02d", (minute/15)*15)):00"
-    
     return select_date
 }
 
 //postする
 private func postData(date: Date, userId: Int) -> String {
     let formatDate = dateToString(date: date)
-    print("postする日時 → \(formatDate)")
+//    print("postする日時 → \(formatDate)")
     
     let url = URL(string:"http://localhost:3000/plans")!
     var request = URLRequest(url: url)
@@ -127,7 +141,7 @@ private func postData(date: Date, userId: Int) -> String {
         do {
             try JSONSerialization.jsonObject(with: data, options: [])
             //response見れるここで
-//            print(object)
+            //            print(object)
         } catch let error {
             print("Error parsing JSON response: \(error)")
         }
@@ -138,6 +152,6 @@ private func postData(date: Date, userId: Int) -> String {
 }
 
 
-#Preview {
-    Ainori(viewModel: FirebaseModel())
-}
+//#Preview {
+//    Ainori(viewModel: FirebaseModel())
+//}

@@ -96,43 +96,49 @@ struct SignUp: View {
                             .offset(x: -32, y:0)
                         }
                     }
-                    //password-----------------------------------------------------------------------------------------------
-                    
-                    //エラー文表示-----------------------------------
-                    if let errorMessage = viewModel.errorMessage{
-                        Text("※\(errorMessage)")
-                            .foregroundColor(.red)
-                    } else {
-                        Text(" ")
-                    }
-                    
-                    //エラー文表示-----------------------------------
-                    
-                    //button------------------------------------------------
-                    Button(action: {
-                        viewModel.signUp(email: email, password: password)
+                }
+                //password-----------------------------------------------------------------------------------------------
+                
+                //エラー文表示-----------------------------------
+                if let errorMessage = viewModel.errorMessage{
+                    Text("※\(errorMessage)")
+                        .foregroundColor(.red)
+                } else {
+                    Text(" ")
+                }
+
+                //エラー文表示-----------------------------------
+                
+                //button------------------------------------------------
+                Button(action: {
+                    viewModel.signUp(email: email, password: password)
+                }) {
+                    Text("新規登録")
+                        .frame(width: 300, height: 50)
+                        .background(Color.customMainColor)
+                        .foregroundColor(Color.customTextColor)
+                        .fontWeight(.semibold)
+                        .cornerRadius(24)
+                }
+                .padding(.top, 50)
+                //button------------------------------------------------
+                
+                if viewModel.isSignedUp {
+                    NavigationLink(destination: CreateProfile(viewModel: viewModel).onAppear{
+                        viewModel.errorMessage = nil
                     }) {
-                        Text("新規登録")
-                            .frame(width: 300, height: 50)
-                            .background(Color.customMainColor)
-                            .foregroundColor(Color.customTextColor)
-                            .fontWeight(.semibold)
-                            .cornerRadius(24)
+                        Text("プロフィール作成へ進む")
+                            .padding(.top, 16)
                     }
-                    .padding(.top, 50)
-                    //button------------------------------------------------
-                    
-                    if viewModel.isSignedUp {
-                        NavigationLink(destination: CreateProfile(viewModel: viewModel)) {
-                            Text("プロフィール作成へ進む")
-                                .padding(.top, 16)
-                        }
                         
                     }
                     
                     Spacer()
                 }
             }
+            .onAppear {
+                       viewModel.errorMessage = nil
+                   }
         }
     }
 }

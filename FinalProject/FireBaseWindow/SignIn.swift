@@ -146,11 +146,13 @@ struct SignIn: View {
                 }
                 
             }
+
             .accentColor(Color.customTextColor)
+            .onAppear {
+                       viewModel.errorMessage = nil
+                   }
         }
     }
 }
 
-#Preview {
-    SignIn(viewModel: FirebaseModel())
-}
+

@@ -72,7 +72,7 @@ class FirebaseModel: ObservableObject {
                     self?.uid = user.uid // UIDを保存
                     self?.errorMessage = nil
                 }else {
-                    self?.errorMessage = error?.localizedDescription
+                    self?.errorMessage = "パスワードは６文字以上にして下さい"
                 }
             }
         }

@@ -120,7 +120,9 @@ struct SignUp: View {
                 //button------------------------------------------------
                 
                 if viewModel.isSignedUp {
-                    NavigationLink(destination: CreateProfile(viewModel: viewModel)) {
+                    NavigationLink(destination: CreateProfile(viewModel: viewModel).onAppear{
+                        viewModel.errorMessage = nil
+                    }) {
                         Text("プロフィール作成へ進む")
                             .padding(.top, 16)
                     }
@@ -129,6 +131,9 @@ struct SignUp: View {
                 
                 Spacer()
             }
+            .onAppear {
+                       viewModel.errorMessage = nil
+                   }
         }
     }
 }

@@ -139,6 +139,9 @@ struct SignIn: View {
                 
                 Spacer()
             }
+            .onAppear {
+                       viewModel.errorMessage = nil
+                   }
             //            .background(Color.customMainColor)
             
         }
@@ -146,6 +149,4 @@ struct SignIn: View {
     }
 }
 
-#Preview {
-    SignIn(viewModel: FirebaseModel())
-}
+

@@ -173,35 +173,41 @@ struct Profile: View {
                 }
                 
                 .onAppear() {
-                    
-                    if let userId = viewModel.userId{
-                        fetchProfile.getProfile(userId: userId)
-                        fetchImage(id: userId) { image in
-                            if let image = image {
-                                selectedImages = image
-                            } else {
-                                print("画像が取れませんでした。")
-                            }
+                    Task {
+                        if let userId = viewModel.userId{
+                            try await fetchProfile.getProfile(userId: userId)
+                            //                        fetchImage(id: userId) { image in
+                            //                            if let image = image {
+                            //                                selectedImages = image
+                            //                            } else {
+                            //                                print("画像が取れませんでした。")
+                            //                            }
+                            //                        }
+                            //                    } else {
+                            //                        print("userIdがありませんでした。getProfileできません。")
                         }
-                    } else {
-                        print("userIdがありませんでした。getProfileできません。")
                     }
                 }
                 
                 
                 
                 Button(action: {
-                    let patchData = ProfilePatchType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address)
-                    
-                    if let userId = viewModel.userId{
-                        fetchProfile.patchProfile(patchData: patchData, userId: userId)
-                        UploadImage(selectedImages: selectedImages, id:userId)
-                    } else {
-                        print("userIdがありませんでした。patchProfileできません。")
+                    Task {
+                        let patchData = ProfilePatchType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address)
+                        
+                        if let userId = viewModel.userId{
+                            try await fetchProfile.patchProfile(patchData: patchData, userId: userId)
+                            try await UploadImage(selectedImages: selectedImages, id:userId)
+                            try await fetchProfile.getProfile(userId: userId)
+                            
+                            
+                        } else {
+                            print("userIdがありませんでした。patchProfileできません。")
+                        }
+                        print("patchしました。")
+                        
+                        tabSelection = 1
                     }
-                    print("patchしました。")
-                    
-                    tabSelection = 1
                 }, label: {
                     Text("変更")
                         .frame(width: 300, height: 50)

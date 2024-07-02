@@ -53,7 +53,6 @@ class FetchProfile: ObservableObject {
 
         //bodyに設定
         do {
-            print(patchData)
             request.httpBody = try JSONEncoder().encode(patchData)
         } catch {
             print("bodyをエンコードできませんでした。")

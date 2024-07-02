@@ -74,6 +74,7 @@ struct otamesi2: View {
     
     func fetchImage(){
         getUserIds = []
+        userImages = []
         self.userIds.forEach{id in
             let storageref = Storage.storage().reference(forURL: "gs://sasami-cheese80.appspot.com").child("images").child("\(id).jpg")
             storageref.getData(maxSize: 4 * 1024 * 1024){ (data,error) in

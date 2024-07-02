@@ -21,9 +21,9 @@ struct CustomDatePicker: View {
                     showDatePicker = false
                 }
             VStack {
-                DatePicker(
-                    "",
+                DatePicker("Select Date",
                     selection: $selectedDate,
+                    in: Date()...,
                     displayedComponents: [.date, .hourAndMinute]
                 )
                 .datePickerStyle(.graphical)

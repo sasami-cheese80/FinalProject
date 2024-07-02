@@ -63,6 +63,8 @@ struct Ainori: View {
                     .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
                 
                 
+                
+                
                 Button(action: {
                     
                     //unrap処理
@@ -150,8 +152,3 @@ private func postData(date: Date, userId: Int) -> String {
     task.resume()
     return "ポストしたよ"
 }
-
-
-//#Preview {
-//    Ainori(viewModel: FirebaseModel())
-//}

@@ -8,7 +8,9 @@
 
 
 import SwiftUI
-
+import PhotosUI
+import Firebase
+import FirebaseStorage
 
 
 struct GroupUsers: View {
@@ -17,51 +19,60 @@ struct GroupUsers: View {
     var userId: Int
     
     @ObservedObject var fetchUsers = FetchUsers()
-    
     @Environment(\.dismiss) private var dismiss
     
-//    init(planId: Int) {
-//        self.planId = planId
-//        self.fetchUsers = FetchUsers(planId: planId)
-//    }
     
     var body: some View {
-        NavigationStack {
-            ZStack {
+        VStack{
+            NavigationStack {
                 
-                List {
-                    ForEach(fetchUsers.users, id: \.id) { user in
-                        VStack(alignment: .leading) {
-                            Text(user.department)
-                                .font(.headline)
-                                .foregroundColor(Color.customTextColor)
-                            Text("    \(user.division)")
-                                .font(.footnote)
-                            Text("       \(user.name)")
-                                .font(.title)
-                            Text("     ニックネーム：\(user.nickname)")
-                                .font(.footnote)
+                
+                List(fetchUsers.users, id: \.id) { user in
+                    
+                    NavigationLink {
+                        MemberProfile()
+                    } label : {
+                        
+                        HStack{
+                            
+                            //Icon
+                            getImage(id: user.user_id)
+                                .padding(.init(top: 5, leading: 20, bottom: 5, trailing: 30))
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                            VStack(alignment: .leading) {
+                                Text(user.nickname)
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                Text("ステータス")
+                                    .font(.title2)
+                                Text("趣味")
+                                    .font(.title2)
+                            }
+                            .padding(.init(top: 5, leading: 25, bottom: 5, trailing: 20))
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         }
-                        .frame(width: 340)
-                        .foregroundColor(Color.customTextColor)
-                        .padding(.all, 1)
-                        .background(Color.white.opacity(0.3))
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .listRowSeparator(.hidden)
-                        .listRowBackground(Color.customlightGray)
-                        .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke( Color.clear, lineWidth: 1.0)
-                        )
+                        .padding()
+
                     }
+                    .navigationBarTitle(Text("相乗りメンバー"))
+                    .frame(width: 400)
+                    .foregroundColor(Color.customTextColor)
+                    .background(Color.white.opacity(0.3))
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .listRowSeparator(.hidden)
+                    .listRowBackground(Color.customlightGray)
+                    .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke( Color.clear, lineWidth: 1.0)
+                    )
                 }
                 .listStyle(.plain)
                 .background(Color.customlightGray)
-                .navigationBarTitle(Text("相乗りメンバー"))
-                
-                
+
+
             }
             .onAppear() {
                 fetchUsers.getUsers(planId: planId)
@@ -69,18 +80,18 @@ struct GroupUsers: View {
             .onDisappear() {
                 dismiss()
             }
-        }
-        VStack {
-            Text("<待ち合わせ場所>")
-                .font(.subheadline)
-            Text("豊田市駅西口タクシー乗り場")
+            
+//            Text("<待ち合わせ場所>")
+//                .font(.title3)
+//                .foregroundColor(Color.customTextColor)
+            Text("のりば : 豊田市駅西口タクシー乗り場")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.init(top: 15, leading: 20, bottom: 15, trailing: 20))
                 .background(.white)
                 .cornerRadius(8)
                 .foregroundColor(Color.customTextColor)
-                .padding(.init(top: 0, leading: 50, bottom: 20, trailing: 50))
+                .padding(.init(top: 0, leading: 50, bottom: 10, trailing: 50))
                 .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
             Button(action: {
                 print("ここでdeleteします")
@@ -88,20 +99,78 @@ struct GroupUsers: View {
                 dismiss() //現在のビューを閉じる
             }, label: {
                 Text("相乗りをキャンセル")
-                    .frame(maxWidth: 200, alignment: .center)
-                    .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
-                    .background(Color.customlightGray)
-                    .cornerRadius(15)
-                    .foregroundColor(Color(red: 0.104, green: 0.551, blue: 1.0))
-                    .padding(.init(top: 0, leading: 50, bottom: 15, trailing: 50))
+                    .fontWeight(.bold)
+                    .frame(width: 300, height: 50)
+                    .foregroundColor(Color.customMainColor)
+                    .fontWeight(.semibold)
+                    .background(Color.customTextColor)
+                    .cornerRadius(24)
                     .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                //                    .frame(maxWidth: 200, alignment: .center)
+                //                    .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
+                //                    .background(Color.customlightGray)
+                //                    .cornerRadius(15)
+                //                    .foregroundColor(Color(red: 0.104, green: 0.551, blue: 1.0))
+                //                    .padding(.init(top: 0, leading: 50, bottom: 15, trailing: 50))
+                //                    .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
             })
+            .padding(.bottom,20)
+        }
+        .background(Color.customlightGray)
+    }
+    
+}
+
+
+struct getImage: View {
+    let id: Int
+    @State private var image: UIImage? = nil
+    
+    var body: some View {
+        Group {
+            if let image = image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 75, height: 75)
+                    .clipShape(Circle())
+                    .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+            } else {
+                ProgressView()
+                    .frame(width: 90, height: 90)
+            }
+        }
+        .onAppear {
+            fetchImage(fetchId: id) { fetchedImage in
+                self.image = fetchedImage
+            }
         }
     }
 }
 
+func fetchImage(fetchId: Int, completion: @escaping (UIImage?) -> Void) {
+    let storageRef = Storage.storage().reference(forURL: "gs://sasami-cheese80.appspot.com")
+        .child("images")
+        .child("\(fetchId).jpg")
+    
+    storageRef.getData(maxSize: 4 * 1024 * 1024) { data, error in
+        if let error = error {
+            print("Error downloading image: \(error.localizedDescription)")
+            completion(nil)
+            return
+        }
+        guard let data = data, let image = UIImage(data: data) else {
+            print("Error converting data to image")
+            completion(nil)
+            return
+        }
+        completion(image)
+    }
+}
+
+
 #Preview {
-    GroupUsers(planId: 1, userId: 1)
+    GroupUsers(planId: 1, userId: 6)
 }
 
 
@@ -120,7 +189,7 @@ struct GroupUsers: View {
 //    }
 //    //textfeeld初期化
 //    textValue = ""
-//    
+//
 //}, label: {
 //    Text("探す")
 //        .frame(width: 300, height: 50)

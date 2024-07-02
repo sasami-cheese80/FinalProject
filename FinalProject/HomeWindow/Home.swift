@@ -49,7 +49,7 @@ struct Home: View {
                                         Text("\(plan.state)")
                                             .font(.subheadline)
                                     case "終了":
-                                        Text("\(plan.state)...")
+                                        Text("\(plan.state)")
                                             .font(.subheadline)
                                     default:
                                         Text("\(plan.state)")

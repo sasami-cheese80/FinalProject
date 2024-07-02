@@ -10,42 +10,22 @@ import Foundation
 class FetchProfile: ObservableObject {
     @Published var profiles = [ProfileType]()
 
-    func getProfile(userId: Int) {
-
-//        guard let url = URL(string: "http://localhost:3000/users/user_id/1") else {
+    func getProfile(userId: Int) async throws -> ProfileType {
         guard let url = URL(string: "http://localhost:3000/users/user_id/\(userId)") else {
-            print("Invalid URL")
-            return
+            throw URLError(.badURL)
         }
-
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print("Error: \(error.localizedDescription)")
-                return
-            }
-
-            guard let data = data else {
-                print("Invalid data")
-                return
-            }
-
-            do {
-                let decoder = JSONDecoder()
-                let profiles = try decoder.decode(ProfileType.self, from: data)
-                DispatchQueue.main.async {
-                    self.profiles = [profiles]
-                }
-//                print(profiles)
-            } catch let error {
-                print("Error decoding JSON: \(error.localizedDescription)")
-            }
-        }.resume()
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let profile = try JSONDecoder().decode(ProfileType.self, from: data)
+        DispatchQueue.main.async {
+            self.profiles = [profile]
+        }
+        return profile
     }
 
-    //patchする
-    func patchProfile(patchData: ProfilePatchType, userId: Int) {
 
-//        let url = URL(string:"http://localhost:3000/users/1")!
+    //patchする
+    func patchProfile(patchData: ProfilePatchType, userId: Int) async throws {
         let url = URL(string:"http://localhost:3000/users/\(userId)")!
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
@@ -59,18 +39,9 @@ class FetchProfile: ObservableObject {
             return
         }
 
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data else { return }
-
-            do {
-                try JSONSerialization.jsonObject(with: data, options: [])
-                //response見れるここで
-//                print(object)
-            } catch let error {
-                print("Error parsing JSON response: \(error)")
-            }
-        }
-
-        task.resume()
+        let (_, response) = try await URLSession.shared.data(for: request)
+                guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+                    throw URLError(.badServerResponse)
+                }
     }
 }

@@ -14,6 +14,7 @@ struct Ainori: View {
     @State var date: Date? = nil
     @State var textValue:String = ""
     @State var showDatePicker: Bool = false
+    @State var waitingDate:[waitingType] = []
     
     
     var body: some View {
@@ -21,18 +22,25 @@ struct Ainori: View {
         ZStack{
             Color.customlightGray
             VStack{
-                
+                Spacer()
+                    .frame(height: 200)
                 Text("利用日時を選択")
                     .font(.title)
                     .fontWeight(.bold)
                     .disabled(true)
                     .foregroundColor(Color.customTextColor)
                 
+                
                 HStack(alignment: .top){
                     TextField("日時を選択", text: $textValue)
                         .padding(.top,3)
                         .background(.white)
                         .foregroundColor(Color.customTextColor)
+                        .onChange(of: textValue){ value in
+                            Task{
+                                try await getWaiting(date: textValue)
+                            }
+                        }
                     
                     Button(action: {
                         showDatePicker.toggle()
@@ -45,13 +53,12 @@ struct Ainori: View {
                     })
                     
                 }
+                
                 .padding(.init(top: 10, leading: 20, bottom: 10, trailing: 20))
                 .background(.white)
                 .cornerRadius(8)
                 .padding(.init(top: 50, leading: 50, bottom: 30, trailing: 50))
                 .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
-                
-                
                 
                 Text("豊田市駅西口タクシー乗り場")
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -59,12 +66,46 @@ struct Ainori: View {
                     .background(.white)
                     .cornerRadius(8)
                     .foregroundColor(Color.customTextColor)
-                    .padding(.init(top: 0, leading: 50, bottom: 60, trailing: 50))
+                    .padding(.init(top: 0, leading: 50, bottom: 30, trailing: 50))
                     .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
                 
-                
-                
-                
+                if !waitingDate.isEmpty{
+                    
+                    VStack(spacing: 0){
+                        Text("こちらの候補日が見つかりました")
+                            .fontWeight(.bold)
+                            .foregroundColor(Color.customTextColor)
+                        ScrollView(.horizontal){
+                            HStack {
+                                
+                                ForEach(0 ..< waitingDate.count, id: \.self) { index in
+                                    let viewJpDate = stringToStringDate(stringDate: waitingDate[index].date,format:"HH:mm")
+                                    
+                                    let formJpDate = stringToStringDate(stringDate: waitingDate[index].date,format:"yyyy/MM/dd HH:mm")
+                                    Button(
+                                        action:{
+                                            self.textValue = formJpDate
+                                        },
+                                        label: {
+                                            VStack{
+                                                Text("\(viewJpDate)")
+                                                    .font(.largeTitle)
+                                                    .lineLimit(1)
+                                                Text("現在の利用者：\(waitingDate[index].users_count)人")
+                                            }
+                                            .frame(alignment: .leading)
+                                            .padding(.all,20)
+                                            .background(.white)
+                                            .cornerRadius(8)
+                                        })
+                                } // Foreach
+                                
+                                
+                            }.padding()
+                        }
+                    }
+                }
+                Spacer()
                 Button(action: {
                     
                     //unrap処理
@@ -75,6 +116,7 @@ struct Ainori: View {
                     //post処理
                     if let userId = viewModel.userId{
                         postData(date: unwrapDate, userId: userId)
+                        print("dataをpostしました")
                     }else{
                         print("userIdがありませんでした。")
                     }
@@ -90,13 +132,15 @@ struct Ainori: View {
                         .cornerRadius(24)
                 })
                 .shadow(color: .gray.opacity(0.7), radius: 1, x: 2, y: 2)
+                .padding(.bottom, 20)
             }
+            
             //datepicker表示制御
             if showDatePicker {
                 CustomDatePicker(
                     showDatePicker: $showDatePicker,
                     savedDate: $date,
-                    sevedString: $textValue,
+                    savedString: $textValue,
                     selectedDate: date ?? Date()
                 )
                 .animation(.linear, value: date)
@@ -105,6 +149,34 @@ struct Ainori: View {
         }
         .background(Color.customlightGray)
     }
+    
+    
+    func getWaiting(date:String) async throws -> [waitingType]{
+        guard let url = URL(string: "http://localhost:3000/plans?date=\(date)") else {
+            throw URLError(.badURL)
+        }
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let profile = try JSONDecoder().decode([waitingType].self, from: data)
+        
+        DispatchQueue.main.async {
+            self.waitingDate = profile
+        }
+        return profile
+    }
+    
+    
+    func stringToStringDate(stringDate: String, format:String) -> String {
+     
+            let dateFormatter = DateFormatter()
+            dateFormatter.calendar = Calendar(identifier: .gregorian)
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ" //変換元のStringのDateの型に合わせる必要あり
+            let newDate =  dateFormatter.date(from: stringDate)!
+            dateFormatter.dateFormat = format
+        dateFormatter.locale = Locale(identifier: "ja_JP") //日本のタイムゾーン設定をする
+            let getDate = dateFormatter.string(from: newDate)
+       
+            return getDate
+        }
 }
 
 //dataをフォーマットする

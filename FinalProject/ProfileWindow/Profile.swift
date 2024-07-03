@@ -17,13 +17,21 @@ struct Profile: View {
     
     @State var selectedImages: UIImage? = UIImage(named: "unknown4.png")
     @State var selectedItems: [PhotosPickerItem] = []
-    
     @State private var name: String = ""
     @State private var nickname:String = ""
     @State private var gender:String = ""
     @State private var department:String = ""
     @State private var division:String = ""
     @State private var address:String = ""
+    
+    //一時保存用
+    @State private var tempName: String = ""
+    @State private var tempNickname: String = ""
+    @State private var tempGender: String = ""
+    @State private var tempDepartment: String = ""
+    @State private var tempDivision: String = ""
+    @State private var tempAddress: String = ""
+    @State private var tempSelectedImages: UIImage?
     
     var body: some View {
 
@@ -75,6 +83,12 @@ struct Profile: View {
                             TextField("名前", text: $name)
                                 .onAppear {
                                     name = profile.name
+                                    if tempName != "" {
+                                        name = tempName
+                                    }
+                                }
+                                .onDisappear{
+                                    tempName = name
                                 }
                         } header: {
                             Text("名前")
@@ -84,6 +98,12 @@ struct Profile: View {
                             TextField("ニックネーム",text:$nickname)
                                 .onAppear {
                                     nickname = profile.nickname
+                                    if tempNickname != "" {
+                                        nickname = tempNickname
+                                    }
+                                }
+                                .onDisappear{
+                                    tempNickname = nickname
                                 }
                         } header: {
                             Text("ニックネーム（任意）")
@@ -93,10 +113,22 @@ struct Profile: View {
                             TextField("所属部署名（部）",text:$department)
                                 .onAppear {
                                     department = profile.department
+                                    if tempDepartment != "" {
+                                        department = tempDepartment
+                                    }
+                                }
+                                .onDisappear{
+                                    tempDepartment = department
                                 }
                             TextField("所属部署名（室/課）",text:$division)
                                 .onAppear {
                                     division = profile.division
+                                    if tempDivision != "" {
+                                        division = tempDivision
+                                    }
+                                }
+                                .onDisappear{
+                                    tempDivision = division
                                 }
                         } header: {
                             Text("所属部署")
@@ -110,6 +142,12 @@ struct Profile: View {
                             .pickerStyle(.segmented)
                             .onAppear {
                                 gender = profile.gender
+                                if tempGender != "" {
+                                    gender = tempGender
+                                }
+                            }
+                            .onDisappear{
+                                tempGender = gender
                             }
                         } header: {
                             Text("性別")
@@ -129,6 +167,12 @@ struct Profile: View {
                             }
                             .onAppear {
                                 address = profile.address
+                                if tempAddress != "" {
+                                    address = tempAddress
+                                }
+                            }
+                            .onDisappear{
+                                tempAddress = address
                             }
                         } header: {
                             Text("帰宅方面")
@@ -172,7 +216,8 @@ struct Profile: View {
                     }
                 }
                 
-                .onAppear() {
+                .onAppear{
+                    print("aaaaaaaa\(tempName)")
                     Task {
                         if let userId = viewModel.userId{
                             try await fetchProfile.getProfile(userId: userId)
@@ -187,10 +232,13 @@ struct Profile: View {
                                                     print("userIdがありませんでした。getProfileできません。")
                         }
                     }
+                        tempName = ""
+                        tempNickname = ""
+                        tempGender = ""
+                        tempDepartment = ""
+                        tempDivision = ""
+                        tempAddress = ""
                 }
-                
-                
-                
                 Button(action: {
                     Task {
                         let patchData = ProfilePatchType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address)

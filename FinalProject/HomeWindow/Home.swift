@@ -80,14 +80,15 @@ struct Home: View {
                     
                 }
                 .onAppear() {
-                    if let userId = viewModel.userId{
-                        //                    Text("id:\(userId)")
-                        fetchPlans.getPlans(userId: userId)
-                        // textView = false
-                    }else{
-                        // textView = false
-                        print("userIdがありませんでした。")
-                    }
+                    Task{
+                        if let userId = viewModel.userId{
+                            //                    Text("id:\(userId)")
+                            try await fetchPlans.getPlans(userId: userId)
+                            // textView = false
+                        }else{
+                            // textView = false
+                            print("userIdがありませんでした。")
+                        }}
                 }
             }
             .accentColor(Color.customTextColor)

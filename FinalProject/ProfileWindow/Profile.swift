@@ -176,15 +176,15 @@ struct Profile: View {
                     Task {
                         if let userId = viewModel.userId{
                             try await fetchProfile.getProfile(userId: userId)
-                            //                        fetchImage(id: userId) { image in
-                            //                            if let image = image {
-                            //                                selectedImages = image
-                            //                            } else {
-                            //                                print("画像が取れませんでした。")
-                            //                            }
-                            //                        }
-                            //                    } else {
-                            //                        print("userIdがありませんでした。getProfileできません。")
+                                                    fetchImage(id: userId) { image in
+                                                        if let image = image {
+                                                            selectedImages = image
+                                                        } else {
+                                                            print("画像が取れませんでした。")
+                                                        }
+                                                    }
+                                                } else {
+                                                    print("userIdがありませんでした。getProfileできません。")
                         }
                     }
                 }
@@ -197,7 +197,7 @@ struct Profile: View {
                         
                         if let userId = viewModel.userId{
                             try await fetchProfile.patchProfile(patchData: patchData, userId: userId)
-                            try await UploadImage(selectedImages: selectedImages, id:userId)
+                            UploadImage(selectedImages: selectedImages, id:userId)
                             try await fetchProfile.getProfile(userId: userId)
                             
                             

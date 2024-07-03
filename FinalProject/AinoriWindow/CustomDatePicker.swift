@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomDatePicker: View {
     @Binding var showDatePicker: Bool
     @Binding var savedDate: Date?
-    @Binding var sevedString: String
+    @Binding var savedString: String
     @State var selectedDate: Date = Date()
     
     var body: some View {
@@ -41,7 +41,7 @@ struct CustomDatePicker: View {
                     Spacer()
                     Button("保存") {
                         savedDate = selectedDate
-                        sevedString = dateToString(date: selectedDate)
+                        savedString = dateToString(date: selectedDate)
                         showDatePicker = false
                     }
                 }

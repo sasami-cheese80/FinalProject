@@ -18,6 +18,8 @@ struct ProfileType: Codable, Identifiable {
     var division: String
     var address: String
     var firebase_id: String
+    var hobby: String
+    var message: String
 }
 
 struct ProfilePatchType: Codable {
@@ -27,4 +29,7 @@ struct ProfilePatchType: Codable {
     var department: String
     var division: String
     var address: String
+    var hobby: String
+    var message: String
+//    var tag: String
 }

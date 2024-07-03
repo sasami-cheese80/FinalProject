@@ -17,6 +17,7 @@ struct GroupUsers: View {
     
     var planId: Int
     var userId: Int
+    private let tags = ["アイドル", "旅行", "サウナ"]
     
     @ObservedObject var fetchUsers = FetchUsers()
     @Environment(\.dismiss) private var dismiss
@@ -30,29 +31,54 @@ struct GroupUsers: View {
                 List(fetchUsers.users, id: \.id) { user in
                     
                     NavigationLink {
-                        MemberProfile()
+                        MemberProfile(id: user.user_id ,name: user.name,nickname: user.nickname, gender: user.gender,
+                                      department: user.department, division: user.division, hobby: user.hobby, message: user.message)
                     } label : {
                         
                         HStack{
                             
                             //Icon
-                            getImage(id: user.user_id)
-                                .padding(.init(top: 5, leading: 20, bottom: 5, trailing: 30))
+                            getImage(id: user.user_id, size: 75)
+                                .padding(.init(top: 0, leading: 25, bottom: 0, trailing: 0))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
                             VStack(alignment: .leading) {
                                 Text(user.nickname)
                                     .font(.title2)
                                     .fontWeight(.bold)
-                                Text("ステータス")
-                                    .font(.title2)
-                                Text("趣味")
-                                    .font(.title2)
+                                    .padding(.bottom, 3)
+                                HStack{
+                                    Text("趣味 : ")
+                                        .foregroundColor(Color.customTextColor)
+                                        .fontWeight(.medium)
+                                    Text("\(user.hobby)")
+                                }
+                                .padding(.bottom, 3)
+                                HStack{
+                                    Text("一言 : ")
+                                        .foregroundColor(Color.customTextColor)
+                                        .fontWeight(.medium)
+                                    Text("\(user.message)")
+                                }
+
+                                Tag(alignment: .leading, spacing: 7) {
+                                    ForEach(tags, id: \.self) { tag in
+                                        Text(tag)
+                                            .padding(.vertical, 3)
+                                            .padding(.horizontal, 12)
+                                            .background(Color.customMainColor)
+                                            .foregroundColor(.white)
+                                            .cornerRadius(15)
+                                    }
+                                }
+                                
                             }
-                            .padding(.init(top: 5, leading: 25, bottom: 5, trailing: 20))
+                            .padding(.init(top: 0, leading: 15, bottom: 0, trailing: 10))
+
                             .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(width: 300)
                         }
-                        .padding()
+                        .padding(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
 
                     }
                     .navigationBarTitle(Text("相乗りメンバー"))
@@ -71,8 +97,6 @@ struct GroupUsers: View {
                 }
                 .listStyle(.plain)
                 .background(Color.customlightGray)
-
-
             }
             .onAppear() {
                 fetchUsers.getUsers(planId: planId)
@@ -81,9 +105,6 @@ struct GroupUsers: View {
                 dismiss()
             }
             
-//            Text("<待ち合わせ場所>")
-//                .font(.title3)
-//                .foregroundColor(Color.customTextColor)
             Text("のりば : 豊田市駅西口タクシー乗り場")
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .center)
@@ -123,7 +144,9 @@ struct GroupUsers: View {
 
 
 struct getImage: View {
+
     let id: Int
+    let size: CGFloat
     @State private var image: UIImage? = nil
     
     var body: some View {
@@ -132,7 +155,7 @@ struct getImage: View {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 75, height: 75)
+                    .frame(width: size, height: size)
                     .clipShape(Circle())
                     .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
             } else {
@@ -172,30 +195,3 @@ func fetchImage(fetchId: Int, completion: @escaping (UIImage?) -> Void) {
 #Preview {
     GroupUsers(planId: 1, userId: 6)
 }
-
-
-//Button(action: {
-//    //                        tabSelection = 1
-//    //unrap処理
-//    guard let unwrapDate = date else {
-//        print("nilです")
-//        return
-//    }
-//    //post処理
-//    if let userId = viewModel.userId{
-//        postData(date: unwrapDate, userId: userId)
-//    }else{
-//        print("userIdがありませんでした。")
-//    }
-//    //textfeeld初期化
-//    textValue = ""
-//
-//}, label: {
-//    Text("探す")
-//        .frame(width: 300, height: 50)
-//        .background(Color.customMainColor)
-//        .foregroundColor(Color.customTextColor)
-//        .fontWeight(.semibold)
-//        .cornerRadius(24)
-//})
-//.shadow(color: .gray.opacity(0.7), radius: 1, x: 2, y: 2)

@@ -113,7 +113,7 @@ struct CreateProfile: View {
                             Text("岐阜方面").tag("岐阜方面")
                             Text("碧南・西尾方面").tag("碧南・西尾方面")
                             Text("豊川・豊橋方面").tag("豊川・豊橋方面")
-                            Text("新城方面").tag("碧南・西尾方面")
+                            Text("新城方面").tag("新城方面")
                         }
                     } header: {
                         Text("帰宅方面")

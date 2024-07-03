@@ -22,6 +22,7 @@
 		CE959B642C2FA5F700033F8E /* FetchProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE959B632C2FA5F700033F8E /* FetchProfile.swift */; };
 		CE959B772C33A93600033F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE959B762C33A93600033F8E /* GoogleService-Info.plist */; };
 		CE959B792C33DD1500033F8E /* MemberProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE959B782C33DD1500033F8E /* MemberProfile.swift */; };
+		CE959B7C2C35099A00033F8E /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE959B7B2C35099A00033F8E /* Tag.swift */; };
 		CEA158E22C2ABF9700F66FD0 /* GroupUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */; };
 		CEA158E42C2B0FE200F66FD0 /* FetchUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */; };
 		CEA158E62C2B100700F66FD0 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E52C2B100700F66FD0 /* Users.swift */; };
@@ -53,6 +54,7 @@
 		CE959B632C2FA5F700033F8E /* FetchProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchProfile.swift; sourceTree = "<group>"; };
 		CE959B762C33A93600033F8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE959B782C33DD1500033F8E /* MemberProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfile.swift; sourceTree = "<group>"; };
+		CE959B7B2C35099A00033F8E /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsers.swift; sourceTree = "<group>"; };
 		CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsers.swift; sourceTree = "<group>"; };
 		CEA158E52C2B100700F66FD0 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
@@ -133,9 +135,18 @@
 			path = FireBaseWindow;
 			sourceTree = "<group>";
 		};
+		CE959B7A2C35097F00033F8E /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				CE959B7B2C35099A00033F8E /* Tag.swift */,
+			);
+			path = Tag;
+			sourceTree = "<group>";
+		};
 		CEA158E02C2ABF6F00F66FD0 /* GroupUsersWindow */ = {
 			isa = PBXGroup;
 			children = (
+				CE959B7A2C35097F00033F8E /* Tag */,
 				CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */,
 				CEA158E52C2B100700F66FD0 /* Users.swift */,
 				CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */,
@@ -280,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE959B7C2C35099A00033F8E /* Tag.swift in Sources */,
 				CEB2F1102C298AF20090760D /* Ainori.swift in Sources */,
 				CEE438892C32E96900269D56 /* otamesi2.swift in Sources */,
 				CEE438832C32773200269D56 /* otamesi.swift in Sources */,

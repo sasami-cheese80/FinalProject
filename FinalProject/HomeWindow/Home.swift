@@ -34,8 +34,16 @@ struct Home: View {
                                     
                                     Text(String(plan.address))
                                         .font(.subheadline)
-                                    Text(stringToStringDate(stringDate: plan.date, format: "MM/dd　HH:mm"))
-                                        .font(.title)
+                                    
+                                    if (plan.state == "確定") {
+                                        Text(stringToStringDate(stringDate: plan.date, format: "MM/dd　HH:mm"))
+                                            .font(.title)
+                                            .foregroundColor(Color.customMainColor)
+                                    } else {
+                                        Text(stringToStringDate(stringDate: plan.date, format: "MM/dd　HH:mm"))
+                                            .font(.title)
+                                    }
+                                    
                                 }
                                 .padding(.trailing, 20)
                                 
@@ -44,7 +52,6 @@ struct Home: View {
                                     case "募集中":
                                         Text("\(plan.state)...")
                                             .font(.subheadline)
-                                        //                                        .foregroundColor(Color.customMainColor)
                                     case "確定":
                                         Text("\(plan.state)")
                                             .font(.subheadline)

@@ -11,7 +11,7 @@ import Foundation
 class FetchPlans: ObservableObject {
     @Published var plans = [Plans]()
     
-    func getPlans(userId: Int) {
+    func getPlans(userId: Int) async throws {
 //        guard let url = URL(string: "http://localhost:3000/plans_users?user_id=1") else {
              guard let url = URL(string: "http://localhost:3000/plans_users?user_id=\(userId)") else {
             print("Invalid URL")

@@ -12,7 +12,9 @@ class FetchUsers: ObservableObject {
 
 
     func getUsers(planId: Int) {
-        guard let url = URL(string: "http://localhost:3000/plans_users?plan_id=\(planId)") else {
+        guard let url = URL(string: "\(Configuration.shared.apiUrl)/plans_users?plan_id=\(planId)") else {
+//        guard let url = URL(string: "http://localhost:3000/plans_users?plan_id=\(planId)") else {
+//        guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/plans_users?plan_id=\(planId)") else {
             print("Invalid URL")
             return
         }
@@ -42,7 +44,9 @@ class FetchUsers: ObservableObject {
     
     func deletePlan(user_id: Int, plan_id: Int) -> String {
         
-        let url = URL(string:"http://localhost:3000/plans/?userId=\(user_id)&planId=\(plan_id)")!
+//        let url = URL(string:"http://localhost:3000/plans/?userId=\(user_id)&planId=\(plan_id)")!
+//        let url = URL(string:"https://megry-app-88b135b9cdab.herokuapp.com/plans/?userId=\(user_id)&planId=\(plan_id)")!
+        let url = URL(string:"\(Configuration.shared.apiUrl)/plans/?userId=\(user_id)&planId=\(plan_id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
         

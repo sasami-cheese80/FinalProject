@@ -39,6 +39,7 @@ struct Ainori: View {
                         .onChange(of: textValue){ value in
                             Task{
                                 try await getWaiting(date: textValue)
+                                print(Configuration.shared.apiUrl)
                             }
                         }
                     
@@ -81,7 +82,8 @@ struct Ainori: View {
                                 ForEach(0 ..< waitingDate.count, id: \.self) { index in
                                     let viewJpDate = stringToStringDate(stringDate: waitingDate[index].date,format:"HH:mm")
                                     
-                                    let formJpDate = stringToStringDate(stringDate: waitingDate[index].date,format:"yyyy/MM/dd HH:mm")
+//                                    let formJpDate = stringToStringDate(stringDate: waitingDate[index].date,format:"yyyy/MM/dd HH:mm")
+                                    let formJpDate = waitingDate[index].date
                                     Button(
                                         action:{
                                             self.textValue = formJpDate
@@ -152,7 +154,9 @@ struct Ainori: View {
     
     
     func getWaiting(date:String) async throws -> [waitingType]{
-        guard let url = URL(string: "http://localhost:3000/plans?date=\(date)") else {
+        guard let url = URL(string: "\(Configuration.shared.apiUrl)/plans?date=\(date)") else {
+//        guard let url = URL(string: "http://localhost:3000/plans?date=\(date)") else {
+//            guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/plans?date=\(date)") else {
             throw URLError(.badURL)
         }
         let (data, _) = try await URLSession.shared.data(from: url)
@@ -202,7 +206,9 @@ private func postData(date: Date, userId: Int) -> String {
     let formatDate = dateToString(date: date)
 //    print("postする日時 → \(formatDate)")
     
-    let url = URL(string:"http://localhost:3000/plans")!
+    let url = URL(string:"\(Configuration.shared.apiUrl)/plans")!
+//    let url = URL(string:"http://localhost:3000/plans")!
+//    let url = URL(string:"https://megry-app-88b135b9cdab.herokuapp.com/plans")!
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
     

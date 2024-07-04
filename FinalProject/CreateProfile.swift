@@ -21,7 +21,9 @@ struct createProfileType: Codable{
 class CreateProfileClass: ObservableObject {
     @Published var profiles = [createProfileType]()
     func postProfile(postData: createProfileType, viewModel: FirebaseModel) {
-        let url = URL(string:"http://localhost:3000/users")!
+        let url = URL(string:"\(Configuration.shared.apiUrl)/users")!
+//        let url = URL(string:"http://localhost:3000/users")!
+//        let url = URL(string:"https://megry-app-88b135b9cdab.herokuapp.com/users")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

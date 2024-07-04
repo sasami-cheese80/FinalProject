@@ -97,7 +97,9 @@ class FirebaseModel: ObservableObject {
     
     //ユーザーIDをGETする為のメソッド
     private func sendGetId(uid:String){
-        guard let url = URL(string: "http://localhost:3000/users/firebase_id/\(uid)") else {
+        guard let url = URL(string: "\(Configuration.shared.apiUrl)/users/firebase_id/\(uid)") else {
+//        guard let url = URL(string: "http://localhost:3000/users/firebase_id/\(uid)") else {
+//            guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/users/firebase_id/\(uid)") else {
             print("Invalid URL")
             return
         }

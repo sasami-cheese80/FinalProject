@@ -22,4 +22,5 @@ struct Users: Codable {
     var address: String
     var hobby: String
     var message: String
+    var tags: Array<String>
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MemberProfile: View {
-    private let tags = ["地下アイドル", "旅行", "キーボード", "DIG", "トヨタ", "シングルタスク", "熊本"]
+//    private let tags = ["地下アイドル", "旅行", "キーボード", "DIG", "トヨタ", "シングルタスク", "熊本"]
     
     var id: Int
     var name: String
@@ -18,6 +18,7 @@ struct MemberProfile: View {
     var division: String
     var hobby: String
     var message: String
+    var tags: Array<String>
     
     var body: some View {
 
@@ -91,8 +92,9 @@ struct MemberProfile: View {
                             .cornerRadius(15)
                             .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
                     }
+
                 }
-                
+                .padding(.init(top: 0, leading: 20, bottom: 0, trailing: 20))
             }
             .frame(maxWidth:.infinity)
             Spacer()
@@ -103,7 +105,7 @@ struct getImage2: View {
     
     let id: Int
     let size: CGFloat
-    @State private var image: UIImage? = nil
+    @State var image: UIImage? = nil
     
     var body: some View {
         Group {
@@ -115,7 +117,9 @@ struct getImage2: View {
                         .frame(width: size, height: size)
                         .clipShape(Circle())
                         .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                        .foregroundColor(.white)
                 }
+
                 
             } else {
                 ProgressView()
@@ -123,8 +127,10 @@ struct getImage2: View {
             }
         }
         .onAppear {
-            fetchImage(fetchId: id) { fetchedImage in
-                self.image = fetchedImage
+            Task{
+                try await fetchImage(fetchId: id) { fetchedImage in
+                    self.image = fetchedImage
+                }
             }
         }
     }
@@ -133,5 +139,5 @@ struct getImage2: View {
 
 #Preview {
     MemberProfile(id: 7,name: "坂口 千弓", nickname: "ちーくん" ,gender: "女性", department: "本社技術",
-                  division: "シャシーコンポーネント試験課",hobby: "旅行に行って、車中泊する", message: "話しかけないでください。")
+                  division: "シャシーコンポーネント試験課",hobby: "旅行に行って、車中泊する", message: "話しかけないでください。",tags: ["ringo","aa"])
 }

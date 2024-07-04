@@ -30,7 +30,7 @@ struct ContentView: View {
             Profile(tabSelection: $tabSelection, viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "person")
-                    Text("ACCOUNT")
+                    Text("PROFILE")
                 }
                 .tag(3)
 //            otamesi()

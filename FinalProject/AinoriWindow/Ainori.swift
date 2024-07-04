@@ -180,7 +180,6 @@ struct Ainori: View {
             dateFormatter.dateFormat = format
         dateFormatter.locale = Locale(identifier: "ja_JP") //日本のタイムゾーン設定をする
             let getDate = dateFormatter.string(from: newDate)
-       
             return getDate
         }
 }
@@ -200,6 +199,7 @@ private func dateToString(date: Date) -> String {
     }
     
     let select_date = "\(year)-\(String(format: "%02d", month))-\(String(format: "%02d", day)) \(String(format: "%02d", hour)):\(String(format: "%02d", (minute/15)*15)):00"
+
     return select_date
 }
 

@@ -11,6 +11,7 @@ class FetchProfile: ObservableObject {
     @Published var profiles = [ProfileType]()
 
     func getProfile(userId: Int) async throws -> ProfileType {
+
         guard let url = URL(string: "\(Configuration.shared.apiUrl)/users/user_id/\(userId)") else {
 //        guard let url = URL(string: "http://localhost:3000/users/user_id/\(userId)") else {
 //            guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/users/user_id/\(userId)") else {

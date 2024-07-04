@@ -149,6 +149,9 @@ struct Ainori: View {
             }
         }
         .background(Color.customlightGray)
+        .onAppear(){
+            waitingDate = []
+        }
     }
     
     

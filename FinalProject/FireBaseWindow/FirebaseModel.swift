@@ -71,8 +71,17 @@ class FirebaseModel: ObservableObject {
                     self?.isAuthenticated = false
                     self?.uid = user.uid // UIDを保存
                     self?.errorMessage = nil
-                }else {
-                    self?.errorMessage = "パスワードは６文字以上にして下さい"
+                } else {
+                    if let error = error as NSError? {
+                        switch error.code{
+                        case AuthErrorCode.weakPassword.rawValue:
+                            self?.errorMessage = "パスワードは6文字以上にしてください"
+                        case AuthErrorCode.emailAlreadyInUse.rawValue:
+                            self?.errorMessage = "このメールアドレスは既に登録されています"
+                        default:
+                            self?.errorMessage = "予期せぬエラーがふふん"
+                        }
+                    }
                 }
             }
         }

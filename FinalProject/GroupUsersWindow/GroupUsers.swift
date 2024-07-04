@@ -17,7 +17,7 @@ struct GroupUsers: View {
     
     var planId: Int
     var userId: Int
-    private let tags = ["アイドル", "旅行", "サウナ"]
+//    private let tags = ["アイドル", "旅行", "サウナ"]
     
     @ObservedObject var fetchUsers = FetchUsers()
     @Environment(\.dismiss) private var dismiss
@@ -31,8 +31,16 @@ struct GroupUsers: View {
                 List(fetchUsers.users, id: \.id) { user in
                     
                     NavigationLink {
-                        MemberProfile(id: user.user_id ,name: user.name,nickname: user.nickname, gender: user.gender,
-                                      department: user.department, division: user.division, hobby: user.hobby, message: user.message)
+                        MemberProfile(id: user.user_id,
+                                      name: user.name,
+                                      nickname: user.nickname,
+                                      gender: user.gender,
+                                      department: user.department,
+                                      division: user.division,
+                                      hobby: user.hobby,
+                                      message: user.message,
+                                      tags: user.tags
+                        )
                     } label : {
                         
                         HStack{
@@ -60,9 +68,9 @@ struct GroupUsers: View {
                                         .fontWeight(.medium)
                                     Text("\(user.message)")
                                 }
-
+                                
                                 Tag(alignment: .leading, spacing: 7) {
-                                    ForEach(tags, id: \.self) { tag in
+                                    ForEach(user.tags, id: \.self) { tag in
                                         Text(tag)
                                             .padding(.vertical, 3)
                                             .padding(.horizontal, 12)
@@ -74,12 +82,12 @@ struct GroupUsers: View {
                                 
                             }
                             .padding(.init(top: 0, leading: 15, bottom: 0, trailing: 10))
-
+                            
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .frame(width: 300)
                         }
                         .padding(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
-
+                        
                     }
                     .navigationBarTitle(Text("相乗りメンバー"))
                     .frame(width: 400)
@@ -115,7 +123,7 @@ struct GroupUsers: View {
                 .padding(.init(top: 0, leading: 50, bottom: 10, trailing: 50))
                 .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
             Button(action: {
-                print("ここでdeleteします")
+                //                print("ここでdeleteします")
                 fetchUsers.deletePlan(user_id: userId, plan_id: planId)
                 dismiss() //現在のビューを閉じる
             }, label: {
@@ -144,7 +152,7 @@ struct GroupUsers: View {
 
 
 struct getImage: View {
-
+    
     let id: Int
     let size: CGFloat
     @State private var image: UIImage? = nil

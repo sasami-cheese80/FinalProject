@@ -174,7 +174,6 @@ struct Ainori: View {
             dateFormatter.dateFormat = format
         dateFormatter.locale = Locale(identifier: "ja_JP") //日本のタイムゾーン設定をする
             let getDate = dateFormatter.string(from: newDate)
-       
             return getDate
         }
 }
@@ -194,12 +193,14 @@ private func dateToString(date: Date) -> String {
     }
     
     let select_date = "\(year)-\(String(format: "%02d", month))-\(String(format: "%02d", day)) \(String(format: "%02d", hour)):\(String(format: "%02d", (minute/15)*15)):00"
+
     return select_date
 }
 
 //postする
 private func postData(date: Date, userId: Int) -> String {
     let formatDate = dateToString(date: date)
+//    print("select_dateぽすとする\(formatDate)")
 //    print("postする日時 → \(formatDate)")
     
     let url = URL(string:"http://localhost:3000/plans")!

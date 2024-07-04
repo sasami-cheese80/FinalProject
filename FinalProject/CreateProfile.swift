@@ -41,7 +41,7 @@ class CreateProfileClass: ObservableObject {
                 let object = try JSONDecoder().decode([String: Int].self, from: data)
                 if let id = object["id"] {
                     DispatchQueue.main.async{
-                        print(object,id)
+//                        print(object,id)
                         viewModel.userId = id
                 }
                 }

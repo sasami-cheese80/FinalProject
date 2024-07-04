@@ -11,6 +11,7 @@ class FetchProfile: ObservableObject {
     @Published var profiles = [ProfileType]()
 
     func getProfile(userId: Int) async throws -> ProfileType {
+
         guard let url = URL(string: "http://localhost:3000/users/user_id/\(userId)") else {
             throw URLError(.badURL)
         }

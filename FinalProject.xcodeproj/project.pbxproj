@@ -40,6 +40,7 @@
 		CEE438892C32E96900269D56 /* otamesi2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE438882C32E96900269D56 /* otamesi2.swift */; };
 		CEE438942C3424F700269D56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEE438932C3424F700269D56 /* GoogleService-Info.plist */; };
 		CEE438962C342E5C00269D56 /* AinoriTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE438952C342E5C00269D56 /* AinoriTypes.swift */; };
+		CEE438992C363FA400269D56 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE438982C363FA400269D56 /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,8 @@
 		CEE438882C32E96900269D56 /* otamesi2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otamesi2.swift; sourceTree = "<group>"; };
 		CEE438932C3424F700269D56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEE438952C342E5C00269D56 /* AinoriTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AinoriTypes.swift; sourceTree = "<group>"; };
+		CEE438972C363ECA00269D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CEE438982C363FA400269D56 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +183,7 @@
 		CEB2F0FA2C2984440090760D /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				CEE438972C363ECA00269D56 /* Info.plist */,
 				CEE438812C32772000269D56 /* otamesi */,
 				CE7384AF2C2BFA1E00B08C01 /* FireBaseWindow */,
 				CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */,
@@ -192,6 +196,7 @@
 				CEB2F0FF2C2984450090760D /* Assets.xcassets */,
 				CEB2F1012C2984450090760D /* Preview Content */,
 				CE3D8E122C2D009700650602 /* ColorExtension.swift */,
+				CEE438982C363FA400269D56 /* Configuration.swift */,
 			);
 			path = FinalProject;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 				CEA158E42C2B0FE200F66FD0 /* FetchUsers.swift in Sources */,
 				CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */,
 				CEB2F0FC2C2984440090760D /* FinalProjectApp.swift in Sources */,
+				CEE438992C363FA400269D56 /* Configuration.swift in Sources */,
 				CEA158E62C2B100700F66FD0 /* Users.swift in Sources */,
 				CE7384BC2C2C3D0900B08C01 /* Logout.swift in Sources */,
 				CE959B792C33DD1500033F8E /* MemberProfile.swift in Sources */,
@@ -454,6 +460,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FinalProject/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FinalProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -464,8 +471,12 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = BTC6.FinalProject;
+				PRODUCT_BUNDLE_IDENTIFIER = "BTC6.FinalProject-debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SE_API_URL = "";
+				"SE_API_URL[sdk=*]" = "http://localhost:3000";
+				SE_BUNDLE_DISPLAY_NAME = "";
+				"SE_BUNDLE_DISPLAY_NAME[arch=*]" = Debug;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -482,6 +493,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FinalProject/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FinalProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -494,6 +506,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = BTC6.FinalProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SE_API_URL = "";
+				"SE_API_URL[arch=*]" = "https://megry-app-88b135b9cdab.herokuapp.com";
+				SE_BUNDLE_DISPLAY_NAME = "";
+				"SE_BUNDLE_DISPLAY_NAME[arch=*]" = Release;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

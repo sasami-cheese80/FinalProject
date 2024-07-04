@@ -39,6 +39,7 @@ struct Ainori: View {
                         .onChange(of: textValue){ value in
                             Task{
                                 try await getWaiting(date: textValue)
+                                print(Configuration.shared.apiUrl)
                             }
                         }
                     
@@ -81,7 +82,7 @@ struct Ainori: View {
                                 ForEach(0 ..< waitingDate.count, id: \.self) { index in
                                     let viewJpDate = stringToStringDate(stringDate: waitingDate[index].date,format:"HH:mm")
                                     
-                                    let formJpDate = stringToStringDate(stringDate: waitingDate[index].date,format:"yyyy/MM/dd HH:mm")
+                                    let formJpDate = stringToStringDate(stringDate: waitingDate[index].date,format:"yyyy-MM-dd HH:mm")
                                     Button(
                                         action:{
                                             self.textValue = formJpDate
@@ -108,14 +109,14 @@ struct Ainori: View {
                 Spacer()
                 Button(action: {
                     
-                    //unrap処理
-                    guard let unwrapDate = date else {
-                        print("nilです")
-                        return
-                    }
+//                    //unrap処理
+//                    guard let unwrapDate = date else {
+//                        print("nilです")
+//                        return
+//                    }
                     //post処理
                     if let userId = viewModel.userId{
-                        postData(date: unwrapDate, userId: userId)
+                        postData(formatDate: textValue, userId: userId)
                         print("dataをpostしました")
                     }else{
                         print("userIdがありませんでした。")
@@ -148,11 +149,16 @@ struct Ainori: View {
             }
         }
         .background(Color.customlightGray)
+        .onAppear(){
+            waitingDate = []
+        }
     }
     
     
     func getWaiting(date:String) async throws -> [waitingType]{
-        guard let url = URL(string: "http://localhost:3000/plans?date=\(date)") else {
+        guard let url = URL(string: "\(Configuration.shared.apiUrl)/plans?date=\(date)") else {
+//        guard let url = URL(string: "http://localhost:3000/plans?date=\(date)") else {
+//            guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/plans?date=\(date)") else {
             throw URLError(.badURL)
         }
         let (data, _) = try await URLSession.shared.data(from: url)
@@ -198,12 +204,13 @@ private func dateToString(date: Date) -> String {
 }
 
 //postする
-private func postData(date: Date, userId: Int) -> String {
-    let formatDate = dateToString(date: date)
-//    print("select_dateぽすとする\(formatDate)")
+    private func postData(formatDate: String, userId: Int) -> String {
+//    let formatDate = dateToString(date: date)
 //    print("postする日時 → \(formatDate)")
     
-    let url = URL(string:"http://localhost:3000/plans")!
+    let url = URL(string:"\(Configuration.shared.apiUrl)/plans")!
+//    let url = URL(string:"http://localhost:3000/plans")!
+//    let url = URL(string:"https://megry-app-88b135b9cdab.herokuapp.com/plans")!
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
     

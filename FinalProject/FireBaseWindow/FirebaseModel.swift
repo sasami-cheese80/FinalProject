@@ -71,8 +71,17 @@ class FirebaseModel: ObservableObject {
                     self?.isAuthenticated = false
                     self?.uid = user.uid // UIDを保存
                     self?.errorMessage = nil
-                }else {
-                    self?.errorMessage = "パスワードは６文字以上にして下さい"
+                } else {
+                    if let error = error as NSError? {
+                        switch error.code{
+                        case AuthErrorCode.weakPassword.rawValue:
+                            self?.errorMessage = "パスワードは6文字以上にしてください"
+                        case AuthErrorCode.emailAlreadyInUse.rawValue:
+                            self?.errorMessage = "このメールアドレスは既に登録されています"
+                        default:
+                            self?.errorMessage = "予期せぬエラーがふふん"
+                        }
+                    }
                 }
             }
         }
@@ -97,7 +106,9 @@ class FirebaseModel: ObservableObject {
     
     //ユーザーIDをGETする為のメソッド
     private func sendGetId(uid:String){
-        guard let url = URL(string: "http://localhost:3000/users/firebase_id/\(uid)") else {
+        guard let url = URL(string: "\(Configuration.shared.apiUrl)/users/firebase_id/\(uid)") else {
+//        guard let url = URL(string: "http://localhost:3000/users/firebase_id/\(uid)") else {
+//            guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/users/firebase_id/\(uid)") else {
             print("Invalid URL")
             return
         }

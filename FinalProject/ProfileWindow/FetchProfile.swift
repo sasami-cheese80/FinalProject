@@ -12,7 +12,9 @@ class FetchProfile: ObservableObject {
 
     func getProfile(userId: Int) async throws -> ProfileType {
 
-        guard let url = URL(string: "http://localhost:3000/users/user_id/\(userId)") else {
+        guard let url = URL(string: "\(Configuration.shared.apiUrl)/users/user_id/\(userId)") else {
+//        guard let url = URL(string: "http://localhost:3000/users/user_id/\(userId)") else {
+//            guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/users/user_id/\(userId)") else {
             throw URLError(.badURL)
         }
         
@@ -27,7 +29,9 @@ class FetchProfile: ObservableObject {
 
     //patchする
     func patchProfile(patchData: ProfilePatchType, userId: Int) async throws {
-        let url = URL(string:"http://localhost:3000/users/\(userId)")!
+        let url = URL(string:"\(Configuration.shared.apiUrl)/users/\(userId)")!
+//        let url = URL(string:"http://localhost:3000/users/\(userId)")!
+//        let url = URL(string:"https://megry-app-88b135b9cdab.herokuapp.com/users/\(userId)")!
         var request = URLRequest(url: url)
         request.httpMethod = "PATCH"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

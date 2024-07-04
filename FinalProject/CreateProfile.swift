@@ -21,7 +21,9 @@ struct createProfileType: Codable{
 class CreateProfileClass: ObservableObject {
     @Published var profiles = [createProfileType]()
     func postProfile(postData: createProfileType, viewModel: FirebaseModel) {
-        let url = URL(string:"http://localhost:3000/users")!
+        let url = URL(string:"\(Configuration.shared.apiUrl)/users")!
+//        let url = URL(string:"http://localhost:3000/users")!
+//        let url = URL(string:"https://megry-app-88b135b9cdab.herokuapp.com/users")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -113,7 +115,7 @@ struct CreateProfile: View {
                             Text("岐阜方面").tag("岐阜方面")
                             Text("碧南・西尾方面").tag("碧南・西尾方面")
                             Text("豊川・豊橋方面").tag("豊川・豊橋方面")
-                            Text("新城方面").tag("碧南・西尾方面")
+                            Text("新城方面").tag("新城方面")
                         }
                     } header: {
                         Text("帰宅方面")

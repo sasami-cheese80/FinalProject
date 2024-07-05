@@ -171,6 +171,15 @@ struct CreateProfile: View {
                 Button(action: {
                     viewModel.isAuthenticated = true
                     viewModel.isSignedUp = false
+                    withAnimation{
+                        viewModel.bannerMessage = "アカウント登録出来ました！"
+                        viewModel.showBanner = true
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        withAnimation{
+                            viewModel.showBanner = false
+                        }
+                        }
                     if viewModel.uid != nil{
                         let tagConvert = stringTags.components(separatedBy: " ")
                         let postData = createProfileType(
@@ -203,5 +212,14 @@ struct CreateProfile: View {
 
         }
         .background(Color.customlightGray)
+        .overlay(
+                  VStack {
+                      if viewModel.showBanner {
+                          Banner(message: viewModel.bannerMessage, backgroundColor: .green, textColor: .white)
+                              .padding(.top, 50)
+                      }
+                      Spacer()
+                  }
+              )
     }
 }

@@ -12,6 +12,8 @@ class FirebaseModel: ObservableObject {
     @Published var uid: String? = nil // UIDを保存するプロパティ
     @Published var errorMessage: String? = nil // エラーメッセージを保存するプロパティ
     @Published var userId: Int? = nil //GETした情報を保存するプロパ
+    @Published var showBanner: Bool = false // バナー表示のためのフラグ
+    @Published var bannerMessage: String = "" // バナーに表示するメッセージ
     
     
     //メールドメインの指定
@@ -71,6 +73,11 @@ class FirebaseModel: ObservableObject {
                     self?.isAuthenticated = false
                     self?.uid = user.uid // UIDを保存
                     self?.errorMessage = nil
+                    self?.bannerMessage = "新規登録が出来ました！プロフィールを設定しましょう！"
+                                           self?.showBanner = true
+                                           DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                               self?.showBanner = false
+                                           }
                 } else {
                     if let error = error as NSError? {
                         switch error.code{

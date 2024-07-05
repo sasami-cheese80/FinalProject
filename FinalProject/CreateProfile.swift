@@ -15,11 +15,15 @@ struct createProfileType: Codable{
     var division: String
     var address: String
     var firebase_id: String
+    var hobby: String
+    var message: String
+    var tags: Array<String>
 }
 
 
 class CreateProfileClass: ObservableObject {
     @Published var profiles = [createProfileType]()
+
     func postProfile(postData: createProfileType, viewModel: FirebaseModel) {
         let url = URL(string:"\(Configuration.shared.apiUrl)/users")!
 //        let url = URL(string:"http://localhost:3000/users")!
@@ -30,6 +34,7 @@ class CreateProfileClass: ObservableObject {
 
         //bodyに設定
         do {
+            print(postData)
             request.httpBody = try JSONEncoder().encode(postData)
         } catch {
             print("bodyをエンコードできませんでした。")
@@ -65,6 +70,9 @@ struct CreateProfile: View {
     @State private var department:String = ""
     @State private var division:String = ""
     @State private var address:String = ""
+    @State private var hobby:String = ""
+    @State private var message:String = ""
+    @State private var stringTags:String = ""
     
     var body: some View {
         VStack{
@@ -121,6 +129,27 @@ struct CreateProfile: View {
                         Text("帰宅方面")
                     }
                     
+                    Section {
+                        TextField("趣味(任意)",text:$hobby)
+                            .accentColor(Color.customTextColor)
+                    } header: {
+                        Text("趣味")
+                    }
+                    
+                    Section {
+                        TextField("アイノリ相手へ一言メッセージ(任意)",text:$message)
+                            .accentColor(Color.customTextColor)
+                    } header: {
+                        Text("アイノリ相手へ一言メッセージ")
+                    }
+                    
+                    Section {
+                        TextField("タグ(任意)",text:$stringTags)
+                            .accentColor(Color.customTextColor)
+                    } header: {
+                        Text("タグ ※全角スペース区切り")
+                    }
+                    
                 }
                 .padding()
                 .font(.system(size: 18))
@@ -143,7 +172,20 @@ struct CreateProfile: View {
                     viewModel.isAuthenticated = true
                     viewModel.isSignedUp = false
                     if viewModel.uid != nil{
-                        let postData = createProfileType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address, firebase_id: viewModel.uid!)
+                        let tagConvert = stringTags.components(separatedBy: " ")
+                        let postData = createProfileType(
+                            name: name,
+                            nickname: nickname,
+                            gender: gender,
+                            department: department,
+                            division: division,
+                            address: address,
+                            firebase_id: viewModel.uid!,
+                            hobby: hobby,
+                            message: message,
+                            tags: tagConvert
+                        )
+
                         createProfileClass.postProfile(postData: postData, viewModel: viewModel)
                     } else {
                         print("firebase_idが取得できませんでした。createProfileできません。")
@@ -161,14 +203,5 @@ struct CreateProfile: View {
 
         }
         .background(Color.customlightGray)
-    }
-}
-
-struct CreateProfile_Previews: PreviewProvider {
-    static var previews: some View {
-        let viewModel = FirebaseModel()
-        let createProfileClass = CreateProfileClass()
-        
-        CreateProfile(viewModel: viewModel, createProfileClass: createProfileClass)
     }
 }

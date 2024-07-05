@@ -18,7 +18,7 @@ struct EditProfile: View {
     @Binding var tabSelection: Int
     @State private var isProgress = false
     
-    @Binding var selectedImages: UIImage? = UIImage(named: "unknown4.png")
+    @Binding var selectedImages: UIImage?
     @Binding var selectedItems: [PhotosPickerItem]
     @Binding var name: String
     @Binding var nickname: String

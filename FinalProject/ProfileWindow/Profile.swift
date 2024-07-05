@@ -24,8 +24,8 @@ struct Profile: View {
     @State var division: String = ""
     @State var address :String = ""
     @State var hobby: String = ""
-    @State var message: String = "kiduitarakieteru"
-    @State var tags: Array<String> = ["地下アイドル", "旅行"]
+    @State var message: String = ""
+    @State var tags: Array<String> = [""]
     @State var stringTag: String = ""
     
     //一時保存用
@@ -77,10 +77,6 @@ struct Profile: View {
                                     .frame(width: 30, height: 30)
                                     .padding(.init(top: 0, leading: 40, bottom: 0, trailing: 20))
                                     .foregroundColor(Color.customTextColor)
-                                //                            Text("趣味\(Image(systemName: "figure.baseball"))")
-                                //                                .padding(.init(top: 0, leading: 40, bottom: 0, trailing: 20))
-                                //                                .foregroundColor(Color.customTextColor)
-                                //                                .fontWeight(.bold)
                                 Text(profile.hobby)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .foregroundColor(Color.customTextColor)

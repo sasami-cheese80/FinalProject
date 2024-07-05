@@ -17,7 +17,6 @@ struct GroupUsers: View {
     
     var planId: Int
     var userId: Int
-//    private let tags = ["アイドル", "旅行", "サウナ"]
     
     @ObservedObject var fetchUsers = FetchUsers()
     @Environment(\.dismiss) private var dismiss
@@ -123,7 +122,6 @@ struct GroupUsers: View {
                 .padding(.init(top: 0, leading: 50, bottom: 10, trailing: 50))
                 .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
             Button(action: {
-                //                print("ここでdeleteします")
                 fetchUsers.deletePlan(user_id: userId, plan_id: planId)
                 dismiss() //現在のビューを閉じる
             }, label: {
@@ -135,13 +133,6 @@ struct GroupUsers: View {
                     .background(Color.customTextColor)
                     .cornerRadius(24)
                     .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
-                //                    .frame(maxWidth: 200, alignment: .center)
-                //                    .padding(.init(top: 5, leading: 5, bottom: 5, trailing: 5))
-                //                    .background(Color.customlightGray)
-                //                    .cornerRadius(15)
-                //                    .foregroundColor(Color(red: 0.104, green: 0.551, blue: 1.0))
-                //                    .padding(.init(top: 0, leading: 50, bottom: 15, trailing: 50))
-                //                    .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
             })
             .padding(.bottom,20)
         }

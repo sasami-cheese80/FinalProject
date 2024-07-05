@@ -23,6 +23,7 @@
 		CE959B792C33DD1500033F8E /* MemberProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE959B782C33DD1500033F8E /* MemberProfile.swift */; };
 		CE959B7C2C35099A00033F8E /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE959B7B2C35099A00033F8E /* Tag.swift */; };
 		CE959B802C3625F300033F8E /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE959B7F2C3625F300033F8E /* EditProfile.swift */; };
+		CE959B862C37B8C200033F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE959B852C37B8C100033F8E /* GoogleService-Info.plist */; };
 		CEA158E22C2ABF9700F66FD0 /* GroupUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */; };
 		CEA158E42C2B0FE200F66FD0 /* FetchUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */; };
 		CEA158E62C2B100700F66FD0 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA158E52C2B100700F66FD0 /* Users.swift */; };
@@ -34,13 +35,10 @@
 		CEB2F10E2C2989C30090760D /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F10D2C2989C30090760D /* Profile.swift */; };
 		CEB2F1102C298AF20090760D /* Ainori.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB2F10F2C298AF20090760D /* Ainori.swift */; };
 		CEE438452C2D2B0300269D56 /* CreateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE438442C2D2B0300269D56 /* CreateProfile.swift */; };
-		CEE438832C32773200269D56 /* otamesi.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE438822C32773200269D56 /* otamesi.swift */; };
 		CEE438852C32934700269D56 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = CEE438842C32934700269D56 /* FirebaseStorage */; };
 		CEE438872C32D86D00269D56 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CEE438862C32D86D00269D56 /* FirebaseFirestore */; };
-		CEE438892C32E96900269D56 /* otamesi2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE438882C32E96900269D56 /* otamesi2.swift */; };
 		CEE438962C342E5C00269D56 /* AinoriTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE438952C342E5C00269D56 /* AinoriTypes.swift */; };
 		CEE438992C363FA400269D56 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE438982C363FA400269D56 /* Configuration.swift */; };
-		CEE4389B2C36CD2D00269D56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEE4389A2C36CD2D00269D56 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +55,7 @@
 		CE959B782C33DD1500033F8E /* MemberProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfile.swift; sourceTree = "<group>"; };
 		CE959B7B2C35099A00033F8E /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		CE959B7F2C3625F300033F8E /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		CE959B852C37B8C100033F8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CEA158E12C2ABF9700F66FD0 /* GroupUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUsers.swift; sourceTree = "<group>"; };
 		CEA158E32C2B0FE200F66FD0 /* FetchUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUsers.swift; sourceTree = "<group>"; };
 		CEA158E52C2B100700F66FD0 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
@@ -69,12 +68,9 @@
 		CEB2F10D2C2989C30090760D /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		CEB2F10F2C298AF20090760D /* Ainori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ainori.swift; sourceTree = "<group>"; };
 		CEE438442C2D2B0300269D56 /* CreateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfile.swift; sourceTree = "<group>"; };
-		CEE438822C32773200269D56 /* otamesi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otamesi.swift; sourceTree = "<group>"; };
-		CEE438882C32E96900269D56 /* otamesi2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = otamesi2.swift; sourceTree = "<group>"; };
 		CEE438952C342E5C00269D56 /* AinoriTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AinoriTypes.swift; sourceTree = "<group>"; };
 		CEE438972C363ECA00269D56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CEE438982C363FA400269D56 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		CEE4389A2C36CD2D00269D56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +161,7 @@
 		CEB2F0EF2C2984440090760D = {
 			isa = PBXGroup;
 			children = (
-				CEE4389A2C36CD2D00269D56 /* GoogleService-Info.plist */,
+				CE959B852C37B8C100033F8E /* GoogleService-Info.plist */,
 				CEB2F0FA2C2984440090760D /* FinalProject */,
 				CEB2F0F92C2984440090760D /* Products */,
 				CE7384A52C2BF7FC00B08C01 /* Frameworks */,
@@ -184,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				CEE438972C363ECA00269D56 /* Info.plist */,
-				CEE438812C32772000269D56 /* otamesi */,
 				CE7384AF2C2BFA1E00B08C01 /* FireBaseWindow */,
 				CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */,
 				CEE438442C2D2B0300269D56 /* CreateProfile.swift */,
@@ -207,15 +202,6 @@
 				CEB2F1022C2984450090760D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		CEE438812C32772000269D56 /* otamesi */ = {
-			isa = PBXGroup;
-			children = (
-				CEE438822C32773200269D56 /* otamesi.swift */,
-				CEE438882C32E96900269D56 /* otamesi2.swift */,
-			);
-			path = otamesi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,8 +273,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CEB2F1032C2984450090760D /* Preview Assets.xcassets in Resources */,
+				CE959B862C37B8C200033F8E /* GoogleService-Info.plist in Resources */,
 				CEB2F1002C2984450090760D /* Assets.xcassets in Resources */,
-				CEE4389B2C36CD2D00269D56 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,8 +287,6 @@
 			files = (
 				CE959B7C2C35099A00033F8E /* Tag.swift in Sources */,
 				CEB2F1102C298AF20090760D /* Ainori.swift in Sources */,
-				CEE438892C32E96900269D56 /* otamesi2.swift in Sources */,
-				CEE438832C32773200269D56 /* otamesi.swift in Sources */,
 				CEE438962C342E5C00269D56 /* AinoriTypes.swift in Sources */,
 				CE7384B82C2C21BA00B08C01 /* SignIn.swift in Sources */,
 				CEE438452C2D2B0300269D56 /* CreateProfile.swift in Sources */,

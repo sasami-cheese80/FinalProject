@@ -108,12 +108,6 @@ struct Ainori: View {
                 }
                 Spacer()
                 Button(action: {
-                    
-//                    //unrap処理
-//                    guard let unwrapDate = date else {
-//                        print("nilです")
-//                        return
-//                    }
                     //post処理
                     if let userId = viewModel.userId{
                         postData(date: textValue, userId: userId)
@@ -212,7 +206,6 @@ private func dateToString(date: Date) -> String {
         let ISOformatter = ISO8601DateFormatter()
         let formatDate = ISOformatter.string(from: strToDate!)
         print(formatDate)
-//    print("postする日時 → \(formatDate)")
     
     let url = URL(string:"\(Configuration.shared.apiUrl)/plans")!
 //    let url = URL(string:"http://localhost:3000/plans")!
@@ -228,8 +221,6 @@ private func dateToString(date: Date) -> String {
         
         do {
             try JSONSerialization.jsonObject(with: data, options: [])
-            //response見れるここで
-            //            print(object)
         } catch let error {
             print("Error parsing JSON response: \(error)")
         }

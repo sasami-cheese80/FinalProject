@@ -11,6 +11,7 @@
 		CE3D8E0A2C2AC8D100650602 /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E092C2AC8D100650602 /* Plans.swift */; };
 		CE3D8E132C2D009700650602 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E122C2D009700650602 /* ColorExtension.swift */; };
 		CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */; };
+		CE67922F2C37BF7A000F1B82 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE67922E2C37BF7A000F1B82 /* Banner.swift */; };
 		CE7384A72C2BF7FC00B08C01 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE7384A62C2BF7FC00B08C01 /* FirebaseAnalytics */; };
 		CE7384A92C2BF81F00B08C01 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = CE7384A82C2BF81F00B08C01 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		CE7384B42C2C053A00B08C01 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CE7384B32C2C053A00B08C01 /* FirebaseAuth */; };
@@ -46,6 +47,7 @@
 		CE3D8E092C2AC8D100650602 /* Plans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
 		CE3D8E122C2D009700650602 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
+		CE67922E2C37BF7A000F1B82 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		CE7384B52C2C0F4100B08C01 /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
 		CE7384B72C2C21BA00B08C01 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		CE7384B92C2C221D00B08C01 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		CE7384AF2C2BFA1E00B08C01 /* FireBaseWindow */ = {
 			isa = PBXGroup;
 			children = (
+				CE67922E2C37BF7A000F1B82 /* Banner.swift */,
 				CE7384B52C2C0F4100B08C01 /* FirebaseModel.swift */,
 				CE7384B72C2C21BA00B08C01 /* SignIn.swift */,
 				CE7384B92C2C221D00B08C01 /* SignUp.swift */,
@@ -303,6 +306,7 @@
 				CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */,
 				CEB2F0FC2C2984440090760D /* FinalProjectApp.swift in Sources */,
 				CEE438992C363FA400269D56 /* Configuration.swift in Sources */,
+				CE67922F2C37BF7A000F1B82 /* Banner.swift in Sources */,
 				CEA158E62C2B100700F66FD0 /* Users.swift in Sources */,
 				CE7384BC2C2C3D0900B08C01 /* Logout.swift in Sources */,
 				CE959B792C33DD1500033F8E /* MemberProfile.swift in Sources */,

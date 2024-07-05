@@ -30,9 +30,11 @@ class FetchUsers: ObservableObject {
                 return
             }
 
+            print("data:\(data)")
             do {
                 let decoder = JSONDecoder()
                 let users = try decoder.decode([Users].self, from: data)
+                print("users\(users)")
                 DispatchQueue.main.async {
                     self.users = users
                 }

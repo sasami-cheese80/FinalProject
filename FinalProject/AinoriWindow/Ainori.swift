@@ -116,7 +116,7 @@ struct Ainori: View {
 //                    }
                     //post処理
                     if let userId = viewModel.userId{
-                        postData(formatDate: textValue, userId: userId)
+                        postData(date: textValue, userId: userId)
                         print("dataをpostしました")
                     }else{
                         print("userIdがありませんでした。")
@@ -156,7 +156,7 @@ struct Ainori: View {
     
     
     func getWaiting(date:String) async throws -> [waitingType]{
-        guard let url = URL(string: "\(Configuration.shared.apiUrl)/plans?date=\(date)") else {
+        guard let url = URL(string: "\(Configuration.shared.apiUrl)/plans?date=\(date)&userId=\(viewModel.userId!)") else {
 //        guard let url = URL(string: "http://localhost:3000/plans?date=\(date)") else {
 //            guard let url = URL(string: "https://megry-app-88b135b9cdab.herokuapp.com/plans?date=\(date)") else {
             throw URLError(.badURL)
@@ -172,7 +172,6 @@ struct Ainori: View {
     
     
     func stringToStringDate(stringDate: String, format:String) -> String {
-     
             let dateFormatter = DateFormatter()
             dateFormatter.calendar = Calendar(identifier: .gregorian)
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ" //変換元のStringのDateの型に合わせる必要あり
@@ -204,8 +203,15 @@ private func dateToString(date: Date) -> String {
 }
 
 //postする
-    private func postData(formatDate: String, userId: Int) -> String {
-//    let formatDate = dateToString(date: date)
+    private func postData(date: String, userId: Int) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "ja_JP")
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let strToDate = formatter.date(from: date)
+        print(strToDate!)
+        let ISOformatter = ISO8601DateFormatter()
+        let formatDate = ISOformatter.string(from: strToDate!)
+        print(formatDate)
 //    print("postする日時 → \(formatDate)")
     
     let url = URL(string:"\(Configuration.shared.apiUrl)/plans")!

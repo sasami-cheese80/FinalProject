@@ -194,7 +194,7 @@ struct EditProfile: View {
                         }
                         
                         Section {
-                            TextField("趣味", text: $hobby)
+                            TextField("趣味(任意)", text: $hobby)
                                 .onAppear {
                                     hobby = profile.hobby
                                     if tempHobby != "" {
@@ -209,7 +209,7 @@ struct EditProfile: View {
                         }
                         
                         Section {
-                            TextField("アイノリ相手へ一言メッセージ", text: $message)
+                            TextField("アイノリ相手へ一言メッセージ(任意)", text: $message)
                                 .onAppear {
                                     message = profile.message
                                     if tempMessage != "" {
@@ -224,7 +224,7 @@ struct EditProfile: View {
                         }
                         
                         Section {
-                            TextField("タグ", text: $stringTag)
+                            TextField("タグ ※全角スペース区切り(任意)", text: $stringTag)
                                 .onAppear {
                                     stringTag = profile.tags.joined(separator: "　")
                                     if tempTag != "" {
@@ -235,7 +235,7 @@ struct EditProfile: View {
                                     tempTag = stringTag
                                 }
                         } header: {
-                            Text("タグ付け　※全角スペース区切り")
+                            Text("タグ付け ※全角スペース区切り")
                         }
                     }
 

@@ -15,7 +15,7 @@ struct Profile: View {
     @ObservedObject var viewModel: FirebaseModel
     @ObservedObject var fetchProfile = FetchProfile()
     
-    @State var selectedImages: UIImage?
+    @State var selectedImages: UIImage? = UIImage(named: "unknown4.png")
     @State var selectedItems: [PhotosPickerItem] = []
     @State var name: String = ""
     @State var nickname: String = ""

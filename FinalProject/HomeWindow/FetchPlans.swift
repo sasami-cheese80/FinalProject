@@ -37,8 +37,6 @@ class FetchPlans: ObservableObject {
                 DispatchQueue.main.async {
 
                     self.plans = plans.sorted(by:>)
-//                    print(self.plans)
-
                 }
             } catch let error {
                 print("Error decoding JSON: \(error.localizedDescription)")

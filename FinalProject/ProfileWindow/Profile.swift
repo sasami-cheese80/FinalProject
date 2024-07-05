@@ -189,7 +189,7 @@ struct Profile: View {
                     print("onApper!!!!")
                     Task {
                         if let userId = viewModel.userId{
-                            print(try await fetchProfile.getProfile(userId: userId))
+                            try await fetchProfile.getProfile(userId: userId)
                         } else {
                             print("userIdがありませんでした。getProfileできません。")
                         }

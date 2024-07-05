@@ -186,9 +186,10 @@ struct Profile: View {
                 }
                 .background(Color.customlightGray)
                 .onAppear{
+                    print("onApper!!!!")
                     Task {
                         if let userId = viewModel.userId{
-                            try await fetchProfile.getProfile(userId: userId)
+                            print(try await fetchProfile.getProfile(userId: userId))
                         } else {
                             print("userIdがありませんでした。getProfileできません。")
                         }
@@ -199,10 +200,14 @@ struct Profile: View {
                     tempDepartment = ""
                     tempDivision = ""
                     tempAddress = ""
+                    tempHobby=""
+                    tempMessage=""
+                    tempTag=""
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button {
+                            tabSelection = 1
                             viewModel.signOut()
                         } label: {
                             Text("LOGOUT")

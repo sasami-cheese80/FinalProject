@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var tabSelection: Int = 0
-    var viewModel: FirebaseModel
+    @ObservedObject var viewModel: FirebaseModel
     
     var body: some View {
         TabView(selection: $tabSelection) {
@@ -33,20 +33,17 @@ struct ContentView: View {
                     Text("PROFILE")
                 }
                 .tag(3)
-//            otamesi()
-//                .tabItem {
-//                    Image(systemName: "testtube.2")
-//                    Text("お試し")
-//                }
-//                .tag(4)
-//            otamesi2()
-//                .tabItem {
-//                    Image(systemName: "testtube.2")
-//                    Text("お試し2")
-//                }
-//                .tag(5)
         }
         .accentColor(Color.customTextColor)
+        .overlay(
+                  VStack {
+                      if viewModel.showBanner {
+                          Banner(message: viewModel.bannerMessage, backgroundColor: .green, textColor: .white)
+                              .padding(.top, 50)
+                      }
+                      Spacer()
+                  }
+              )
     }
 }
 

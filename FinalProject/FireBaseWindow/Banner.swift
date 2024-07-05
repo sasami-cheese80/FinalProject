@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct Banner: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    let message: String
+    let backgroundColor: Color
+    let textColor: Color
 
-#Preview {
-    Banner()
+    var body: some View {
+        Text(message)
+            .padding()
+            .background(backgroundColor)
+            .foregroundColor(textColor)
+            .cornerRadius(10)
+            .transition(.move(edge: .top).combined(with: .opacity))
+            .animation(.easeInOut(duration: 0.3), value: UUID())
+    }
 }

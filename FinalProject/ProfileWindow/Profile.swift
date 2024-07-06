@@ -42,6 +42,9 @@ struct Profile: View {
     
     @State private var isPresented: Bool = false
     
+    @State private var isLoading: Bool = true
+
+    
     var body: some View {
         
         
@@ -49,16 +52,22 @@ struct Profile: View {
             ZStack{
                 Color.customlightGray
                     .ignoresSafeArea()
-                VStack{
+                if isLoading {
+                    ProgressView("Loading...")
+                        .progressViewStyle(CircularProgressViewStyle())
+                } else {
                     
-                    if let userId = viewModel.userId{
-                        //Icon
-                        getImage2(id: userId, size: 130)
-                            .padding(.bottom, 10)
-                    } else {}
                     
-                    ForEach(fetchProfile.profiles) { profile in
+                    VStack{
                         
+                        if let userId = viewModel.userId{
+                            //Icon
+                            getImage2(id: userId, size: 130)
+                                .padding(.bottom, 10)
+                        } else {}
+                        
+                        ForEach(fetchProfile.profiles) { profile in
+                            
                             Text(profile.name)
                                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -141,59 +150,66 @@ struct Profile: View {
                             }
                             .padding()
                         }
-                    
-                    Spacer()
-                    
-                    NavigationLink(destination: {
-                        EditProfile(
-                            viewModel: viewModel,
-                            tabSelection: $tabSelection,
-                            selectedImages: $selectedImages,
-                            selectedItems: $selectedItems,
-                            name: $name,
-                            nickname: $nickname,
-                            gender: $gender,
-                            department: $department,
-                            division: $division,
-                            address: $address,
-                            hobby: $hobby,
-                            message: $message,
-                            tags: $tags,
-                            stringTag: $stringTag,
-                            tempName: $tempName,
-                            tempNickname: $tempNickname,
-                            tempGender: $tempGender,
-                            tempDepartment: $tempDepartment,
-                            tempDivision: $tempDivision,
-                            tempAddress: $tempAddress,
-                            tempHobby: $tempHobby,
-                            tempMessage: $tempMessage,
-                            tempTag: $tempTag,
-                            tempSelectedImages: $tempSelectedImages
-                        )
-                    },label: {
-                        Text("編集する")
-                            .fontWeight(.bold)
-                            .frame(width: 300, height: 50)
-                            .foregroundColor(Color.customMainColor)
-                            .fontWeight(.semibold)
-                            .background(Color.customTextColor)
-                            .cornerRadius(24)
-                            .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
-                    })
-                    .padding(.bottom, 20)
-                    .shadow(color: .gray.opacity(0.7), radius: 1, x: 2, y: 2)
+                        
+                        Spacer()
+                        
+                        NavigationLink(destination: {
+                            EditProfile(
+                                viewModel: viewModel,
+                                tabSelection: $tabSelection,
+                                selectedImages: $selectedImages,
+                                selectedItems: $selectedItems,
+                                name: $name,
+                                nickname: $nickname,
+                                gender: $gender,
+                                department: $department,
+                                division: $division,
+                                address: $address,
+                                hobby: $hobby,
+                                message: $message,
+                                tags: $tags,
+                                stringTag: $stringTag,
+                                tempName: $tempName,
+                                tempNickname: $tempNickname,
+                                tempGender: $tempGender,
+                                tempDepartment: $tempDepartment,
+                                tempDivision: $tempDivision,
+                                tempAddress: $tempAddress,
+                                tempHobby: $tempHobby,
+                                tempMessage: $tempMessage,
+                                tempTag: $tempTag,
+                                tempSelectedImages: $tempSelectedImages
+                            )
+                        },label: {
+                            Text("編集する")
+                                .fontWeight(.bold)
+                                .frame(width: 300, height: 50)
+                                .foregroundColor(Color.customMainColor)
+                                .fontWeight(.semibold)
+                                .background(Color.customTextColor)
+                                .cornerRadius(24)
+                                .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                        })
+                        .padding(.bottom, 20)
+                        .shadow(color: .gray.opacity(0.7), radius: 1, x: 2, y: 2)
+                    }
                 }
+            }
                 .background(Color.customlightGray)
                 .onAppear{
                     print("onApper!!!!")
                     Task {
                         if let userId = viewModel.userId{
-                            try await fetchProfile.getProfile(userId: userId)
+                            do {
+                                try await fetchProfile.getProfile(userId: userId)
+                            } catch {
+                                print("Failed to get profile: \(error.localizedDescription)")
+                            }
                         } else {
                             print("userIdがありませんでした。getProfileできません。")
                         }
-                    }
+                    
+                    isLoading = false
                     tempName = ""
                     tempNickname = ""
                     tempGender = ""
@@ -204,24 +220,25 @@ struct Profile: View {
                     tempMessage=""
                     tempTag=""
                 }
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button {
-                            tabSelection = 1
-                            viewModel.signOut()
-                        } label: {
-                            Text("LOGOUT")
-                            Image(systemName: "rectangle.portrait.and.arrow.right")
+            }
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button {
+                                tabSelection = 1
+                                viewModel.signOut()
+                            } label: {
+                                Text("LOGOUT")
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                            }
                         }
                     }
-                }
-                .frame(maxWidth:.infinity)
-                Spacer()
+                    .frame(maxWidth:.infinity)
+                    Spacer()
+                
             }
         }
     }
     
-}
 
 
 //icon画像アップロード

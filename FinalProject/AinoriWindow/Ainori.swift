@@ -220,12 +220,14 @@ private func dateToString(date: Date) -> String {
         guard let data = data else { return }
         
         do {
-            try JSONSerialization.jsonObject(with: data, options: [])
+            print(data)
+            let json = try JSONSerialization.jsonObject(with: data, options: [])
+            print(json)
         } catch let error {
             print("Error parsing JSON response: \(error)")
         }
     }
     
     task.resume()
-    return "ポストしたよ"
+    return "完了"
 }

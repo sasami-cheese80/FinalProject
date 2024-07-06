@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE0285F52C3973AF00D1661C /* testMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0285F42C3973AF00D1661C /* testMap.swift */; };
+		CE0285F82C39778A00D1661C /* CLLocationCoordinate2D+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0285F72C39778A00D1661C /* CLLocationCoordinate2D+Extensions.swift */; };
 		CE3D8E082C2AC8BF00650602 /* FetchPlans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E072C2AC8BF00650602 /* FetchPlans.swift */; };
 		CE3D8E0A2C2AC8D100650602 /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E092C2AC8D100650602 /* Plans.swift */; };
 		CE3D8E132C2D009700650602 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E122C2D009700650602 /* ColorExtension.swift */; };
+		CE4BE8252C37B9FA00F9E7A8 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BE8242C37B9FA00F9E7A8 /* Banner.swift */; };
 		CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */; };
 		CE7384A72C2BF7FC00B08C01 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE7384A62C2BF7FC00B08C01 /* FirebaseAnalytics */; };
 		CE7384A92C2BF81F00B08C01 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = CE7384A82C2BF81F00B08C01 /* FirebaseAnalyticsWithoutAdIdSupport */; };
@@ -44,9 +47,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE0285F42C3973AF00D1661C /* testMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testMap.swift; sourceTree = "<group>"; };
+		CE0285F72C39778A00D1661C /* CLLocationCoordinate2D+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extensions.swift"; sourceTree = "<group>"; };
 		CE3D8E072C2AC8BF00650602 /* FetchPlans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlans.swift; sourceTree = "<group>"; };
 		CE3D8E092C2AC8D100650602 /* Plans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
 		CE3D8E122C2D009700650602 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		CE4BE8242C37B9FA00F9E7A8 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		CE7384B52C2C0F4100B08C01 /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
 		CE7384B72C2C21BA00B08C01 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
@@ -134,6 +140,7 @@
 		CE7384AF2C2BFA1E00B08C01 /* FireBaseWindow */ = {
 			isa = PBXGroup;
 			children = (
+				CE4BE8242C37B9FA00F9E7A8 /* Banner.swift */,
 				CE7384B52C2C0F4100B08C01 /* FirebaseModel.swift */,
 				CE7384B72C2C21BA00B08C01 /* SignIn.swift */,
 				CE7384B92C2C221D00B08C01 /* SignUp.swift */,
@@ -214,6 +221,8 @@
 			children = (
 				CEE438822C32773200269D56 /* otamesi.swift */,
 				CEE438882C32E96900269D56 /* otamesi2.swift */,
+				CE0285F42C3973AF00D1661C /* testMap.swift */,
+				CE0285F72C39778A00D1661C /* CLLocationCoordinate2D+Extensions.swift */,
 			);
 			path = otamesi;
 			sourceTree = "<group>";
@@ -307,8 +316,10 @@
 				CE7384B82C2C21BA00B08C01 /* SignIn.swift in Sources */,
 				CEE438452C2D2B0300269D56 /* CreateProfile.swift in Sources */,
 				CEB2F10E2C2989C30090760D /* Profile.swift in Sources */,
+				CE0285F82C39778A00D1661C /* CLLocationCoordinate2D+Extensions.swift in Sources */,
 				CEA158E22C2ABF9700F66FD0 /* GroupUsers.swift in Sources */,
 				CE3D8E082C2AC8BF00650602 /* FetchPlans.swift in Sources */,
+				CE0285F52C3973AF00D1661C /* testMap.swift in Sources */,
 				CE3D8E132C2D009700650602 /* ColorExtension.swift in Sources */,
 				CE959B642C2FA5F700033F8E /* FetchProfile.swift in Sources */,
 				CE3D8E0A2C2AC8D100650602 /* Plans.swift in Sources */,
@@ -319,6 +330,7 @@
 				CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */,
 				CEB2F0FC2C2984440090760D /* FinalProjectApp.swift in Sources */,
 				CEE438992C363FA400269D56 /* Configuration.swift in Sources */,
+				CE4BE8252C37B9FA00F9E7A8 /* Banner.swift in Sources */,
 				CEA158E62C2B100700F66FD0 /* Users.swift in Sources */,
 				CE7384BC2C2C3D0900B08C01 /* Logout.swift in Sources */,
 				CE959B792C33DD1500033F8E /* MemberProfile.swift in Sources */,
@@ -458,6 +470,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FinalProject/Preview Content\"";
+				DEVELOPMENT_TEAM = N5GUZ9FQG5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinalProject/Info.plist;
@@ -491,6 +504,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FinalProject/Preview Content\"";
+				DEVELOPMENT_TEAM = N5GUZ9FQG5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FinalProject/Info.plist;

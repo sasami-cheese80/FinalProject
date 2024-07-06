@@ -52,9 +52,9 @@ struct Profile: View {
                 VStack{
                     
                     if let userId = viewModel.userId{
-                        //Icon
-                        getImage2(id: userId, size: 130)
-                            .padding(.bottom, 10)
+                            //Icon
+                            getImage2(id: userId, size: 130)
+                                .padding(.bottom, 10)
                     } else {}
                     
                     ForEach(fetchProfile.profiles) { profile in

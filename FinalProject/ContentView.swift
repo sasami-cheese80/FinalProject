@@ -33,6 +33,12 @@ struct ContentView: View {
                     Text("PROFILE")
                 }
                 .tag(3)
+            testMap()
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("Map")
+                }
+                .tag(4)
         }
         .accentColor(Color.customTextColor)
         .overlay(

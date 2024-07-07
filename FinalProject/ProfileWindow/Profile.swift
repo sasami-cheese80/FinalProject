@@ -23,6 +23,7 @@ struct Profile: View {
     @State var department: String = ""
     @State var division: String = ""
     @State var address :String = ""
+    @State var addressOfHouse: String = ""
     @State var hobby: String = ""
     @State var message: String = "kiduitarakieteru"
     @State var tags: Array<String> = ["地下アイドル", "旅行"]
@@ -35,6 +36,7 @@ struct Profile: View {
     @State var tempDepartment: String = ""
     @State var tempDivision: String = ""
     @State var tempAddress: String = ""
+    @State var tempAddressOfHouse: String = ""
     @State var tempHobby: String = ""
     @State var tempMessage: String = ""
     @State var tempTag: String = ""
@@ -160,6 +162,7 @@ struct Profile: View {
                             department: $department,
                             division: $division,
                             address: $address,
+                            addressOfHouse: $addressOfHouse,
                             hobby: $hobby,
                             message: $message,
                             tags: $tags,
@@ -170,6 +173,7 @@ struct Profile: View {
                             tempDepartment: $tempDepartment,
                             tempDivision: $tempDivision,
                             tempAddress: $tempAddress,
+                            tempAddressOfHouse: $tempAddressOfHouse,
                             tempHobby: $tempHobby,
                             tempMessage: $tempMessage,
                             tempTag: $tempTag,
@@ -203,6 +207,7 @@ struct Profile: View {
                     tempDepartment = ""
                     tempDivision = ""
                     tempAddress = ""
+                    tempAddressOfHouse = ""
                 }
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {

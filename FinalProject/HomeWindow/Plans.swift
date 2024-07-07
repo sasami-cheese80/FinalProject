@@ -25,6 +25,7 @@ struct Plans: Codable, Comparable {
     var gender: String
     var department: String
     var address: String
+    var addressOfHouse:String
     
     static func < (lhs: Plans, rhs: Plans) -> Bool {
         return lhs.date < rhs.date

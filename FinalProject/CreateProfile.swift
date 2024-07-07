@@ -14,6 +14,7 @@ struct createProfileType: Codable{
     var department: String
     var division: String
     var address: String
+    var addressOfHouse: String
     var firebase_id: String
     var hobby: String
     var message: String
@@ -70,6 +71,7 @@ struct CreateProfile: View {
     @State private var department:String = ""
     @State private var division:String = ""
     @State private var address:String = ""
+    @State private var addressOfHouse:String = ""
     @State private var hobby:String = ""
     @State private var message:String = ""
     @State private var stringTags:String = ""
@@ -127,6 +129,13 @@ struct CreateProfile: View {
                         }
                     } header: {
                         Text("帰宅方面")
+                    }
+                    
+                    Section {
+                        TextField("〇〇県〇〇市〇〇町１−１",text:$addressOfHouse)
+                            .accentColor(Color.customTextColor)
+                    } header: {
+                        Text("家の住所")
                     }
                     
                     Section {
@@ -189,6 +198,7 @@ struct CreateProfile: View {
                             department: department,
                             division: division,
                             address: address,
+                            addressOfHouse: addressOfHouse,
                             firebase_id: viewModel.uid!,
                             hobby: hobby,
                             message: message,

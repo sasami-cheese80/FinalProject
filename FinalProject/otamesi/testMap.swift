@@ -8,7 +8,7 @@ struct testMap: View {
     @State private var distance:String? = nil
     @State private var travelTime:String? = nil
     @State private var usersPlaces:[String?:String?] = [
-        "0":"愛知県豊田市広路町３丁目１８",
+        "0":"愛知県豊田市トヨタ町５３０",
         "1":"愛知県豊田市錦町２丁目５７",
         "2":"愛知県豊田市金谷町２丁目",
         "3":"愛知県豊田市小坂本町８丁目５−１"
@@ -28,51 +28,33 @@ struct testMap: View {
     @State private var newRoutes:[Double] = []
     @State private var testRoutes:[MKRoute?] = []
     @State private var isProgress = false
-    @State private var myTotalDistance:Double? = nil
-    @State private var myTotalFare:Int? = nil
+    @State private var myTotalDistance:Double = 0
+    @State private var myTotalFare:Int = 0
     @State private var myNumber:String = "2"
+    @State private var shareTotalDistance:Double = 0.0
+    @State private var shareTotalFare:Int = 0
+    @State private var shareAddTotalFare:Int = 0
+    @State private var myShareTotalFare:Int = 0
+    @State private var myShareTotalDistance:Double = 0.0
     
     var body: some View {
             VStack {
-                if let travelTime = travelTime{
-                    Text(travelTime)
-                }
-                if let distance = distance{
-                    Text(distance)
-                }
-                
                 VStack{
+                    Text("ようこそ\(myNumber)様")
                     HStack{
-                        if let myTotalDistance = myTotalDistance{
-                            Text("距離は\(String(myTotalDistance))km")
+                        Text("おひとり")
+                        Text("距離:\(String(myTotalDistance))km")
+                        Text("料金:\(String(myTotalFare))円")
                         }
-                        if let myTotalFare = myTotalFare{
-                            Text("料金は\(String(myTotalFare))円")
+                    HStack{
+                        Text("相乗り")
+                        Text("距離:\(String(myShareTotalDistance))km")
+                        Text("料金:\(String(myShareTotalFare))円")
                         }
-                        }
-//                    HStack{
-//                        ForEach(sortNearUsers,id: \.self){ item in
-//                            Text(item)
-//                        }
-//                    }
-//                    HStack{
-//                        ForEach(sortNearRoutes,id: \.self){ item in
-//                            Text("\(String(item))km")
-//                        }
-//                    }
-//                    HStack{
-//                        ForEach(newUsers,id: \.self){ item in
-//                            Text(item)
-//                        }
-//                    }
-//                    HStack{
-//                        ForEach(newRoutes,id: \.self){ item in
-//                            Text("\(String(item))km")
-//                        }
-//                    }
-                    
+
                 }
                 
+                a
                 Map() {
                     if !testRoutes.isEmpty{
                         ForEach(testRoutes,id: \.self){ route in
@@ -319,6 +301,11 @@ struct testMap: View {
     func shareTaxiFare(key:String,value:Double){
         print(sortNearUsers)
         print(sortNearRoutes)
+        let startingFare = 630
+        let startingDistance = 1.124
+        let addCharge = 100
+        let addChargeDistance = 0.253
+                
         var totalNumber = sortNearUsers.count
         print("\(totalNumber)人の乗客が乗っています")
         let firstIndex = sortNearUsers.firstIndex(of:key)
@@ -327,15 +314,58 @@ struct testMap: View {
         print(key,value)
         
         for number in 1...totalNumber {
+            
             print("現在の乗客数\(totalNumber)")
             print("\(number)人目が降車する時の計算を開始します")
             let stepOutUser = sortNearUsers[number - 1]
             print("\(stepOutUser)さんが降車します")
-            
-            
-            
+            let nextDistance = newUsersDistance[stepOutUser]!!
+//            一人目が目的地に着くまでにかかった距離を求める
+            shareTotalDistance += nextDistance
+            print("現在の走行距離\(shareTotalDistance)km")
+            print("次の目的地まで\(nextDistance)km")
+
+            var shareAddDistance:Double = 0
+            if (number == 1){
+                print("初乗り料金を上乗せします")
+//                初乗りを考慮した加算距離の算出
+                shareAddDistance = nextDistance - startingDistance
+                print("初乗りは\(startingDistance)km")
+                print("加算距離は\(shareAddDistance)km")
+                let shareAddCharge = Int(ceil((shareAddDistance/addChargeDistance) * Double(addCharge)))
+                print("加算料金は\(shareAddCharge)円です")
+                shareTotalFare = startingFare
+                shareTotalFare += shareAddCharge
+                print("精算する合計料金は\(shareTotalFare)円です")
+    //            一人目が目的地に着くまでにかかった金額を乗客数で割る
+                let onePersonFare = shareTotalFare/totalNumber
+                print("乗客数\(totalNumber)人で割った時の一人当たりの金額は\(onePersonFare)円です")
+                shareAddTotalFare += onePersonFare
+                print("現在のあなたの利用料金は\(shareAddTotalFare)円です")
+            }else{
+                print("加算料金のみ計算します")
+                shareAddDistance = nextDistance
+                print("加算距離は\(shareAddDistance)km")
+                let shareAddCharge = Int(ceil((shareAddDistance/addChargeDistance) * Double(addCharge)))
+                print("加算料金は\(shareAddCharge)円です")
+                shareTotalFare = shareAddCharge
+                print("精算する合計料金は\(shareTotalFare)円です")
+    //            一人目が目的地に着くまでにかかった金額を乗客数で割る
+                let onePersonFare = shareTotalFare/totalNumber
+                print("乗客数\(totalNumber)人で割った時の一人当たりの金額は\(onePersonFare)円です")
+                shareAddTotalFare += onePersonFare
+                print("現在の利用料金は\(shareAddTotalFare)円です")
+            }
+
             if(String(stepOutUser) == myNumber){
-                print("あなたです")
+                myShareTotalFare = shareAddTotalFare
+                myShareTotalDistance = ceil(shareTotalDistance)
+                print("あなたのお支払い金額をお伝えします")
+                print("おひとり時の走行距離は\(myTotalDistance)km")
+                print("おひとり時のタクシー料金は：\(myTotalFare)円です")
+                print("相乗り時の走行距離は\(myShareTotalDistance)km")
+                print("相乗り時のタクシー料金は：\(myShareTotalFare)円です")
+                
             }
             totalNumber -= 1
             print("計算終了")

@@ -54,7 +54,6 @@ struct testMap: View {
 
                 }
                 
-                a
                 Map() {
                     if !testRoutes.isEmpty{
                         ForEach(testRoutes,id: \.self){ route in

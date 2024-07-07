@@ -332,6 +332,9 @@ struct EditProfile: View {
             tempDepartment = ""
             tempDivision = ""
             tempAddress = ""
+            tempHobby=""
+            tempMessage=""
+            tempTag=""
         }
         .onDisappear{
             dismiss()

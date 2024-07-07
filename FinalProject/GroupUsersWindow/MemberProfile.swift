@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MemberProfile: View {
-//    private let tags = ["地下アイドル", "旅行", "キーボード", "DIG", "トヨタ", "シングルタスク", "熊本"]
     
     var id: Int
     var name: String
@@ -129,17 +128,15 @@ struct getImage2: View {
         .onAppear {
             Task{
                 try await fetchImage(fetchId: id) { fetchedImage in
-                    if fetchedImage != nil{
+
+                    if (fetchedImage == nil) {
+                        image = UIImage(named: "unknown4.png")
+                    } else {
                         self.image = fetchedImage
                     }
+
                 }
             }
         }
     }
-}
-
-
-#Preview {
-    MemberProfile(id: 7,name: "坂口 千弓", nickname: "ちーくん" ,gender: "女性", department: "本社技術",
-                  division: "シャシーコンポーネント試験課",hobby: "旅行に行って、車中泊する", message: "話しかけないでください。",tags: ["ringo","aa"])
 }

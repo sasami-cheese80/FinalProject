@@ -104,7 +104,7 @@ struct getImage2: View {
     
     let id: Int
     let size: CGFloat
-    @State var image: UIImage? = nil
+    @State var image: UIImage? = UIImage(named:"unknown4.png")
     
     var body: some View {
         Group {
@@ -128,6 +128,7 @@ struct getImage2: View {
         .onAppear {
             Task{
                 try await fetchImage(fetchId: id) { fetchedImage in
+
                     if (fetchedImage == nil) {
                         image = UIImage(named: "unknown4.png")
                     } else {

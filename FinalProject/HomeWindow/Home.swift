@@ -33,7 +33,7 @@ struct Home: View {
                             
                             NavigationLink {
                                 if let userId = viewModel.userId {
-                                    GroupUsers(planId: plan.plan_id, userId: userId)
+                                    GroupUsers(planId: plan.plan_id, userId: userId,viewModel:viewModel)
                                 } else {
                                     //                            print("userIdがありませんでした")
                                 }

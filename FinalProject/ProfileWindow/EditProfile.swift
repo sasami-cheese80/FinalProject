@@ -26,6 +26,7 @@ struct EditProfile: View {
     @Binding var department: String
     @Binding var division: String
     @Binding var address: String
+    @Binding var addressOfHouse: String
     @Binding var hobby: String
     @Binding var message: String
     @Binding var tags: Array<String>
@@ -38,6 +39,7 @@ struct EditProfile: View {
     @Binding var tempDepartment: String
     @Binding var tempDivision: String
     @Binding var tempAddress: String
+    @Binding var tempAddressOfHouse: String
     @Binding var tempHobby: String
     @Binding var tempMessage: String
     @Binding var tempTag: String
@@ -194,6 +196,21 @@ struct EditProfile: View {
                         }
                         
                         Section {
+                            TextField("住所", text: $addressOfHouse)
+                                .onAppear {
+                                    addressOfHouse = profile.addressOfHouse
+                                    if tempAddressOfHouse != "" {
+                                        addressOfHouse = tempAddressOfHouse
+                                    }
+                                }
+                                .onDisappear{
+                                    tempAddressOfHouse = addressOfHouse
+                                }
+                        } header: {
+                            Text("家の住所")
+                        }
+                        
+                        Section {
                             TextField("趣味(任意)", text: $hobby)
                                 .onAppear {
                                     hobby = profile.hobby
@@ -261,7 +278,7 @@ struct EditProfile: View {
                     Button(action: {
                         Task {
                             let tagConvert = stringTag.components(separatedBy: "　")
-                            let patchData = ProfilePatchType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address,hobby: hobby, message: message, tags: tagConvert)
+                            let patchData = ProfilePatchType(name: name, nickname: nickname, gender: gender, department: department, division: division, address: address,addressOfHouse: addressOfHouse,hobby: hobby, message: message, tags: tagConvert)
                             
                             if let userId = viewModel.userId{
                                 try await fetchProfile.patchProfile(patchData: patchData, userId: userId)

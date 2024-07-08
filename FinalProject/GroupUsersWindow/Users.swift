@@ -20,6 +20,7 @@ struct Users: Codable {
     var department: String
     var division: String
     var address: String
+    var addressOfHouse:String
     var hobby: String
     var message: String
     var tags: Array<String>

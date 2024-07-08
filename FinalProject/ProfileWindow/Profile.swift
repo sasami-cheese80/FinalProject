@@ -23,6 +23,7 @@ struct Profile: View {
     @State var department: String = ""
     @State var division: String = ""
     @State var address :String = ""
+    @State var addressOfHouse: String = ""
     @State var hobby: String = ""
     @State var message: String = ""
     @State var tags: Array<String> = [""]
@@ -35,6 +36,7 @@ struct Profile: View {
     @State var tempDepartment: String = ""
     @State var tempDivision: String = ""
     @State var tempAddress: String = ""
+    @State var tempAddressOfHouse: String = ""
     @State var tempHobby: String = ""
     @State var tempMessage: String = ""
     @State var tempTag: String = ""
@@ -52,9 +54,9 @@ struct Profile: View {
                 VStack{
                     
                     if let userId = viewModel.userId{
-                        //Icon
-                        getImage2(id: userId, size: 130)
-                            .padding(.bottom, 10)
+                            //Icon
+                            getImage2(id: userId, size: 130)
+                                .padding(.bottom, 10)
                     } else {}
                     
                     ForEach(fetchProfile.profiles) { profile in
@@ -156,6 +158,7 @@ struct Profile: View {
                             department: $department,
                             division: $division,
                             address: $address,
+                            addressOfHouse: $addressOfHouse,
                             hobby: $hobby,
                             message: $message,
                             tags: $tags,
@@ -166,6 +169,7 @@ struct Profile: View {
                             tempDepartment: $tempDepartment,
                             tempDivision: $tempDivision,
                             tempAddress: $tempAddress,
+                            tempAddressOfHouse: $tempAddressOfHouse,
                             tempHobby: $tempHobby,
                             tempMessage: $tempMessage,
                             tempTag: $tempTag,
@@ -200,6 +204,7 @@ struct Profile: View {
                     tempDepartment = ""
                     tempDivision = ""
                     tempAddress = ""
+                    tempAddressOfHouse = ""
                     tempHobby=""
                     tempMessage=""
                     tempTag=""

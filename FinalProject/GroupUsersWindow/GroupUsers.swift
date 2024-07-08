@@ -14,10 +14,10 @@ import FirebaseStorage
 
 
 struct GroupUsers: View {
-    
     var planId: Int
     var userId: Int
-    
+//    private let tags = ["アイドル", "旅行", "サウナ"]
+    @ObservedObject var viewModel: FirebaseModel
     @ObservedObject var fetchUsers = FetchUsers()
     @Environment(\.dismiss) private var dismiss
     
@@ -121,6 +121,22 @@ struct GroupUsers: View {
                 .foregroundColor(Color.customTextColor)
                 .padding(.init(top: 0, leading: 50, bottom: 10, trailing: 50))
                 .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+            
+            NavigationLink(destination: {
+                testMap(viewModel:viewModel, fetchUsers:$fetchUsers.users )
+            }, label: {
+                Text("料金を確認する")
+                    .fontWeight(.bold)
+                    .frame(width: 300, height: 50)
+                    .foregroundColor(Color.customMainColor)
+                    .fontWeight(.semibold)
+                    .background(Color.customTextColor)
+                    .cornerRadius(24)
+                    .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+            })
+            .padding(.bottom, 20)
+            .shadow(color: .gray.opacity(0.7), radius: 1, x: 2, y: 2)
+            
             Button(action: {
                 fetchUsers.deletePlan(user_id: userId, plan_id: planId)
                 dismiss() //現在のビューを閉じる
@@ -192,5 +208,5 @@ func fetchImage(fetchId: Int, completion: @escaping (UIImage?) -> Void) {
 
 
 #Preview {
-    GroupUsers(planId: 1, userId: 6)
+    GroupUsers(planId: 1, userId: 6,viewModel: FirebaseModel())
 }

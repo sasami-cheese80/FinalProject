@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE0285F52C3973AF00D1661C /* testMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0285F42C3973AF00D1661C /* testMap.swift */; };
+		CE0285F52C3973AF00D1661C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0285F42C3973AF00D1661C /* MapView.swift */; };
 		CE0285F82C39778A00D1661C /* CLLocationCoordinate2D+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0285F72C39778A00D1661C /* CLLocationCoordinate2D+Extensions.swift */; };
 		CE3D8E082C2AC8BF00650602 /* FetchPlans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E072C2AC8BF00650602 /* FetchPlans.swift */; };
 		CE3D8E0A2C2AC8D100650602 /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E092C2AC8D100650602 /* Plans.swift */; };
@@ -46,7 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CE0285F42C3973AF00D1661C /* testMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testMap.swift; sourceTree = "<group>"; };
+		CE0285F42C3973AF00D1661C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		CE0285F72C39778A00D1661C /* CLLocationCoordinate2D+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extensions.swift"; sourceTree = "<group>"; };
 		CE3D8E072C2AC8BF00650602 /* FetchPlans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlans.swift; sourceTree = "<group>"; };
 		CE3D8E092C2AC8D100650602 /* Plans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
@@ -97,6 +97,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE0285FF2C3B719A00D1661C /* MapWindow */ = {
+			isa = PBXGroup;
+			children = (
+				CE0285F42C3973AF00D1661C /* MapView.swift */,
+				CE0285F72C39778A00D1661C /* CLLocationCoordinate2D+Extensions.swift */,
+			);
+			path = MapWindow;
+			sourceTree = "<group>";
+		};
 		CE626E932C2AA26900A1403C /* AinoriWindow */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +197,7 @@
 		CEB2F0FA2C2984440090760D /* FinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				CE0285FF2C3B719A00D1661C /* MapWindow */,
 				CEE438972C363ECA00269D56 /* Info.plist */,
 				CE7384AF2C2BFA1E00B08C01 /* FireBaseWindow */,
 				CEB2F0FB2C2984440090760D /* FinalProjectApp.swift */,
@@ -218,8 +228,6 @@
 			children = (
 				CEE438822C32773200269D56 /* otamesi.swift */,
 				CEE438882C32E96900269D56 /* otamesi2.swift */,
-				CE0285F42C3973AF00D1661C /* testMap.swift */,
-				CE0285F72C39778A00D1661C /* CLLocationCoordinate2D+Extensions.swift */,
 			);
 			path = otamesi;
 			sourceTree = "<group>";
@@ -314,7 +322,7 @@
 				CE0285F82C39778A00D1661C /* CLLocationCoordinate2D+Extensions.swift in Sources */,
 				CEA158E22C2ABF9700F66FD0 /* GroupUsers.swift in Sources */,
 				CE3D8E082C2AC8BF00650602 /* FetchPlans.swift in Sources */,
-				CE0285F52C3973AF00D1661C /* testMap.swift in Sources */,
+				CE0285F52C3973AF00D1661C /* MapView.swift in Sources */,
 				CE3D8E132C2D009700650602 /* ColorExtension.swift in Sources */,
 				CE959B642C2FA5F700033F8E /* FetchProfile.swift in Sources */,
 				CE3D8E0A2C2AC8D100650602 /* Plans.swift in Sources */,

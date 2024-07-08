@@ -1,7 +1,7 @@
 import SwiftUI
 import MapKit
 
-struct testMap: View {
+struct MapView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var viewModel: FirebaseModel
     @Binding var fetchUsers:[Users]

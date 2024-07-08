@@ -123,7 +123,7 @@ struct GroupUsers: View {
                 .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
             
             NavigationLink(destination: {
-                testMap(viewModel:viewModel, fetchUsers:$fetchUsers.users )
+                MapView(viewModel:viewModel, fetchUsers:$fetchUsers.users )
             }, label: {
                 Text("料金を確認する")
                     .fontWeight(.bold)

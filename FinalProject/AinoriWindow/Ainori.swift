@@ -15,6 +15,7 @@ struct Ainori: View {
     @State var textValue:String = ""
     @State var showDatePicker: Bool = false
     @State var waitingDate:[waitingType] = []
+    @State var showingModal: Bool = false
     
     
     var body: some View {
@@ -112,6 +113,7 @@ struct Ainori: View {
                     if let userId = viewModel.userId{
                         postData(date: textValue, userId: userId)
                         print("dataをpostしました")
+                        isMatching()
                     }else{
                         print("userIdがありませんでした。")
                     }
@@ -143,6 +145,7 @@ struct Ainori: View {
             }
         }
         .background(Color.customlightGray)
+        .blur(radius: $showingModal.wrappedValue ? 5:0, opaque: false)
         .onAppear(){
             waitingDate = []
         }
@@ -175,6 +178,13 @@ struct Ainori: View {
             let getDate = dateFormatter.string(from: newDate)
             return getDate
         }
+    
+    func isMatching() {
+        if json {
+            showingModal = true;
+        }
+    }
+    
 }
 
 //dataをフォーマットする
@@ -231,3 +241,6 @@ private func dateToString(date: Date) -> String {
     task.resume()
     return "完了"
 }
+
+
+

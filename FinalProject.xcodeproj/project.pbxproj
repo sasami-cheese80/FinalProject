@@ -12,7 +12,6 @@
 		CE3D8E082C2AC8BF00650602 /* FetchPlans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E072C2AC8BF00650602 /* FetchPlans.swift */; };
 		CE3D8E0A2C2AC8D100650602 /* Plans.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E092C2AC8D100650602 /* Plans.swift */; };
 		CE3D8E132C2D009700650602 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D8E122C2D009700650602 /* ColorExtension.swift */; };
-		CE4BE8252C37B9FA00F9E7A8 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BE8242C37B9FA00F9E7A8 /* Banner.swift */; };
 		CE626E8A2C2A3E8000A1403C /* CustomDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */; };
 		CE67922F2C37BF7A000F1B82 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE67922E2C37BF7A000F1B82 /* Banner.swift */; };
 		CE7384A72C2BF7FC00B08C01 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE7384A62C2BF7FC00B08C01 /* FirebaseAnalytics */; };
@@ -51,7 +50,6 @@
 		CE3D8E072C2AC8BF00650602 /* FetchPlans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchPlans.swift; sourceTree = "<group>"; };
 		CE3D8E092C2AC8D100650602 /* Plans.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plans.swift; sourceTree = "<group>"; };
 		CE3D8E122C2D009700650602 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
-		CE4BE8242C37B9FA00F9E7A8 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		CE626E892C2A3E8000A1403C /* CustomDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDatePicker.swift; sourceTree = "<group>"; };
 		CE67922E2C37BF7A000F1B82 /* Banner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
 		CE7384B52C2C0F4100B08C01 /* FirebaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModel.swift; sourceTree = "<group>"; };
@@ -221,15 +219,6 @@
 				CEB2F1022C2984450090760D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		CEE438812C32772000269D56 /* otamesi */ = {
-			isa = PBXGroup;
-			children = (
-				CEE438822C32773200269D56 /* otamesi.swift */,
-				CEE438882C32E96900269D56 /* otamesi2.swift */,
-			);
-			path = otamesi;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -491,7 +480,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SE_API_URL = "";
 				"SE_API_URL[sdk=*]" = "http://localhost:3000";
-				SE_BUNDLE_DISPLAY_NAME = "";
+				SE_BUNDLE_DISPLAY_NAME = MEGRY;
 				"SE_BUNDLE_DISPLAY_NAME[arch=*]" = Debug;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -525,8 +514,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SE_API_URL = "";
 				"SE_API_URL[arch=*]" = "https://megry-app-88b135b9cdab.herokuapp.com";
-				SE_BUNDLE_DISPLAY_NAME = "";
-				"SE_BUNDLE_DISPLAY_NAME[arch=*]" = Release;
+				SE_BUNDLE_DISPLAY_NAME = MEGRY;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

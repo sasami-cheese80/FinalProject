@@ -101,7 +101,6 @@ struct MapView: View {
             .padding()
         }
             .navigationTitle("利用料金")
-            .background(Color.customlightGray)
             .onAppear(){
                 Task{
                     usersDistance = [:]

@@ -196,7 +196,7 @@ struct EditProfile: View {
                         }
                         
                         Section {
-                            TextField("住所", text: $addressOfHouse)
+                            TextField("〇〇県〇〇市〇〇町１−１", text: $addressOfHouse)
                                 .onAppear {
                                     addressOfHouse = profile.addressOfHouse
                                     if tempAddressOfHouse != "" {

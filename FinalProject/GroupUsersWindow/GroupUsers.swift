@@ -112,30 +112,32 @@ struct GroupUsers: View {
                 dismiss()
             }
             
-            Text("のりば : 豊田市駅西口タクシー乗り場")
-                .font(.headline)
-                .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.init(top: 15, leading: 20, bottom: 15, trailing: 20))
-                .background(.white)
-                .cornerRadius(8)
-                .foregroundColor(Color.customTextColor)
-                .padding(.init(top: 0, leading: 50, bottom: 10, trailing: 50))
-                .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
-            
-            NavigationLink(destination: {
-                MapView(viewModel:viewModel, fetchUsers:$fetchUsers.users )
-            }, label: {
-                Text("料金を確認する")
-                    .fontWeight(.bold)
-                    .frame(width: 300, height: 50)
-                    .foregroundColor(Color.customMainColor)
-                    .fontWeight(.semibold)
-                    .background(Color.customTextColor)
-                    .cornerRadius(24)
+            HStack {
+                Text("のりば : 豊田市駅西口タクシー乗り場")
+                    .font(.headline)
+//                    .frame(alignment: .center)
+                    .padding(.init(top: 15, leading: 18, bottom: 15, trailing: 18))
+                    .background(.white)
+                    .cornerRadius(8)
+                    .foregroundColor(Color.customTextColor)
                     .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
-            })
-            .padding(.bottom, 20)
-            .shadow(color: .gray.opacity(0.7), radius: 1, x: 2, y: 2)
+                    .padding(.bottom, 10)
+                
+                NavigationLink(destination: {
+                    MapView(viewModel:viewModel, fetchUsers:$fetchUsers.users )
+                }, label: {
+                    ZStack{
+                        Image(systemName: "circle.fill")
+                            .foregroundColor(Color.customMainColor)
+                            .font(.system(size: 50, weight: .medium))
+                        Text("¥")
+                            .font(.system(size:40))
+                            .foregroundColor(.white)
+                    }
+                })
+                .padding(.init(top: 0, leading: 5, bottom: 10, trailing: 0))
+                .shadow(color: .gray.opacity(0.7), radius: 1, x: 2, y: 2)
+            }
             
             Button(action: {
                 fetchUsers.deletePlan(user_id: userId, plan_id: planId)

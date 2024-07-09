@@ -37,43 +37,70 @@ struct MapView: View {
     @State private var myShareTotalDistance:Double = 0.0
     
     private let routeColor:[Color] = [.black, .blue, .brown, .cyan, .gray, .green, .indigo, .mint, .orange, .pink, .purple, .red, .teal, .yellow,.primary, .secondary, .accentColor]
+//    private let routeColor:[Color] = [Color.customMainColor]
     
     var body: some View {
-            VStack {
-                VStack{
-                    Text("ようこそ\(myName)様")
-                    HStack{
-                        Text("おひとり")
-                        Text("距離:\(String(myTotalDistance))km")
-                        Text("料金:\(String(myTotalFare))円")
-                        }
-                    HStack{
-                        Text("相乗り")
-                        Text("距離:\(String(myShareTotalDistance))km")
-                        Text("料金:\(String(myShareTotalFare))円")
-                        }
+        VStack {
+            Map() {
+                Marker("豊田市駅",coordinate: CLLocationCoordinate2D.toyotaStation)
+                if let mycoord = usersAddress[myNumber]{
+                    Marker("私のお家",coordinate: mycoord!)
                 }
-                
-                Map() {
-                    Marker("豊田市駅",coordinate: CLLocationCoordinate2D.toyotaStation)
-                    if let mycoord = usersAddress[myNumber]{
-                        Marker("私のお家",coordinate: mycoord!)
-                    }
-                    if !shareRoutes.isEmpty{
-                        ForEach(shareRoutes,id: \.self){ route in
-                            if let routePolyline = route?.polyline {
-                                MapPolyline(routePolyline)
-                                    .stroke(routeColor.randomElement()!, lineWidth: 8)
-                            }
-                        }
-                    }else{
+                if !shareRoutes.isEmpty{
+                    ForEach(shareRoutes,id: \.self){ route in
                         if let routePolyline = route?.polyline {
                             MapPolyline(routePolyline)
-                                .stroke(.blue, lineWidth: 8)
+                                .stroke(routeColor.randomElement()!, lineWidth: 8)
                         }
+                    }
+                }else{
+                    if let routePolyline = route?.polyline {
+                        MapPolyline(routePolyline)
+                            .stroke(.blue, lineWidth: 8)
                     }
                 }
             }
+            .padding()
+            .cornerRadius(10)
+            
+            VStack{
+                HStack{
+                    HStack{
+                        Text("　相乗り料金 : ")
+                        Text("￥\(String(myShareTotalFare))")
+                            .foregroundColor(Color.customMainColor)
+                    }
+                    .font(.system(size:20, weight: .bold))
+                    .padding(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
+                    .background(.white)
+                    .cornerRadius(8)
+                    .foregroundColor(Color.customTextColor)
+                    .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                    .padding(.bottom, 10)
+                    
+                    Text("(\(String(myShareTotalDistance))km)")
+                        .padding(.leading,10)
+                }
+                HStack{
+                    HStack{
+                        Text("おひとり料金 : ")
+                        Text("￥\(String(myTotalFare))")
+                    }
+                    .font(.system(size:20, weight: .bold))
+                    .padding(.init(top: 10, leading: 15, bottom: 10, trailing: 15))
+                    .background(.white)
+                    .cornerRadius(8)
+                    .foregroundColor(Color.customTextColor)
+                    .shadow(color: .gray.opacity(0.7), radius: 3, x: 2, y: 2)
+                    .padding(.bottom, 10)
+                    
+                    Text("(\(String(myTotalDistance))km)")
+                        .padding(.leading,10)
+                }
+            }
+            .padding()
+        }
+            .navigationTitle("利用料金")
             .onAppear(){
                 Task{
                     usersDistance = [:]

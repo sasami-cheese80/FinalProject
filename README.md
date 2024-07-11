@@ -1,11 +1,13 @@
 ![SHM presentation (1)](https://github.com/sasami-cheese80/FinalProject/assets/133064214/8cf1750b-f1bc-405e-b359-002c5442c317)
 
+<p>
 <img src="https://img.shields.io/badge/SwiftUI-gray.svg?logo=swift&style=for-the-badge&logoColor=blue">
 <img src="https://img.shields.io/badge/TypeScript-gray.svg?logo=TypeScript&style=for-the-badge">
 <img src="https://img.shields.io/badge/firebase-gray.svg?logo=firebase&style=for-the-badge&logoColor=red">
 <img src="https://img.shields.io/badge/postgresql-gray.svg?logo=postgresql&style=for-the-badge&Color=Purple">
 <img src="https://img.shields.io/badge/knex-gray.svg?logo=knex.js&style=for-the-badge">
 <img src="https://img.shields.io/badge/Heroku-gray.svg?logo=heroku&style=for-the-badge">
+</p>
 
 ## 概要
 
